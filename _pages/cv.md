@@ -9,8 +9,13 @@ redirect_from:
 
 {% include base_path %}
 
+My current CV can be found [here](/files/cv.pdf).
 
-
+### Experience
+* 2021: Manager (Model Validation)
+  - Scotiabank
+* 2017-2020: Postdoctoral researcher and sessional instructor
+  - Institute for Quantum Computing at the University of Waterloo
 
 ### Education
 
