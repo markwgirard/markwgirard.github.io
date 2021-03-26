@@ -10,7 +10,7 @@ author_profile: true
 Here are webpages from some of the courses I have taught.
 
 ## University of Waterloo
-  - Fall 2020 MATH 137: Honours Calculus I
+  - Fall 2020 MATH 137: Honours Calculus I \[[course info](173_2020)\]
   - Fall 2019 MATH 212/ECE 206: Advanced Calculus 2 for Electrical Engineers \[[course webpage](ece206_2019/)\]
   - Spring 2019 MATH 117: Calculus I for Engineers
   - Spring 2018 MATH 212/ECE 206: Advanced Calculus 2 for Electrical Engineers
