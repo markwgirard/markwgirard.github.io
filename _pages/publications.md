@@ -5,7 +5,10 @@ permalink: /publications/
 author_profile: true
 ---
 
+* TOC
+{:toc}
 
+## Publications in peer-reviewd journals
 
 2021
 
@@ -44,3 +47,8 @@ author_profile: true
 
 - Mark Girard, Debbie Leung, Jeremy Levick, Chi-Kwong Li, Vern Paulsen, Yiu Tung Poon, John Watrous. On the mixed-unitary rank of quantum channels (2020). \[[arxiv](https://arxiv.org/abs/2003.14405)\]
 - Mark Girard, Gilad Gour, On the binegativity of two qubits (2016) [\[arXiv](https://arxiv.org/pdf/1701.02724.pdf)\]
+
+## Theses
+
+- Diplom Thesis: "Optimal Control of Multipartite Entanglement with Measures Optimized On-the-Fly" (August 2012) \[[here](/files/MarksDiplomThesis.pdf)\]
+- PhD Thesis: "Convex Analysis in Quantum Information" (June 2017) \[[here](/files/Girard_Calgary_PhDthesis.pdf)\]
