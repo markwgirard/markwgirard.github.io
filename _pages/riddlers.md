@@ -21,6 +21,8 @@ This is a collection of all of my solutions to the weekly puzzles from FiveThirt
 
 | Date (link to puzzle)                                                             | Description         | My solution | Relevant code |
 | --------------------------------------------------------------------------------- | ------------------- | ----------- |-------------- |
+| [March 26](https://fivethirtyeight.com/features/can-you-solve-march-mathness/) | March Mathness     | [link](/riddlers/20210326_Riddler.pdf)        |             |
+| [March 19](https://fivethirtyeight.com/features/can-you-find-an-extra-perfect-square/) | Squre residues     | [link](/riddlers/20210319_Riddler.pdf)        |             |
 | [March 12](https://fivethirtyeight.com/features/can-you-bake-the-biggest-%cf%80/) | The biggest pie     | [link](/riddlers/20210312_Riddler.pdf)        |             |
 | [March 5](https://fivethirtyeight.com/features/can-you-bat-299-in-299-games/)     | Baseball numerology | [link](/riddlers/20210305_Riddler.pdf)        |             |
 | [February 19](https://fivethirtyeight.com/features/can-you-win-riddler-jenga/)    | Random Jenga        | link         |             |
