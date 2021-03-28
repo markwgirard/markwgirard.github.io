@@ -23,7 +23,7 @@ Outside of mathematics, I enjoy playing ultimate frisbee, homebrewing beer, tabl
 
 My research interests lie with solving mathematical problems motivated by questions in quantum information theory. I primarily make use of convex analysis, convex optimization, linear algebra, matrix analysis, and operator algebras to tackle questions related to the theory of quantum entanglement.
 
-See more about my research and a list of my publications [here](research).
+See a list of my publications [here](publications) and more details of my research [here](research).
 
 
 
