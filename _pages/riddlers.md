@@ -21,6 +21,7 @@ This is a collection of all of my solutions to the weekly puzzles from FiveThirt
 
 | Date (link to puzzle)                                                             | Description         | My solution | Relevant code |
 | --------------------------------------------------------------------------------- | ------------------- | ----------- |-------------- |
+| [April 2](https://fivethirtyeight.com/features/can-you-outthink-the-sphinx/) | Outthink the Sphinx     | [link](/riddlers/20210402_Riddler.pdf)        |             |
 | [March 26](https://fivethirtyeight.com/features/can-you-solve-march-mathness/) | March Mathness     | [link](/riddlers/20210326_Riddler.pdf)        |             |
 | [March 19](https://fivethirtyeight.com/features/can-you-find-an-extra-perfect-square/) | Square residues mod 10   | [link](/riddlers/20210319_Riddler.pdf)        |             |
 | [March 12](https://fivethirtyeight.com/features/can-you-bake-the-biggest-%cf%80/) | The biggest pie     | [link](/riddlers/20210312_Riddler.pdf)        |             |
