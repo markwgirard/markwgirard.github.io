@@ -21,6 +21,8 @@ This is a collection of all of my solutions to the weekly puzzles from FiveThirt
 
 | Date (link to puzzle)                                                             | Description         | My solution | Relevant code |
 | --------------------------------------------------------------------------------- | ------------------- | ----------- |-------------- |
+| [April 23](https://fivethirtyeight.com/features/can-you-cut-the-perfect-pancake/) | Random voting     | [link](/riddlers/20210423_Riddler.pdf)        |            |
+| [April 16](https://fivethirtyeight.com/features/can-you-crack-the-case-of-the-crescent-moon/) | Lunar phase speed     | [link](/riddlers/20210416_Riddler.pdf)        |            |
 | [April 9](https://fivethirtyeight.com/features/can-you-navigate-the-one-way-streets/) | One-way out     | [link](/riddlers/20210409_Riddler.pdf)        | [code](/riddlers/code/20210409.py)           |
 | [April 2](https://fivethirtyeight.com/features/can-you-outthink-the-sphinx/) | Outthink the Sphinx     | [link](/riddlers/20210402_Riddler.pdf)        |             |
 | [March 26](https://fivethirtyeight.com/features/can-you-solve-march-mathness/) | March Mathness     | [link](/riddlers/20210326_Riddler.pdf)        |             |
