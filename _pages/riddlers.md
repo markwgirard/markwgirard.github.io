@@ -30,6 +30,7 @@ This is a collection of all of my solutions to the weekly puzzles from FiveThirt
 | [March 12](https://fivethirtyeight.com/features/can-you-bake-the-biggest-%cf%80/) | The biggest pie     | [link](/riddlers/20210312_Riddler.pdf)        |             |
 | [March 5](https://fivethirtyeight.com/features/can-you-bat-299-in-299-games/)     | Baseball numerology | [link](/riddlers/20210305_Riddler.pdf)        |             |
 | [February 19](https://fivethirtyeight.com/features/can-you-win-riddler-jenga/)    | Random Jenga        | link         |             |
+| [December13](https://fivethirtyeight.com/features/en-garde-can-you-win-the-fencing-relay/)    | Fencing Relay        | [link](/riddlers/20211213_Riddler_fencing.pdf)         |             |
 
 
 ## Older Solutions
