@@ -14,6 +14,13 @@ Here is a description of The Riddler from the [FiveThirtyEight website](https://
 >Welcome to The Riddler. Every week, I offer up problems related to the things we hold dear around here: math, logic, and probability.
 
 This is a collection of all of my solutions to the weekly puzzles from FiveThirtyEight's The Riddler series.
+---------------------------------------
+
+## 2022
+
+| Date (link to puzzle)                                                             | Description         | My solution | Relevant code |
+| --------------------------------------------------------------------------------- | ------------------- | ----------- |-------------- |
+| [January 7](https://fivethirtyeight.com/features/can-you-trek-the-triangle/) | Triangle Trek     | [link](/riddlers/20220107_Riddler.pdf)        |            |
 
 ---------------------------------------
 
