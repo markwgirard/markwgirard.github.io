@@ -20,7 +20,8 @@ This is a collection of all of my solutions to the weekly puzzles from FiveThirt
 
 | Date (link to puzzle)                                                             | Description         | My solution | Relevant code |
 | --------------------------------------------------------------------------------- | ------------------- | ----------- |-------------- |
-| [January 7](https://fivethirtyeight.com/features/can-you-trek-the-triangle/) | Triangle Trek     | [link](/riddlers/20220107_Riddler.pdf)        |            |
+| [May 13]([https://fivethirtyeight.com/features/can-you-trek-the-triangle/](https://fivethirtyeight.com/features/its-elementary-my-dear-riddler/)) | Triangle Trek     | [link](/riddlers/20220107_Riddler.pdf)        |            |
+| [January 7](https://fivethirtyeight.com/features/can-you-trek-the-triangle/) | Nonconformist dice     | [link](/riddlers/20220513_Riddler.pdf)        |            |
 
 ---------------------------------------
 
