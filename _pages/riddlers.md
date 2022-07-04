@@ -20,7 +20,9 @@ This is a collection of all of my solutions to the weekly puzzles from FiveThirt
 
 | Date (link to puzzle)                                                             | Description         | My solution | Relevant code |
 | --------------------------------------------------------------------------------- | ------------------- | ----------- |-------------- |
-| [June 18](https://fivethirtyeight.com/features/can-you-switch-a-digit/) | Elevensies and balls in an urn likelihoods     | [link](/riddlers/20220618_elevensies.pdf)        |  
+| [July 1](https://fivethirtyeight.com/features/how-high-should-you-climb-up-the-tower/) | The Two (Astronomers') Towers     | [link](/riddlers/20220701_RiddlerTwoTowers.pdf)        |
+| [June 24](https://fivethirtyeight.com/features/can-you-make-room-for-goats/) | Goat tower parking functions     | [link](/riddlers/20220624_Riddler-goat-parking.pdf)        |
+| [June 17](https://fivethirtyeight.com/features/can-you-switch-a-digit/) | Elevensies and balls in an urn likelihoods     | [link](/riddlers/20220618_elevensies.pdf)        |  
 | [May 13](https://fivethirtyeight.com/features/its-elementary-my-dear-riddler/) | Nonconformist dice     | [link](/riddlers/20220513_Riddler.pdf)        |            |
 | [January 7](https://fivethirtyeight.com/features/can-you-trek-the-triangle/) |   Triangle Trek   | [link](/riddlers/20220107_Riddler.pdf)        |            |
 
