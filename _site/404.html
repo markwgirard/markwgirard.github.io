@@ -119,21 +119,20 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
 
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "none" } } }); </script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    jax: ["input/TeX", "output/HTML-CSS"],
     tex2jax: {
-      inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
       displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      processEscapes: true
     }
-    //,
-    //displayAlign: "left",
-    //displayIndent: "2em"
   });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+
 
 
 
