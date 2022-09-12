@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-11T21:17:06-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">Covering a square of overlapping disks (Riddler 2022-09-09)</title><link href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" rel="alternate" type="text/html" title="Covering a square of overlapping disks (Riddler 2022-09-09)" /><published>2022-09-11T00:00:00-07:00</published><updated>2022-09-11T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/09/riddler-overlapping-disks</id><content type="html" xml:base="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-11T21:20:10-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">Covering a square of overlapping disks (Riddler 2022-09-09)</title><link href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" rel="alternate" type="text/html" title="Covering a square of overlapping disks (Riddler 2022-09-09)" /><published>2022-09-11T00:00:00-07:00</published><updated>2022-09-11T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/09/riddler-overlapping-disks</id><content type="html" xml:base="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
 &lt;/script&gt;
 
 &lt;p&gt;Here’s my solution to this week’s &lt;a href=&quot;https://fivethirtyeight.com/features/can-you-cover-the-baking-sheet-with-cookies/&quot;&gt;Riddler&lt;/a&gt;. (See more of &lt;a href=&quot;/riddlers&quot;&gt;my Riddler solutions here&lt;/a&gt;.)&lt;/p&gt;
@@ -53,7 +53,7 @@
 
 &lt;h3 id=&quot;problems-with-the-basic-notions&quot;&gt;Problems with the basic notions&lt;/h3&gt;
 
-&lt;p&gt;However, being the pure mathematician that I am, I wanted to delve deep and get a true understanding for what a confidence interval “means.” I was a bit concerned by the standard interpretation that rudimentary statistics bookes give. &lt;a href=&quot;https://www.statology.org/confidence-intervals/&quot;&gt;A post of Statology&lt;/a&gt; gives an example where one wants to estimate the mean weight of a population of turtles given that the weights of a bunch of turtles are measured. After applying some formulas to the random samples, they state that the confidence interval has the following interpretation:&lt;/p&gt;
+&lt;p&gt;However, being the pure mathematician that I am, I wanted to delve deep and get a true understanding for what a confidence interval “means.” I was a bit concerned by the standard interpretation that rudimentary statistics books give. &lt;a href=&quot;https://www.statology.org/confidence-intervals/&quot;&gt;A post of Statology&lt;/a&gt; gives an example where one wants to estimate the mean weight of a population of turtles given that the weights of a bunch of turtles are measured. After applying some formulas to the random samples, they state that the confidence interval has the following interpretation:&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;There is a 90% chance that the confidence interval of [293.91, 306.09] contains the true population mean weight of turtles.&lt;/p&gt;
@@ -84,7 +84,11 @@
   &lt;p&gt;&lt;strong&gt;Definition.&lt;/strong&gt; A &lt;em&gt;statistical model&lt;/em&gt; for a measure space $(\mathcal{X},\mathcal{E})$ is a family \(\{P_\theta\,:\,\theta\in\Theta\}\) of probability distributions $P_\theta$ on $(\mathcal{X},\mathcal{E})$ for each $\theta$ in some index set $\Theta$.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;The most common example of a statistical model is the &lt;em&gt;normal family&lt;/em&gt; \(\{\mathcal{N}_{\mu,\sigma}\,:\,(\mu,\sigma)\in\mathbb{R}\times(0,\infty]\},\) which is the family of normal distributions on $\mathbb{R}$,  where for each choice of parameters $\theta$ and $\sigma$, the distribution is defined by
+&lt;p&gt;The most common example of a statistical model is the &lt;em&gt;normal family&lt;/em&gt;&lt;/p&gt;
+
+\[\{\mathcal{N}_{\mu,\sigma}\,:\,(\mu,\sigma)\in\mathbb{R}\times(0,\infty]\},\]
+
+&lt;p&gt;which is the family of normal distributions on $\mathbb{R}$,  where for each choice of parameters $\theta$ and $\sigma$, the distribution is defined by
 \(\mathcal{N}_{\theta,\sigma}(A) =\frac{1}{\sigma\sqrt{2\pi}}\int_A\exp\left(\frac{(x-\theta)^2}{2\sigma^2}\right)\,\mathrm{d}x\)
 for every Borel subset $A\subset\mathbb{R}$.&lt;/p&gt;
 
