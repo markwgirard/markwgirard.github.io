@@ -19,7 +19,7 @@
 
 
 
-<title>Blog posts - Mark Girard</title>
+<title>Covering a square of overlapping disks (Riddler 2022-09-09) - Mark Girard</title>
 
 
 
@@ -29,13 +29,15 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Mark Girard">
-<meta property="og:title" content="Blog posts">
+<meta property="og:title" content="Covering a square of overlapping disks (Riddler 2022-09-09)">
 
 
-  <link rel="canonical" href="http://localhost:4000/year-archive/">
-  <meta property="og:url" content="http://localhost:4000/year-archive/">
+  <link rel="canonical" href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/">
+  <meta property="og:url" content="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/">
 
 
+
+  <meta property="og:description" content="">
 
 
 
@@ -48,6 +50,9 @@
 
 
 
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2022-09-11T00:00:00-07:00">
 
 
 
@@ -180,6 +185,8 @@
 
 
 
+
+
 <div id="main" role="main">
   
 
@@ -257,74 +264,176 @@
   </div>
 
 
-  <div class="archive">
-    
-      <h1 class="page__title">Blog posts</h1>
-    
-    
-
-
-  
-  
-    <h2 id="2022" class="archive__subtitle">2022</h2>
-    
-  
-  
-
-
-
-
-
-<div class="list__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Covering a square of overlapping disks (Riddler 2022-09-09)">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="September 11, 2022">
     
 
-    <h2 class="archive__item-title" itemprop="headline">
+    <div class="page__inner-wrap">
       
-        <a href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" rel="permalink">Covering a square of overlapping disks (Riddler 2022-09-09)
-</a>
-      
-    </h2>
-    
-    
-      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+        <header>
+          <h1 class="page__title" itemprop="headline">Covering a square of overlapping disks (Riddler 2022-09-09)
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
   
 	  2 minute read
 	
 </p>
-    
-
+          
         
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-11T00:00:00-07:00">September 11, 2022</time></p>
         
-
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-11T00:00:00-07:00">September 11, 2022</time></p>
+        
+        
+             
+        
     
-    <p class="archive__item-excerpt" itemprop="description"><script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-</p>
-    
-    
-    
+<p>Here’s my solution to this week’s <a href="https://fivethirtyeight.com/features/can-you-cover-the-baking-sheet-with-cookies/">Riddler</a>. (See more of <a href="/riddlers">my Riddler solutions here</a>.)</p>
 
+<h2 id="the-problem">The Problem</h2>
+<p>Suppose you have a unit square (i.e., with side length 1). If you also have four identical circles that can overlap, they would need to have a radius of $\sqrt{2}/4$ to completely cover the square, as shown below:</p>
+
+<p><img src="/images/overlappingdisks.png" alt="A square that is completely covered by four overlapping circles of the same size. The four circles are centered over the four respective quadrants of the square, and all overlap in the squares center." /></p>
+
+<p>Now suppose that, instead of four identical circles, you have five identical circles that can overlap. What is the minimum radius they would need to completely cover a unit square?</p>
+
+<p><em>Extra credit:</em> Suppose you have <em>six</em> identical circles that can overlap. What is the minimum radius they would need to completely cover a unit square?</p>
+
+<h2 id="the-solution">The Solution</h2>
+<p>Interestingly this problem appears to have been previously solved (more on that in a minute). But first, my solution:</p>
+<h3 id="my-solution">My solution</h3>
+<p>I guessed that the best solution would have a bit of reflectional symmetry. With the help of some amazing geometric drawing software (<a href="https://www.geogebra.org/">Geogebra</a>), I was able to come up with a solution with $r\approx 0.326$ with the diagram below:</p>
+
+<p><img src="/images/geogebra-5disks.png" alt="A Geogebra drawing of 5 disks of minimal radius covering the unit square." /></p>
+
+<p>Note that $0.326&lt;.3535 \approx\frac{1}{2\sqrt{2}}$ so this solution is definitely an improvement over simply covering the square with 4 squares.</p>
+
+<p>I wanted to come up with a more exact value. From this geometric picture, and doing a little bit of work, we can set up a system that the lengths must satisfy. With $e=\frac{1}{4}$, the lengths $a$, $b$, $c$, $d$, and $r$ in the above diagram satisfy:</p>
+
+\[\begin{align}r^2&amp;=\left(\frac{1}{2}-a\right)^2+\frac{1}{16.}\\r^2&amp;=\left(\frac{1}{2}-c\right)^2+\left(\frac{1}{2}-d\right)^2\\r^2&amp;=a^2+\frac{d^2}{4}\\b&amp;=\frac{1}{2}-a\\c&amp;=\frac{1}{2}+r-2a\end{align}\]
+
+<p>This system of equations has only one positive solution for $r$ (assuming $a$, $b$, $c$, and $d$ are positive). This is approximately $r\approx0.32616058$.</p>
+
+<p>I wanted to determine if there was a good way to express the <em>exact</em> value of this optimal radius. Unfortunately there does not appear to be a nice way to do this. The best I could do (with the help of Mathematica) was to say that the exact value of $r$ is expressed as</p>
+
+\[r=\frac{1373-2039 x+3927 x^2-4237 x^3+4112 x^4-832 x^5}{3104}\]
+
+<p>where $x\approx0.41895454$ is the smallest real root of the polynomial defined by</p>
+
+\[p(x)=21-92 x+154 x^2-196 x^3+209 x^4-144 x^5+64 x^6.\]
+
+<h3 id="previous-work">Previous work</h3>
+
+<p>After a bit of Googling, I was able to stumble upon a few papers that had investigated this and similar problems. By far the best one was <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.30.3894&amp;rep=rep1&amp;type=pdf">Covering a square with up to 30 equal circles.</a> by Nurmela and Östergård (2000). In that work, the authors developed a clever optimization algorithm to determine the smallest radius of circle such that $n$ circles of that size can be used to cover the unit square for $n$ up to 30. Here are the figures for $n=5$ and $n=6$.</p>
+
+<p><img src="/images/5-and-6-disk-covers.png" alt="Minimal radius coverings with 5 and 6 disks." /></p>
+
+<p>The authors determined the optimal radii for $5$ and $6$ circles to be $r_5=0.32616058400398728086$ and $r_6=0.29872706223691915876$ respectively.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#mathematics" class="page__taxonomy-item" rel="tag">mathematics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#riddler" class="page__taxonomy-item" rel="tag">riddler</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2021/12/Confidence-intervals/" class="pagination--pager" title="Confidence intervals: What they are (not)
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
   </article>
-</div>
-
 
   
   
-    <h2 id="2021" class="archive__subtitle">2021</h2>
-    
-  
-  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
 
 
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
 
@@ -360,16 +469,14 @@
   </article>
 </div>
 
-
-  
-  
-  
+        
+          
 
 
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
 
@@ -405,16 +512,14 @@
   </article>
 </div>
 
-
-  
-  
-  
+        
+          
 
 
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     
 
@@ -449,9 +554,10 @@
   </article>
 </div>
 
-
-
-  </div>
+        
+      </div>
+    </div>
+  
 </div>
 
 

@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="">
+  <meta property="og:description" content="Recently at my work, I was asked to assist in determining the correct formula for determining a confidence interval of an unknown quantity from a bunch of random samples. In particular, given random samples drawn from two different normal distributions, the task was to determine the confidence interval for the ratio of the means of those two distributions. My coworker (whose job it was to present this information) had found a formula somewhere online by googling, but wasn’t sure it was correct and asked me to check it.">
 
 
 
@@ -90,10 +90,12 @@
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 </script>
 
+
 <!-- For all browsers -->
 <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
+
     
 
 <!-- start custom head snippets -->
@@ -120,16 +122,21 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
 
-<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
     tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
+      inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
+      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     }
+    //,
+    //displayAlign: "left",
+    //displayIndent: "2em"
   });
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 
 
@@ -259,7 +266,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Confidence intervals: What they are (not)">
-    <meta itemprop="description" content="">
+    <meta itemprop="description" content="Recently at my work, I was asked to assist in determining the correct formula for determining a confidence interval of an unknown quantity from a bunch of random samples. In particular, given random samples drawn from two different normal distributions, the task was to determine the confidence interval for the ratio of the means of those two distributions. My coworker (whose job it was to present this information) had found a formula somewhere online by googling, but wasn’t sure it was correct and asked me to check it.">
     <meta itemprop="datePublished" content="December 24, 2021">
     
 
@@ -290,10 +297,7 @@
       
 
       <section class="page__content" itemprop="text">
-        <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-<p>Recently at my work, I was asked to assist in determining the correct formula for determining a confidence interval of an unknown quantity from a bunch of random samples. In particular, given random samples drawn from two different normal distributions, the task was to determine the confidence interval for the <em>ratio of the means</em> of those two distributions. My coworker (whose job it was to present this information) had found a formula somewhere online by googling, but wasn’t sure it was correct and asked me to check it.</p>
+        <p>Recently at my work, I was asked to assist in determining the correct formula for determining a confidence interval of an unknown quantity from a bunch of random samples. In particular, given random samples drawn from two different normal distributions, the task was to determine the confidence interval for the <em>ratio of the means</em> of those two distributions. My coworker (whose job it was to present this information) had found a formula somewhere online by googling, but wasn’t sure it was correct and asked me to check it.</p>
 
 <p>It is my job as the resident mathematician to help with these sorts of things. However, it has been well over a decade since I had done any meaningful amount of statistical analysis! I couldn’t make heads or tails of the formula he found. Not only that, I couldn’t even recall exactly what a confidence interval was!</p>
 
@@ -516,7 +520,8 @@ and thus \(\Pr\left(\frac{\mu_0}{\mu_1}\leq C_\alpha\right) = \operatorname{E}\l
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" class="pagination--pager" title="Covering a square of overlapping disks (Riddler 2022-09-09)
+">Next</a>
     
   </nav>
 
@@ -532,6 +537,50 @@ and thus \(\Pr\left(\frac{\mu_0}{\mu_1}\leq C_\alpha\right) = \operatorname{E}\l
         <h4 class="page__related-title">You May Also Enjoy</h4>
       
       <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" rel="permalink">Covering a square of overlapping disks (Riddler 2022-09-09)
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  3 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-11T00:00:00-07:00">September 11, 2022</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
         
           
 

@@ -90,10 +90,12 @@
   document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 </script>
 
+
 <!-- For all browsers -->
 <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
+
     
 
 <!-- start custom head snippets -->
@@ -120,16 +122,21 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
 
-<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
     tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
+      inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
+      displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     }
+    //,
+    //displayAlign: "left",
+    //displayIndent: "2em"
   });
 </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
 
 
 
@@ -358,6 +365,50 @@
 
     <h2 class="archive__item-title" itemprop="headline">
       
+        <a href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" rel="permalink">Covering a square of overlapping disks (Riddler 2022-09-09)
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  3 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-11T00:00:00-07:00">September 11, 2022</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
         <a href="http://localhost:4000/posts/2021/12/Confidence-intervals/" rel="permalink">Confidence intervals: What they are (not)
 </a>
       
@@ -378,8 +429,7 @@
         
 
     
-    <p class="archive__item-excerpt" itemprop="description"><script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+    <p class="archive__item-excerpt" itemprop="description"><p>Recently at my work, I was asked to assist in determining the correct formula for determining a confidence interval of an unknown quantity from a bunch of random samples. In particular, given random samples drawn from two different normal distributions, the task was to determine the confidence interval for the <em>ratio of the means</em> of those two distributions. My coworker (whose job it was to present this information) had found a formula somewhere online by googling, but wasn’t sure it was correct and asked me to check it.</p>
 
 </p>
     
