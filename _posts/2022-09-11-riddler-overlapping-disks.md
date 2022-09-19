@@ -30,22 +30,42 @@ I guessed that the best solution would have a bit of reflectional symmetry. With
 
 Note that $0.326<.3535 \approx\frac{1}{2\sqrt{2}}$ so this solution is definitely an improvement over simply covering the square with 4 squares.
 
-I wanted to come up with a more exact value. From this geometric picture, and doing a little bit of work, we can set up a system that the lengths must satisfy. With $e=\frac{1}{4}$, the lengths $a$, $b$, $c$, $d$, and $r$ in the above diagram satisfy:
+I wanted to come up with a more exact value. By expressing the coordinates of the centres of the five circles in this geometric picture as
 
-
-$$\begin{align}r^2&=\left(\frac{1}{2}-a\right)^2+\frac{1}{16.}\\r^2&=\left(\frac{1}{2}-c\right)^2+\left(\frac{1}{2}-d\right)^2\\r^2&=a^2+\frac{d^2}{4}\\b&=\frac{1}{2}-a\\c&=\frac{1}{2}+r-2a\end{align}$$
-
-This system of equations has only one positive solution for $r$ (assuming $a$, $b$, $c$, and $d$ are positive). This is approximately $r\approx0.32616058$.
-
-I wanted to determine if there was a good way to express the *exact* value of this optimal radius. Unfortunately there does not appear to be a nice way to do this. The best I could do (with the help of Mathematica) was to say that the exact value of $r$ is expressed as
-
-$$r=\frac{1373-2039 x+3927 x^2-4237 x^3+4112 x^4-832 x^5}{3104}
+$$
+\left(-\frac{1}{4}, a\right),\, \left(\frac{1}{4}, a\right), \, \left(-d, -b\right), \, \left(d, -b\right),\,\text{and}\, \left(0, -c\right),
 $$
 
-where $x\approx0.41895454$ is the smallest real root of the polynomial defined by
+and doing a little bit of work, we can set up a system of equations that the values $a$, $b$, $c$, $d$, and $r$ must satisfy (where $e=\frac{1}{4}$):
 
-$$p(x)=21-92 x+154 x^2-196 x^3+209 x^4-144 x^5+64 x^6.$$
+$$
+\begin{align}
+r^2&=\left(\frac{1}{2}-a\right)^2+\frac{1}{16.}\\
+r^2&=\left(\frac{1}{2}-b\right)^2+\left(\frac{1}{2}-d\right)^2\\
+r^2&=\left(\frac{1}{2}-c\right)^2+\left(2d-\frac{1}{2}\right)^2\\
+b&=\frac{1}{2}-a\\
+r&=2a+c-\frac{1}{2}
+\end{align}
+$$
 
+With the help of Mathematica, I was able to determine that the only solution to this (with $a$, $b$, $c$, $d$, and $r$ all positive) is given by
+
+$$
+\begin{align}
+a&=-\frac{23808 r^5}{1159}+\frac{2208 r^4}{1159}+\frac{1819 r^3}{1159}+\frac{259 r^2}{244}-\frac{13959 r}{18544}+\frac{31371}{74176}\\
+b&=\frac{1}{2}-a\\
+c&=2 b+r-\frac{1}{2}\\
+d&=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{1603 r^2}{488}+\frac{15747 r}{37088}+\frac{95157}{148352}
+\end{align}
+$$
+
+where $r\approx0.32616$ is the smallest real root of the polynomial equation
+
+$$
+425 - 672 x + 352 x^2 - 10240 x^3 + 256 x^4 + 8192 x^5 + 65536 x^6 = 0.
+$$
+
+[Edit (18-09-2022): Note that a previous version of the post had an incorrect solution here.]
 ### Previous work
 
 After a bit of Googling, I was able to stumble upon a few papers that had investigated this and similar problems. By far the best one was [Covering a square with up to 30 equal circles.](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.30.3894&rep=rep1&type=pdf) by Nurmela and Östergård (2000). In that work, the authors developed a clever optimization algorithm to determine the smallest radius of circle such that $n$ circles of that size can be used to cover the unit square for $n$ up to 30. Here are the figures for $n=5$ and $n=6$.
