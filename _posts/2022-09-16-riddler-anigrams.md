@@ -2,7 +2,7 @@
 title: 'Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)'
 date: 2022-09-19
 permalink: /posts/2022/09/riddler-anigrams/
-tags: mathematics, riddler
+tags: programming, riddler
 ---
 
 <script type="text/javascript" async

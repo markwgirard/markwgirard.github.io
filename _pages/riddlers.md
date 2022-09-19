@@ -20,6 +20,7 @@ This is a collection of all of my solutions to the weekly puzzles from FiveThirt
 
 | Date (link to puzzle)                                                             | Description         | My solution | Relevant code |
 | --------------------------------------------------------------------------------- | ------------------- | ----------- |-------------- |
+| [September 16](https://fivethirtyeight.com/features/can-you-build-the-biggest-anigram/) | Longest anigram     | [link](/posts/2022/09/riddler-anigrams/)        |
 | [September 9](https://fivethirtyeight.com/features/can-you-cover-the-baking-sheet-with-cookies/) | Cookie sheet     | [link](/posts/2022/09/riddler-overlapping-disks/)        |
 | [July 1](https://fivethirtyeight.com/features/how-high-should-you-climb-up-the-tower/) | The Two (Astronomers') Towers     | [link](/riddlers/20220701_RiddlerTwoTowers.pdf)        |
 | [June 24](https://fivethirtyeight.com/features/can-you-make-room-for-goats/) | Goat tower parking functions     | [link](/riddlers/20220624_Riddler-goat-parking.pdf)        |
