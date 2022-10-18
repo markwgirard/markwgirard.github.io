@@ -107,7 +107,7 @@ $$
 \sum_{k=0}^\infty p_{n,k}
 & = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
 & = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
-& = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
+& = \int_0^\infty \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
 \end{align*}
 $$
 
