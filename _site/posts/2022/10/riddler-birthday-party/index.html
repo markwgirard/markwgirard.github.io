@@ -19,7 +19,7 @@
 
 
 
-<title>Covering a square of overlapping disks (Riddler 2022-09-09) - Mark Girard</title>
+<title>How big is your birthday surprise party? (Riddler 2022-10-14) - Mark Girard</title>
 
 
 
@@ -29,11 +29,11 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Mark Girard">
-<meta property="og:title" content="Covering a square of overlapping disks (Riddler 2022-09-09)">
+<meta property="og:title" content="How big is your birthday surprise party? (Riddler 2022-10-14)">
 
 
-  <link rel="canonical" href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/">
-  <meta property="og:url" content="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/">
+  <link rel="canonical" href="http://localhost:4000/posts/2022/10/riddler-birthday-party/">
+  <meta property="og:url" content="http://localhost:4000/posts/2022/10/riddler-birthday-party/">
 
 
 
@@ -52,7 +52,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2022-09-11T00:00:00-07:00">
+  <meta property="article:published_time" content="2022-10-14T00:00:00-07:00">
 
 
 
@@ -265,29 +265,29 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Covering a square of overlapping disks (Riddler 2022-09-09)">
+    <meta itemprop="headline" content="How big is your birthday surprise party? (Riddler 2022-10-14)">
     <meta itemprop="description" content="">
-    <meta itemprop="datePublished" content="September 11, 2022">
+    <meta itemprop="datePublished" content="October 14, 2022">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Covering a square of overlapping disks (Riddler 2022-09-09)
+          <h1 class="page__title" itemprop="headline">How big is your birthday surprise party? (Riddler 2022-10-14)
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
 
 
   
-	  2 minute read
+	  4 minute read
 	
 </p>
           
         
         
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-11T00:00:00-07:00">September 11, 2022</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-10-14T00:00:00-07:00">October 14, 2022</time></p>
         
         
              
@@ -300,61 +300,221 @@
         <script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<p>Here’s my solution to this week’s <a href="https://fivethirtyeight.com/features/can-you-cover-the-baking-sheet-with-cookies/">Riddler</a>. (See more of <a href="/riddlers">my Riddler solutions here</a>.)</p>
+<p>My solution to <a href="https://fivethirtyeight.com/features/can-you-salvage-your-rug/">this week’s riddler</a>. (See more of <a href="/riddlers">my Riddler solutions here</a>.)</p>
 
 <h2 id="the-problem">The Problem</h2>
-<p>Suppose you have a unit square (i.e., with side length 1). If you also have four identical circles that can overlap, they would need to have a radius of $\sqrt{2}/4$ to completely cover the square, as shown below:</p>
+<blockquote>
+  <p>Today I happen to be celebrating the birthday of a family member, which got me wondering about how likely it is for two people in a room to have the same birthday.</p>
 
-<p><img src="/images/overlappingdisks.png" alt="A square that is completely covered by four overlapping circles of the same size. The four circles are centered over the four respective quadrants of the square, and all overlap in the squares center." /></p>
+  <p>Suppose people walk into a room, one at a time. Their birthdays happen to be randomly distributed throughout the 365 days of the year (and no one was born on a leap day). The moment two people in the room have the same birthday, no more people enter the room and everyone inside celebrates by eating cake, regardless of whether that common birthday happens to be today.</p>
 
-<p>Now suppose that, instead of four identical circles, you have five identical circles that can overlap. What is the minimum radius they would need to completely cover a unit square?</p>
+  <p>On average, what is the expected number of people in the room when they eat cake?</p>
 
-<p><em>Extra credit:</em> Suppose you have <em>six</em> identical circles that can overlap. What is the minimum radius they would need to completely cover a unit square?</p>
+  <p><em>Extra credit</em>: Suppose everyone eats cake the moment three people in the room have the same birthday. On average, what is this expected number of people?</p>
+</blockquote>
 
 <h2 id="the-solution">The Solution</h2>
-<p>Interestingly this problem appears to have been previously solved (more on that in a minute). But first, my solution:</p>
-<h3 id="my-solution">My solution</h3>
-<p>I guessed that the best solution would have a bit of reflectional symmetry. With the help of some amazing geometric drawing software (<a href="https://www.geogebra.org/">Geogebra</a>), I was able to come up with a solution with $r\approx 0.326$ with the diagram below:</p>
+<p>At any given point during the party, right before a new guest arrives, we can describe the “state” of the party by the number \(n\in\{0,1,\dots,365\}\) of currently present guests having unique birthdays. (Note that we cannot have $n&gt;365$, as the pigeon-hole principle would guarantee that at least two guests share a birthday.) When the $(n+1)$th guest arrives, there are two possibilities:</p>
+<ul>
+  <li>With probability $n/365$, the new guest shares a birthday with one of the currently present guests. The cake is cut and the party is over.</li>
+  <li>With probability $1-n/365$, the new guests has a birthday that is distinct from everyone else’s and the party continues.
+Let $p_k$ denote the probability that there will be $k$ guests at some point in the night all having distinct birthdays. It is clear that $p_0=1$ and that</li>
+</ul>
 
-<p><img src="/images/geogebra-5disks.png" alt="A Geogebra drawing of 5 disks of minimal radius covering the unit square." /></p>
+\[p_{k+1}= \left(1-\frac{k}{365}\right)p_k\]
 
-<p>Note that $0.326&lt;.3535 \approx\frac{1}{2\sqrt{2}}$ so this solution is definitely an improvement over simply covering the square with 4 squares.</p>
+<p>holds for every $k\geq0$. For each $k\in\mathbb{N}$, define $X_k$ to be the random variable whose value is $1$ if there were at least $k$ people with distinct birthdays at some point in the night, and zero otherwise. The total number of guests that have arrived when the cake is cut is the random variable $X=X_0+X_1+\cdots+X_{365}$, and the expected value of this variable is given by</p>
 
-<p>I wanted to come up with a more exact value. By expressing the coordinates of the centres of the five circles in this geometric picture as</p>
+\[\operatorname{E}(X) = \sum_{k=0}^{365}\operatorname{E}(X_k)  =\sum_{n=0}^{365}p_k.\]
 
-\[\left(-\frac{1}{4}, a\right),\, \left(\frac{1}{4}, a\right), \, \left(-d, -b\right), \, \left(d, -b\right),\,\text{and}\, \left(0, -c\right),\]
+<p>More explicitly,</p>
 
-<p>and doing a little bit of work, we can set up a system of equations that the values $a$, $b$, $c$, $d$, and $r$ must satisfy (where $e=\frac{1}{4}$):</p>
+\[\operatorname{E}(X) = \sum_{k=0}^{365} \frac{1}{365^k}\frac{365!}{(365-k)!}.\]
 
-\[\begin{align}
-r^2&amp;=\left(\frac{1}{2}-a\right)^2+\frac{1}{16.}\\
-r^2&amp;=\left(\frac{1}{2}-b\right)^2+\left(\frac{1}{2}-d\right)^2\\
-r^2&amp;=\left(\frac{1}{2}-c\right)^2+\left(2d-\frac{1}{2}\right)^2\\
-b&amp;=\frac{1}{2}-a\\
-r&amp;=2a+c-\frac{1}{2}
-\end{align}\]
+<p>We can easily evaluate this on a computer to find that the expected number of guests at the end of the night is about 24.616585894598852.</p>
 
-<p>With the help of Mathematica, I was able to determine that the only solution to this (with $a$, $b$, $c$, $d$, and $r$ all positive) is given by</p>
+<h2 id="extra-creditgeneral-solution-with-generating-functions">Extra credit—General solution with generating functions</h2>
+<p>Consider now the more general problem of computing the expected number of people that must arrive until there are $n$ people that share a birthday. The goal will be to construct a generating function</p>
 
-\[\begin{align}
-a&amp;=-\frac{23808 r^5}{1159}+\frac{2208 r^4}{1159}+\frac{1819 r^3}{1159}+\frac{259 r^2}{244}-\frac{13959 r}{18544}+\frac{31371}{74176}\\
-b&amp;=\frac{1}{2}-a\\
-c&amp;=2 b+r-\frac{1}{2}\\
-d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{1603 r^2}{488}+\frac{15747 r}{37088}+\frac{95157}{148352}
-\end{align}\]
+\[G_n(x) = \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k\]
 
-<p>where $r\approx0.32616$ is the smallest real root of the polynomial equation</p>
+<p>for which the coefficients $p_{n,k}$ are the probabilities that, after $k$ guests have arrived, there are no $n$ people who share a birthday. Note that we must have $p_{n,k} = 0$ whenever $k &gt;365(n-1)$. As above, the desired expected value is the sum of these probabilities,</p>
 
-\[425 - 672 x + 352 x^2 - 10240 x^3 + 256 x^4 + 8192 x^5 + 65536 x^6 = 0.\]
+\[\operatorname{E}(X) = \sum_{k=0}^{365(n-1)}p_{n,k}.\]
 
-<p>[Edit (18-09-2022): Note that a previous version of the post had an incorrect solution here.]</p>
-<h3 id="previous-work">Previous work</h3>
+<p>Toward this end, for non-negative integers $a_1,a_2,\dots,a_{365}$, define</p>
 
-<p>After a bit of Googling, I was able to stumble upon a few papers that had investigated this and similar problems. By far the best one was <a href="https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.30.3894&amp;rep=rep1&amp;type=pdf">Covering a square with up to 30 equal circles.</a> by Nurmela and Östergård (2000). In that work, the authors developed a clever optimization algorithm to determine the smallest radius of circle such that $n$ circles of that size can be used to cover the unit square for $n$ up to 30. Here are the figures for $n=5$ and $n=6$.</p>
+\[f(a_1,a_2,\dots,a_{365}) = \frac{1}{365^{a_1+a_2+\cdots+a_{365}}} \frac{(a_1+a_2+\cdots+a_{365})!}{a_1!a_2!\cdots a_{365}!},\]
 
-<p><img src="/images/5-and-6-disk-covers.png" alt="Minimal radius coverings with 5 and 6 disks." /></p>
+<p>which is the probability that, after $a_1+a_2+\cdots +a_{365}$ guests have arrived, there are:</p>
+<ul>
+  <li>$a_1$ individuals whose birthday is January 1,</li>
+  <li>$a_2$ individuals whose birthday is January 2,</li>
+  <li>$\cdots$</li>
+  <li>$a_{365}$ individuals whose birthday is December 31.</li>
+</ul>
 
-<p>The authors determined the optimal radii for $5$ and $6$ circles to be $r_5=0.32616058400398728086$ and $r_6=0.29872706223691915876$ respectively.</p>
+<p>After $k$ people have arrived, the probability that no $n$ people share a birthday is</p>
+
+\[\begin{align*}
+p_{n,k}
+&amp;= \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} f(a_1,a_2,\dots,a_{365})\\
+&amp;=\sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots a_{365}!}.
+\end{align*}\]
+
+<p>We can now express the generating function as</p>
+
+\[\begin{align*}
+G_{n}(x)
+&amp;= \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k \\
+&amp;=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots a_{365}!}x^k\\
+&amp; = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
+&amp; = \left(\sum_{a_1=0}^{n-1}\frac{(x/365)^{a_1}}{a_1!}\right)
+\cdots \left(\sum_{a_{365}=0}^{n-1}\frac{(x/365)^{a_{365}}}{a_{365}!}\right)\\
+&amp; = \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365}.
+\end{align*}\]
+
+<p>Finally, making use of the fact that</p>
+
+\[\int_{0}^\infty x^k e^{-x}\, \mathrm{d}x = k!\]
+
+<p>for every positive integer $k$, it follows that</p>
+
+\[\begin{align*}
+\sum_{k=0}^\infty p_{n,k}
+&amp; = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
+&amp; = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
+&amp; = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{a}}{a!}\right)^{365} e^{-x}\, \mathrm{d}x
+\end{align*}\]
+
+<p>Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>$n$</th>
+      <th>$E(X_n)$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>24.6166</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>88.7389</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>187.0518</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>311.4494</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>456.0163</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>616.6169</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>790.2997</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>974.8939</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>1168.7567</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>1370.6135</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>1579.4531</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>1794.459</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>2014.9607</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>2240.3999</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>2470.3065</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>2704.2798</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>2941.9755</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>3183.095</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>3427.3773</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>3674.5931</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>3924.5391</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>4177.0347</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>4431.918</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>4689.0437</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Plotting these values, we see that the expected size of the party grows roughly linearly with $n$ as $n$ increases.</p>
+
+<p><img src="/images/riddler-birthday-surprise.png" alt="Expected size of party the first time when there are n people who share a birthday." /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">factorial</span>
+
+<span class="k">def</span> <span class="nf">p</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">365</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">integrand</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="nb">sum</span><span class="p">((</span><span class="n">x</span><span class="o">/</span><span class="n">m</span><span class="p">)</span><span class="o">**</span><span class="n">j</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">m</span><span class="p">))</span><span class="o">**</span> <span class="n">m</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">inf</span><span class="p">)</span>
+</code></pre></div></div>
 
         
       </section>
@@ -383,7 +543,19 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
     
       
       
-      <a href="http://localhost:4000/tags/#mathematics" class="page__taxonomy-item" rel="tag">mathematics</a><span class="sep">, </span>
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#programming" class="page__taxonomy-item" rel="tag">programming</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#riddler" class="page__taxonomy-item" rel="tag">riddler</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#probability" class="page__taxonomy-item" rel="tag">probability</a><span class="sep">, </span>
     
       
       
@@ -391,7 +563,7 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
     
       
       
-      <a href="http://localhost:4000/tags/#riddler" class="page__taxonomy-item" rel="tag">riddler</a>
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a>
     
     </span>
   </p>
@@ -408,11 +580,11 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2022/10/riddler-birthday-party/" class="btn btn--twitter" title="Share on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2022/10/riddler-birthday-party/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2022/10/riddler-birthday-party/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
       
@@ -420,12 +592,11 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
 
   <nav class="pagination">
     
-      <a href="http://localhost:4000/posts/2021/12/Confidence-intervals/" class="pagination--pager" title="Confidence intervals: What they are (not)
+      <a href="http://localhost:4000/posts/2022/09/riddler-anigrams/" class="pagination--pager" title="Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)
 ">Previous</a>
     
     
-      <a href="http://localhost:4000/posts/2022/09/riddler-anigrams/" class="pagination--pager" title="Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)
-">Next</a>
+      <a href="#" class="pagination--pager disabled">Next</a>
     
   </nav>
 
@@ -454,7 +625,7 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/posts/2022/10/riddler-birthday-party/" rel="permalink">How big is your birthday surprise party? (Riddler 2022-10-14)
+        <a href="http://localhost:4000/posts/2022/09/riddler-anigrams/" rel="permalink">Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)
 </a>
       
     </h2>
@@ -464,13 +635,13 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
 
 
   
-	  5 minute read
+	  3 minute read
 	
 </p>
     
 
         
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-10-14T00:00:00-07:00">October 14, 2022</time></p>
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-19T00:00:00-07:00">September 19, 2022</time></p>
         
 
     
@@ -498,7 +669,7 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/posts/2022/09/riddler-anigrams/" rel="permalink">Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)
+        <a href="http://localhost:4000/posts/2022/09/riddler-overlapping-disks/" rel="permalink">Covering a square of overlapping disks (Riddler 2022-09-09)
 </a>
       
     </h2>
@@ -508,13 +679,13 @@ d&amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{
 
 
   
-	  4 minute read
+	  2 minute read
 	
 </p>
     
 
         
-         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-19T00:00:00-07:00">September 19, 2022</time></p>
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-09-11T00:00:00-07:00">September 11, 2022</time></p>
         
 
     

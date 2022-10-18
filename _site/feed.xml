@@ -1,4 +1,221 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-09-19T03:54:14-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)</title><link href="http://localhost:4000/posts/2022/09/riddler-anigrams/" rel="alternate" type="text/html" title="Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)" /><published>2022-09-19T00:00:00-07:00</published><updated>2022-09-19T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/09/riddler-anigrams</id><content type="html" xml:base="http://localhost:4000/posts/2022/09/riddler-anigrams/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-17T20:42:23-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">How big is your birthday surprise party? (Riddler 2022-10-14)</title><link href="http://localhost:4000/posts/2022/10/riddler-birthday-party/" rel="alternate" type="text/html" title="How big is your birthday surprise party? (Riddler 2022-10-14)" /><published>2022-10-14T00:00:00-07:00</published><updated>2022-10-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/birthday-party</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-birthday-party/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+&lt;/script&gt;
+
+&lt;p&gt;My solution to &lt;a href=&quot;https://fivethirtyeight.com/features/can-you-salvage-your-rug/&quot;&gt;this week’s riddler&lt;/a&gt;. (See more of &lt;a href=&quot;/riddlers&quot;&gt;my Riddler solutions here&lt;/a&gt;.)&lt;/p&gt;
+
+&lt;h2 id=&quot;the-problem&quot;&gt;The Problem&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Today I happen to be celebrating the birthday of a family member, which got me wondering about how likely it is for two people in a room to have the same birthday.&lt;/p&gt;
+
+  &lt;p&gt;Suppose people walk into a room, one at a time. Their birthdays happen to be randomly distributed throughout the 365 days of the year (and no one was born on a leap day). The moment two people in the room have the same birthday, no more people enter the room and everyone inside celebrates by eating cake, regardless of whether that common birthday happens to be today.&lt;/p&gt;
+
+  &lt;p&gt;On average, what is the expected number of people in the room when they eat cake?&lt;/p&gt;
+
+  &lt;p&gt;&lt;em&gt;Extra credit&lt;/em&gt;: Suppose everyone eats cake the moment three people in the room have the same birthday. On average, what is this expected number of people?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;the-solution&quot;&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;At any given point during the party, right before a new guest arrives, we can describe the “state” of the party by the number \(n\in\{0,1,\dots,365\}\) of currently present guests having unique birthdays. (Note that we cannot have $n&amp;gt;365$, as the pigeon-hole principle would guarantee that at least two guests share a birthday.) When the $(n+1)$th guest arrives, there are two possibilities:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;With probability $n/365$, the new guest shares a birthday with one of the currently present guests. The cake is cut and the party is over.&lt;/li&gt;
+  &lt;li&gt;With probability $1-n/365$, the new guests has a birthday that is distinct from everyone else’s and the party continues.
+Let $p_k$ denote the probability that there will be $k$ guests at some point in the night all having distinct birthdays. It is clear that $p_0=1$ and that&lt;/li&gt;
+&lt;/ul&gt;
+
+\[p_{k+1}= \left(1-\frac{k}{365}\right)p_k\]
+
+&lt;p&gt;holds for every $k\geq0$. For each $k\in\mathbb{N}$, define $X_k$ to be the random variable whose value is $1$ if there were at least $k$ people with distinct birthdays at some point in the night, and zero otherwise. The total number of guests that have arrived when the cake is cut is the random variable $X=X_0+X_1+\cdots+X_{365}$, and the expected value of this variable is given by&lt;/p&gt;
+
+\[\operatorname{E}(X) = \sum_{k=0}^{365}\operatorname{E}(X_k)  =\sum_{n=0}^{365}p_k.\]
+
+&lt;p&gt;More explicitly,&lt;/p&gt;
+
+\[\operatorname{E}(X) = \sum_{k=0}^{365} \frac{1}{365^k}\frac{365!}{(365-k)!}.\]
+
+&lt;p&gt;We can easily evaluate this on a computer to find that the expected number of guests at the end of the night is about 24.616585894598852.&lt;/p&gt;
+
+&lt;h2 id=&quot;extra-creditgeneral-solution-with-generating-functions&quot;&gt;Extra credit—General solution with generating functions&lt;/h2&gt;
+&lt;p&gt;Consider now the more general problem of computing the expected number of people that must arrive until there are $n$ people that share a birthday. The goal will be to construct a generating function&lt;/p&gt;
+
+\[G_n(x) = \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k\]
+
+&lt;p&gt;for which the coefficients $p_{n,k}$ are the probabilities that, after $k$ guests have arrived, there are no $n$ people who share a birthday. Note that we must have $p_{n,k} = 0$ whenever $k &amp;gt;365(n-1)$. As above, the desired expected value is the sum of these probabilities,&lt;/p&gt;
+
+\[\operatorname{E}(X) = \sum_{k=0}^{365(n-1)}p_{n,k}.\]
+
+&lt;p&gt;Toward this end, for non-negative integers $a_1,a_2,\dots,a_{365}$, define&lt;/p&gt;
+
+\[f(a_1,a_2,\dots,a_{365}) = \frac{1}{365^{a_1+a_2+\cdots+a_{365}}} \frac{(a_1+a_2+\cdots+a_{365})!}{a_1!a_2!\cdots a_{365}!},\]
+
+&lt;p&gt;which is the probability that, after $a_1+a_2+\cdots +a_{365}$ guests have arrived, there are:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;$a_1$ individuals whose birthday is January 1,&lt;/li&gt;
+  &lt;li&gt;$a_2$ individuals whose birthday is January 2,&lt;/li&gt;
+  &lt;li&gt;$\cdots$&lt;/li&gt;
+  &lt;li&gt;$a_{365}$ individuals whose birthday is December 31.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After $k$ people have arrived, the probability that no $n$ people share a birthday is&lt;/p&gt;
+
+\[\begin{align*}
+p_{n,k}
+&amp;amp;= \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} f(a_1,a_2,\dots,a_{365})\\
+&amp;amp;=\sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots a_{365}!}.
+\end{align*}\]
+
+&lt;p&gt;We can now express the generating function as&lt;/p&gt;
+
+\[\begin{align*}
+G_{n}(x)
+&amp;amp;= \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k \\
+&amp;amp;=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots a_{365}!}x^k\\
+&amp;amp; = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
+&amp;amp; = \left(\sum_{a_1=0}^{n-1}\frac{(x/365)^{a_1}}{a_1!}\right)
+\cdots \left(\sum_{a_{365}=0}^{n-1}\frac{(x/365)^{a_{365}}}{a_{365}!}\right)\\
+&amp;amp; = \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365}.
+\end{align*}\]
+
+&lt;p&gt;Finally, making use of the fact that&lt;/p&gt;
+
+\[\int_{0}^\infty x^k e^{-x}\, \mathrm{d}x = k!\]
+
+&lt;p&gt;for every positive integer $k$, it follows that&lt;/p&gt;
+
+\[\begin{align*}
+\sum_{k=0}^\infty p_{n,k}
+&amp;amp; = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
+&amp;amp; = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
+&amp;amp; = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{a}}{a!}\right)^{365} e^{-x}\, \mathrm{d}x
+\end{align*}\]
+
+&lt;p&gt;Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;$n$&lt;/th&gt;
+      &lt;th&gt;$E(X_n)$&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;1&lt;/td&gt;
+      &lt;td&gt;1.0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;2&lt;/td&gt;
+      &lt;td&gt;24.6166&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;3&lt;/td&gt;
+      &lt;td&gt;88.7389&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;4&lt;/td&gt;
+      &lt;td&gt;187.0518&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;5&lt;/td&gt;
+      &lt;td&gt;311.4494&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;6&lt;/td&gt;
+      &lt;td&gt;456.0163&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td&gt;616.6169&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;8&lt;/td&gt;
+      &lt;td&gt;790.2997&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;9&lt;/td&gt;
+      &lt;td&gt;974.8939&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;10&lt;/td&gt;
+      &lt;td&gt;1168.7567&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;11&lt;/td&gt;
+      &lt;td&gt;1370.6135&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;12&lt;/td&gt;
+      &lt;td&gt;1579.4531&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;13&lt;/td&gt;
+      &lt;td&gt;1794.459&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;14&lt;/td&gt;
+      &lt;td&gt;2014.9607&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;15&lt;/td&gt;
+      &lt;td&gt;2240.3999&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;16&lt;/td&gt;
+      &lt;td&gt;2470.3065&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;17&lt;/td&gt;
+      &lt;td&gt;2704.2798&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;18&lt;/td&gt;
+      &lt;td&gt;2941.9755&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;19&lt;/td&gt;
+      &lt;td&gt;3183.095&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20&lt;/td&gt;
+      &lt;td&gt;3427.3773&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;21&lt;/td&gt;
+      &lt;td&gt;3674.5931&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;22&lt;/td&gt;
+      &lt;td&gt;3924.5391&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;23&lt;/td&gt;
+      &lt;td&gt;4177.0347&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;24&lt;/td&gt;
+      &lt;td&gt;4431.918&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;25&lt;/td&gt;
+      &lt;td&gt;4689.0437&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Plotting these values, we see that the expected size of the party grows roughly linearly with $n$ as $n$ increases.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/riddler-birthday-surprise.png&quot; alt=&quot;Expected size of party the first time when there are n people who share a birthday.&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.integrate&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quad&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.special&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;365&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;integrand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;integrand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><category term="programming," /><category term="riddler," /><category term="probability" /><summary type="html"></summary></entry><entry><title type="html">Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)</title><link href="http://localhost:4000/posts/2022/09/riddler-anigrams/" rel="alternate" type="text/html" title="Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)" /><published>2022-09-19T00:00:00-07:00</published><updated>2022-09-19T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/09/riddler-anigrams</id><content type="html" xml:base="http://localhost:4000/posts/2022/09/riddler-anigrams/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
 &lt;/script&gt;
 
 &lt;p&gt;My solution to &lt;a href=&quot;https://fivethirtyeight.com/features/can-you-build-the-biggest-anigram/&quot;&gt;this week’s riddler&lt;/a&gt;. (See more of &lt;a href=&quot;/riddlers&quot;&gt;my Riddler solutions here&lt;/a&gt;.)&lt;/p&gt;
@@ -208,7 +425,7 @@ d&amp;amp;=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\f
 
 &lt;p&gt;&lt;img src=&quot;/images/5-and-6-disk-covers.png&quot; alt=&quot;Minimal radius coverings with 5 and 6 disks.&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;The authors determined the optimal radii for $5$ and $6$ circles to be $r_5=0.32616058400398728086$ and $r_6=0.29872706223691915876$ respectively.&lt;/p&gt;</content><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><category term="mathematics," /><category term="riddler" /><summary type="html"></summary></entry><entry><title type="html">Confidence intervals: What they are (not)</title><link href="http://localhost:4000/posts/2021/12/Confidence-intervals/" rel="alternate" type="text/html" title="Confidence intervals: What they are (not)" /><published>2021-12-24T00:00:00-07:00</published><updated>2021-12-24T00:00:00-07:00</updated><id>http://localhost:4000/posts/2021/12/post_test</id><content type="html" xml:base="http://localhost:4000/posts/2021/12/Confidence-intervals/">&lt;p&gt;Recently at my work, I was asked to assist in determining the correct formula for determining a confidence interval of an unknown quantity from a bunch of random samples. In particular, given random samples drawn from two different normal distributions, the task was to determine the confidence interval for the &lt;em&gt;ratio of the means&lt;/em&gt; of those two distributions. My coworker (whose job it was to present this information) had found a formula somewhere online by googling, but wasn’t sure it was correct and asked me to check it.&lt;/p&gt;
+&lt;p&gt;The authors determined the optimal radii for $5$ and $6$ circles to be $r_5=0.32616058400398728086$ and $r_6=0.29872706223691915876$ respectively.&lt;/p&gt;</content><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><category term="mathematics," /><category term="riddler" /><summary type="html"></summary></entry><entry><title type="html">Confidence intervals: What they are (not)</title><link href="http://localhost:4000/posts/2021/12/Confidence-intervals/" rel="alternate" type="text/html" title="Confidence intervals: What they are (not)" /><published>2021-12-24T00:00:00-08:00</published><updated>2021-12-24T00:00:00-08:00</updated><id>http://localhost:4000/posts/2021/12/post_test</id><content type="html" xml:base="http://localhost:4000/posts/2021/12/Confidence-intervals/">&lt;p&gt;Recently at my work, I was asked to assist in determining the correct formula for determining a confidence interval of an unknown quantity from a bunch of random samples. In particular, given random samples drawn from two different normal distributions, the task was to determine the confidence interval for the &lt;em&gt;ratio of the means&lt;/em&gt; of those two distributions. My coworker (whose job it was to present this information) had found a formula somewhere online by googling, but wasn’t sure it was correct and asked me to check it.&lt;/p&gt;
 
 &lt;p&gt;It is my job as the resident mathematician to help with these sorts of things. However, it has been well over a decade since I had done any meaningful amount of statistical analysis! I couldn’t make heads or tails of the formula he found. Not only that, I couldn’t even recall exactly what a confidence interval was!&lt;/p&gt;
 
