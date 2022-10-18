@@ -118,7 +118,7 @@ Using this formula, we can now compute the expected numbers of guests that have 
 from scipy.integrate import quad
 from scipy.special import factorial
 
-def p(n, m=365):
+def Ex(n, m=365):
 
     def integrand(x):
         out = (sum((x/m)**j / factorial(j) for j in range(n)) * np.exp(-x/m))** m
