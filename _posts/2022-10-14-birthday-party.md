@@ -114,6 +114,19 @@ $$
 
 Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.
 
+```python
+from scipy.integrate import quad
+from scipy.special import factorial
+
+def p(n, m=365):
+
+    def integrand(x):
+        out = (sum((x/m)**j / factorial(j) for j in range(n)) * np.exp(-x/m))** m
+        return out
+
+    return quad(integrand, 0, np.inf)
+```
+
 | $n$ | $E(X_n)$|
 |--|-------|
 |1|1.0|
@@ -146,16 +159,3 @@ Using this formula, we can now compute the expected numbers of guests that have 
 Plotting these values, we see that the expected size of the party grows roughly linearly with $n$ as $n$ increases.
 
 ![Expected size of party the first time when there are n people who share a birthday.](/images/riddler-birthday-surprise.png)
-
-```python
-from scipy.integrate import quad
-from scipy.special import factorial
-
-def p(n, m=365):
-
-    def integrand(x):
-        out = (sum((x/m)**j / factorial(j) for j in range(n)) * np.exp(-x/m))** m
-        return out
-
-    return quad(integrand, 0, np.inf)
-```
