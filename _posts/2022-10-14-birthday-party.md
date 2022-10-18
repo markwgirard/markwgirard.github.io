@@ -75,8 +75,8 @@ After $k$ people have arrived, the probability that no $n$ people share a birthd
 $$
 \begin{align*}
 p_{n,k}
-&= \sum_{\substack{a_1+\cdots a_{365}=k\\a_1<n,\dots,a_{365}<n}} f(a_1,a_2,\dots,a_{365})\\
-&=\sum_{\substack{a_1+\cdots a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots a_{365}!}.
+&= \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} f(a_1,a_2,\dots,a_{365})\\
+&=\sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots +a_{365}!}.
 \end{align*}
 $$
 
@@ -86,8 +86,8 @@ $$
 \begin{align*}
 G_{n}(x)
 &= \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k \\
-&=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots a_{365}!}x^k\\
-& = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
+&=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots +a_{365}!}x^k\\
+& = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
 & = \left(\sum_{a_1=0}^{n-1}\frac{(x/365)^{a_1}}{a_1!}\right)
 \cdots \left(\sum_{a_{365}=0}^{n-1}\frac{(x/365)^{a_{365}}}{a_{365}!}\right)\\
 & = \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365}.
@@ -107,7 +107,7 @@ $$
 \sum_{k=0}^\infty p_{n,k}
 & = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
 & = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
-& = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{a}}{a!}\right)^{365} e^{-x}\, \mathrm{d}x
+& = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
 \end{align*}
 $$
 

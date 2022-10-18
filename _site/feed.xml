@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-17T20:42:23-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">How big is your birthday surprise party? (Riddler 2022-10-14)</title><link href="http://localhost:4000/posts/2022/10/riddler-birthday-party/" rel="alternate" type="text/html" title="How big is your birthday surprise party? (Riddler 2022-10-14)" /><published>2022-10-14T00:00:00-07:00</published><updated>2022-10-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/birthday-party</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-birthday-party/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-17T20:59:30-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">How big is your birthday surprise party? (Riddler 2022-10-14)</title><link href="http://localhost:4000/posts/2022/10/riddler-birthday-party/" rel="alternate" type="text/html" title="How big is your birthday surprise party? (Riddler 2022-10-14)" /><published>2022-10-14T00:00:00-07:00</published><updated>2022-10-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/birthday-party</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-birthday-party/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
 &lt;/script&gt;
 
 &lt;p&gt;My solution to &lt;a href=&quot;https://fivethirtyeight.com/features/can-you-salvage-your-rug/&quot;&gt;this week’s riddler&lt;/a&gt;. (See more of &lt;a href=&quot;/riddlers&quot;&gt;my Riddler solutions here&lt;/a&gt;.)&lt;/p&gt;
@@ -59,8 +59,8 @@ Let $p_k$ denote the probability that there will be $k$ guests at some point in 
 
 \[\begin{align*}
 p_{n,k}
-&amp;amp;= \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} f(a_1,a_2,\dots,a_{365})\\
-&amp;amp;=\sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots a_{365}!}.
+&amp;amp;= \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} f(a_1,a_2,\dots,a_{365})\\
+&amp;amp;=\sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots +a_{365}!}.
 \end{align*}\]
 
 &lt;p&gt;We can now express the generating function as&lt;/p&gt;
@@ -68,8 +68,8 @@ p_{n,k}
 \[\begin{align*}
 G_{n}(x)
 &amp;amp;= \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k \\
-&amp;amp;=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots a_{365}!}x^k\\
-&amp;amp; = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
+&amp;amp;=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots +a_{365}!}x^k\\
+&amp;amp; = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
 &amp;amp; = \left(\sum_{a_1=0}^{n-1}\frac{(x/365)^{a_1}}{a_1!}\right)
 \cdots \left(\sum_{a_{365}=0}^{n-1}\frac{(x/365)^{a_{365}}}{a_{365}!}\right)\\
 &amp;amp; = \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365}.
@@ -85,7 +85,7 @@ G_{n}(x)
 \sum_{k=0}^\infty p_{n,k}
 &amp;amp; = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
 &amp;amp; = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
-&amp;amp; = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{a}}{a!}\right)^{365} e^{-x}\, \mathrm{d}x
+&amp;amp; = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
 \end{align*}\]
 
 &lt;p&gt;Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.&lt;/p&gt;

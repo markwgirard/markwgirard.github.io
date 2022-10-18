@@ -358,8 +358,8 @@ Let $p_k$ denote the probability that there will be $k$ guests at some point in 
 
 \[\begin{align*}
 p_{n,k}
-&amp;= \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} f(a_1,a_2,\dots,a_{365})\\
-&amp;=\sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots a_{365}!}.
+&amp;= \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} f(a_1,a_2,\dots,a_{365})\\
+&amp;=\sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots +a_{365}!}.
 \end{align*}\]
 
 <p>We can now express the generating function as</p>
@@ -367,8 +367,8 @@ p_{n,k}
 \[\begin{align*}
 G_{n}(x)
 &amp;= \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k \\
-&amp;=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots a_{365}!}x^k\\
-&amp; = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
+&amp;=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots +a_{365}!}x^k\\
+&amp; = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&lt;n,\dots,a_{365}&lt;n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
 &amp; = \left(\sum_{a_1=0}^{n-1}\frac{(x/365)^{a_1}}{a_1!}\right)
 \cdots \left(\sum_{a_{365}=0}^{n-1}\frac{(x/365)^{a_{365}}}{a_{365}!}\right)\\
 &amp; = \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365}.
@@ -384,7 +384,7 @@ G_{n}(x)
 \sum_{k=0}^\infty p_{n,k}
 &amp; = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
 &amp; = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
-&amp; = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{a}}{a!}\right)^{365} e^{-x}\, \mathrm{d}x
+&amp; = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
 \end{align*}\]
 
 <p>Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.</p>
