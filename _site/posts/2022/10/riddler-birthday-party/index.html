@@ -384,7 +384,7 @@ G_{n}(x)
 \sum_{k=0}^\infty p_{n,k}
 &amp; = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
 &amp; = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
-&amp; = \int_0^\infty \left(\sum_{a=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
+&amp; = \int_0^\infty \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
 \end{align*}\]
 
 <p>Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.</p>
