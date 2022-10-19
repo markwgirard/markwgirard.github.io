@@ -161,7 +161,7 @@ def E(k, m=365):
 |24|4431.918|
 |25|4689.0437|
 
-Plotting these values, we see that the expected size of the party grows roughly linearly with $n$ as $n$ increases.
+Below are some plots of these values.
 
 ![Expected size of party the first time when there are k people who share a birthday.](/images/riddler-birthday-surprise_1.png)
 
