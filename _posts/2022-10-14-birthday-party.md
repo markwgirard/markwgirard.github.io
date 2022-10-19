@@ -18,116 +18,122 @@ My solution to [this week's riddler](https://fivethirtyeight.com/features/can-yo
 >
 > On average, what is the expected number of people in the room when they eat cake?
 >
-> _Extra credit_: Suppose everyone eats cake the moment three people in the room have the same birthday. On average, what is this expected number of people?
+> __Extra credit__: Suppose everyone eats cake the moment three people in the room have the same birthday. On average, what is this expected number of people?
 
 ## The Solution
-At any given point during the party, right before a new guest arrives, we can describe the "state" of the party by the number $$n\in\{0,1,\dots,365\}$$ of currently present guests having unique birthdays. (Note that we cannot have $n>365$, as the pigeon-hole principle would guarantee that at least two guests share a birthday.) When the $(n+1)$th guest arrives, there are two possibilities:
- - With probability $n/365$, the new guest shares a birthday with one of the currently present guests. The cake is cut and the party is over.
- - With probability $1-n/365$, the new guests has a birthday that is distinct from everyone else's and the party continues.
-Let $p_k$ denote the probability that there will be $k$ guests at some point in the night all having distinct birthdays. It is clear that $p_0=1$ and that
+
+For each pair of non-negative integers $n$ and $k$, let $p_{n,k}$ denote the probability that no $k$ people share a birthday when there are $n$ guests present. Also define $E_k$ as the expected number of guests that must arrive for there to be $k$ people that share a birthday. The first observation that we will make is that
 
 $$
-p_{k+1}= \left(1-\frac{k}{365}\right)p_k
+E_k  = \sum_{n=0}^\infty p_{n,k}.
 $$
 
-holds for every $k\geq0$. For each $k\in\mathbb{N}$, define $X_k$ to be the random variable whose value is $1$ if there were at least $k$ people with distinct birthdays at some point in the night, and zero otherwise. The total number of guests that have arrived when the cake is cut is the random variable $X=X_0+X_1+\cdots+X_{365}$, and the expected value of this variable is given by
+Indeed, if we define random variables $X_{n,k}$ as
 
 $$
-\operatorname{E}(X) = \sum_{k=0}^{365}\operatorname{E}(X_k)  =\sum_{n=0}^{365}p_k.
+X_{n,k} = \left\{\begin{array}{ll}
+0, & \text{if at least }k \text{ guests share a birthday after }n\text{ guests have arrived}\\
+1, &\text{otherwise},
+\end{array}\right.
 $$
 
-More explicitly,
+then the total number of guests that have arrived at the first time there is a $k$-fold shared birthday is the random variable
 
 $$
-\operatorname{E}(X) = \sum_{k=0}^{365} \frac{1}{365^k}\frac{365!}{(365-k)!}.
+X_k = X_{0,k} + X_{1,k} + \cdots +  X_{365(k-1),k}.
 $$
 
-We can easily evaluate this on a computer to find that the expected number of guests at the end of the night is about 24.616585894598852.
-
-
-## Extra credit---General solution with generating functions
-Consider now the more general problem of computing the expected number of people that must arrive until there are $n$ people that share a birthday. The goal will be to construct a generating function
-
-$$
-G_n(x) = \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k
-$$
-
-for which the coefficients $p_{n,k}$ are the probabilities that, after $k$ guests have arrived, there are no $n$ people who share a birthday. Note that we must have $p_{n,k} = 0$ whenever $k >365(n-1)$. As above, the desired expected value is the sum of these probabilities,
-
-$$
-\operatorname{E}(X) = \sum_{k=0}^{365(n-1)}p_{n,k}.
-$$
-
-Toward this end, for non-negative integers $a_1,a_2,\dots,a_{365}$, define
-
-$$
-f(a_1,a_2,\dots,a_{365}) = \frac{1}{365^{a_1+a_2+\cdots+a_{365}}} \frac{(a_1+a_2+\cdots+a_{365})!}{a_1!a_2!\cdots a_{365}!},
-$$
-
-which is the probability that, after $a_1+a_2+\cdots +a_{365}$ guests have arrived, there are:
- - $a_1$ individuals whose birthday is January 1,
- - $a_2$ individuals whose birthday is January 2,
- - $\cdots$
- - $a_{365}$ individuals whose birthday is December 31.
-
-After $k$ people have arrived, the probability that no $n$ people share a birthday is
+The expected value of this random variable is
 
 $$
 \begin{align*}
-p_{n,k}
-&= \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} f(a_1,a_2,\dots,a_{365})\\
-&=\sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots +a_{365}!}.
+E_k = \operatorname{E}(X_k)
+&= \sum_{n=0}^{365(k-1)} \operatorname{E}(X_{n,k})\\
+&=\sum_{n=0}^\infty p_{n,k}
 \end{align*}
 $$
 
-We can now express the generating function as
+where we note that $p_{n,k}=0$ whenever $n>365(k-1)$ (because, by the pigeonhole principle, there must otherwise be at least one day on which at least $k$ guests share a birthday). Also note that $p_{0,k}=1$ for every $k\geq1$ (as there can be no shared birthdays if no guests are present).
+
+Now, the number of distinct ways in which $n$ guests can arrive such that there is no day on which at least $k$ of them share a birthday is equal to the number of ordered sequences $$(a_1,a_2,\dots,a_n)$$ of numbers $$a_1,\dots,a_n\in\{1,\dots,365\}$$ such that no number appears more than $k-1$ times. The number of such sequences is equal to
+
+$$
+\sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}}
+\binom{n}{k_1,k_2,\dots,k_{365}}
+$$
+
+where
+
+$$
+\binom{n}{k_1,k_2,\dots,k_{365}} = \frac{n!}{k_1!k_2!\cdots k_{365}!}
+$$
+
+is the [multinomial coefficient](https://en.wikipedia.org/wiki/Multinomial_theorem). Because there are $365^n$ ways in which $n$ guests can arrive in order, the probability that no $k$ guests share a birthday after $n$ guests have arrived is  
 
 $$
 \begin{align*}
-G_{n}(x)
-&= \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k \\
-&=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots +a_{365}!}x^k\\
-& = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1<n,\dots,a_{365}<n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
-& = \left(\sum_{a_1=0}^{n-1}\frac{(x/365)^{a_1}}{a_1!}\right)
-\cdots \left(\sum_{a_{365}=0}^{n-1}\frac{(x/365)^{a_{365}}}{a_{365}!}\right)\\
-& = \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365}.
+p_{n,k} &= \frac{n!}{365^n}\sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{k_1!k_2!\cdots k_{365}!}
+\\
+&= \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
 \end{align*}
 $$
 
-Finally, making use of the fact that
-
-$$
-\int_{0}^\infty x^k e^{-x}\, \mathrm{d}x = k!
-$$
-
-for every positive integer $k$, it follows that
+We now may express the desired expected values as
 
 $$
 \begin{align*}
-\sum_{k=0}^\infty p_{n,k}
-& = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
-& = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
-& = \int_0^\infty \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
+E_k
+&= \sum_{n=0}^\infty \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}\\
+ & = \sum_{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}}
+ \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
 \end{align*}
 $$
 
+Making use of the fact that
 
-Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.
+$$
+n! = \int_{0}^\infty t^n e^{-t}\, \mathrm{d}t
+$$
+
+holds for every non-negative integer $n$, we may compute the expected values as
+
+$$
+\begin{align*}
+E_k &
+ = \sum_{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{1}{k_1!k_2!\cdots k_{365}!} \int_{0}^\infty t^{k_1+k_2+\cdots+k_{365}} e^{-t}\, \mathrm{d}t\\
+ & = \int_{0}^\infty \sum_{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}}
+ \left(
+   \frac{\left(\frac{t}{365}\right)^{k_1}}{k_1!} \cdots \frac{\left(\frac{t}{365}\right)^{k_{365}}}{k_{365}!}
+   \right)
+   e^{-t}\, \mathrm{d}t\\
+ & = \int_{0}^\infty
+ \left(
+   \sum_{n=0}^{k-1} \frac{\left(\frac{t}{365}\right)^{n}} {n!}
+   \right)^{365}
+   e^{-t}\, \mathrm{d}t\\
+& = 365\int_{0}^\infty \left(e^{-t}\sum_{n=0}^{k-1}\frac{t^n}{n!}\right)^{365}\, \mathrm{d}t,
+\end{align*}
+$$
+
+where the last line follows after making a change of variables in the integration.
+
+Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $k$ people share a birthday for different values of $k$, the first few values are shown in the table below.
 
 ```python
 from scipy.integrate import quad
 from scipy.special import factorial
 
-def Ex(n, m=365):
+def E(k, m=365):
 
-    def integrand(x):
-        out = (sum((x/m)**j / factorial(j) for j in range(n)) * np.exp(-x/m))** m
+    def integrand(t):
+        out = (sum(np.exp(n*math.log(t) - t) / factorial(n) for n in range(k))) ** m
         return out
 
     return quad(integrand, 0, np.inf)
 ```
 
-| $n$ | $E(X_n)$|
+
+| $k$ | $E_k$|
 |--|-------|
 |1|1.0|
 |2|24.6166|
@@ -155,7 +161,11 @@ def Ex(n, m=365):
 |24|4431.918|
 |25|4689.0437|
 
-
 Plotting these values, we see that the expected size of the party grows roughly linearly with $n$ as $n$ increases.
 
-![Expected size of party the first time when there are n people who share a birthday.](/images/riddler-birthday-surprise.png)
+![Expected size of party the first time when there are k people who share a birthday.](/images/riddler-birthday-surprise_1.png)
+
+
+![Growth of expected party size as k increases appears to be linear, and approaches $365k$ in the limit of large $k$.](/images/riddler-birthday-surprise_2.png)
+
+It seems that, in the limit of large $k$, the ratio of the expected party size to the maximum party size of $\sim365k$ approaches 1.

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-18T06:24:02-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">How big is your birthday surprise party? (Riddler 2022-10-14)</title><link href="http://localhost:4000/posts/2022/10/riddler-birthday-party/" rel="alternate" type="text/html" title="How big is your birthday surprise party? (Riddler 2022-10-14)" /><published>2022-10-14T00:00:00-07:00</published><updated>2022-10-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/birthday-party</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-birthday-party/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-19T09:59:12-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><subtitle>Mark Girard's Website</subtitle><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">How big is your birthday surprise party? (Riddler 2022-10-14)</title><link href="http://localhost:4000/posts/2022/10/riddler-birthday-party/" rel="alternate" type="text/html" title="How big is your birthday surprise party? (Riddler 2022-10-14)" /><published>2022-10-14T00:00:00-07:00</published><updated>2022-10-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/birthday-party</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-birthday-party/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
 &lt;/script&gt;
 
 &lt;p&gt;My solution to &lt;a href=&quot;https://fivethirtyeight.com/features/can-you-salvage-your-rug/&quot;&gt;this week’s riddler&lt;/a&gt;. (See more of &lt;a href=&quot;/riddlers&quot;&gt;my Riddler solutions here&lt;/a&gt;.)&lt;/p&gt;
@@ -11,92 +11,95 @@
 
   &lt;p&gt;On average, what is the expected number of people in the room when they eat cake?&lt;/p&gt;
 
-  &lt;p&gt;&lt;em&gt;Extra credit&lt;/em&gt;: Suppose everyone eats cake the moment three people in the room have the same birthday. On average, what is this expected number of people?&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Extra credit&lt;/strong&gt;: Suppose everyone eats cake the moment three people in the room have the same birthday. On average, what is this expected number of people?&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h2 id=&quot;the-solution&quot;&gt;The Solution&lt;/h2&gt;
-&lt;p&gt;At any given point during the party, right before a new guest arrives, we can describe the “state” of the party by the number \(n\in\{0,1,\dots,365\}\) of currently present guests having unique birthdays. (Note that we cannot have $n&amp;gt;365$, as the pigeon-hole principle would guarantee that at least two guests share a birthday.) When the $(n+1)$th guest arrives, there are two possibilities:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;With probability $n/365$, the new guest shares a birthday with one of the currently present guests. The cake is cut and the party is over.&lt;/li&gt;
-  &lt;li&gt;With probability $1-n/365$, the new guests has a birthday that is distinct from everyone else’s and the party continues.
-Let $p_k$ denote the probability that there will be $k$ guests at some point in the night all having distinct birthdays. It is clear that $p_0=1$ and that&lt;/li&gt;
-&lt;/ul&gt;
 
-\[p_{k+1}= \left(1-\frac{k}{365}\right)p_k\]
+&lt;p&gt;For each pair of non-negative integers $n$ and $k$, let $p_{n,k}$ denote the probability that no $k$ people share a birthday when there are $n$ guests present. Also define $E_k$ as the expected number of guests that must arrive for there to be $k$ people that share a birthday. The first observation that we will make is that&lt;/p&gt;
 
-&lt;p&gt;holds for every $k\geq0$. For each $k\in\mathbb{N}$, define $X_k$ to be the random variable whose value is $1$ if there were at least $k$ people with distinct birthdays at some point in the night, and zero otherwise. The total number of guests that have arrived when the cake is cut is the random variable $X=X_0+X_1+\cdots+X_{365}$, and the expected value of this variable is given by&lt;/p&gt;
+\[E_k  = \sum_{n=0}^\infty p_{n,k}.\]
 
-\[\operatorname{E}(X) = \sum_{k=0}^{365}\operatorname{E}(X_k)  =\sum_{n=0}^{365}p_k.\]
+&lt;p&gt;Indeed, if we define random variables $X_{n,k}$ as&lt;/p&gt;
 
-&lt;p&gt;More explicitly,&lt;/p&gt;
+\[X_{n,k} = \left\{\begin{array}{ll}
+0, &amp;amp; \text{if at least }k \text{ guests share a birthday after }n\text{ guests have arrived}\\
+1, &amp;amp;\text{otherwise},
+\end{array}\right.\]
 
-\[\operatorname{E}(X) = \sum_{k=0}^{365} \frac{1}{365^k}\frac{365!}{(365-k)!}.\]
+&lt;p&gt;then the total number of guests that have arrived at the first time there is a $k$-fold shared birthday is the random variable&lt;/p&gt;
 
-&lt;p&gt;We can easily evaluate this on a computer to find that the expected number of guests at the end of the night is about 24.616585894598852.&lt;/p&gt;
+\[X_k = X_{0,k} + X_{1,k} + \cdots +  X_{365(k-1),k}.\]
 
-&lt;h2 id=&quot;extra-creditgeneral-solution-with-generating-functions&quot;&gt;Extra credit—General solution with generating functions&lt;/h2&gt;
-&lt;p&gt;Consider now the more general problem of computing the expected number of people that must arrive until there are $n$ people that share a birthday. The goal will be to construct a generating function&lt;/p&gt;
-
-\[G_n(x) = \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k\]
-
-&lt;p&gt;for which the coefficients $p_{n,k}$ are the probabilities that, after $k$ guests have arrived, there are no $n$ people who share a birthday. Note that we must have $p_{n,k} = 0$ whenever $k &amp;gt;365(n-1)$. As above, the desired expected value is the sum of these probabilities,&lt;/p&gt;
-
-\[\operatorname{E}(X) = \sum_{k=0}^{365(n-1)}p_{n,k}.\]
-
-&lt;p&gt;Toward this end, for non-negative integers $a_1,a_2,\dots,a_{365}$, define&lt;/p&gt;
-
-\[f(a_1,a_2,\dots,a_{365}) = \frac{1}{365^{a_1+a_2+\cdots+a_{365}}} \frac{(a_1+a_2+\cdots+a_{365})!}{a_1!a_2!\cdots a_{365}!},\]
-
-&lt;p&gt;which is the probability that, after $a_1+a_2+\cdots +a_{365}$ guests have arrived, there are:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;$a_1$ individuals whose birthday is January 1,&lt;/li&gt;
-  &lt;li&gt;$a_2$ individuals whose birthday is January 2,&lt;/li&gt;
-  &lt;li&gt;$\cdots$&lt;/li&gt;
-  &lt;li&gt;$a_{365}$ individuals whose birthday is December 31.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;After $k$ people have arrived, the probability that no $n$ people share a birthday is&lt;/p&gt;
+&lt;p&gt;The expected value of this random variable is&lt;/p&gt;
 
 \[\begin{align*}
-p_{n,k}
-&amp;amp;= \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} f(a_1,a_2,\dots,a_{365})\\
-&amp;amp;=\sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{k!}{a_1!a_2!\cdots +a_{365}!}.
+E_k = \operatorname{E}(X_k)
+&amp;amp;= \sum_{n=0}^{365(k-1)} \operatorname{E}(X_{n,k})\\
+&amp;amp;=\sum_{n=0}^\infty p_{n,k}
 \end{align*}\]
 
-&lt;p&gt;We can now express the generating function as&lt;/p&gt;
+&lt;p&gt;where we note that $p_{n,k}=0$ whenever $n&amp;gt;365(k-1)$ (because, by the pigeonhole principle, there must otherwise be at least one day on which at least $k$ guests share a birthday). Also note that $p_{0,k}=1$ for every $k\geq1$ (as there can be no shared birthdays if no guests are present).&lt;/p&gt;
+
+&lt;p&gt;Now, the number of distinct ways in which $n$ guests can arrive such that there is no day on which at least $k$ of them share a birthday is equal to the number of ordered sequences \((a_1,a_2,\dots,a_n)\) of numbers \(a_1,\dots,a_n\in\{1,\dots,365\}\) such that no number appears more than $k-1$ times. The number of such sequences is equal to&lt;/p&gt;
+
+\[\sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}}
+\binom{n}{k_1,k_2,\dots,k_{365}}\]
+
+&lt;p&gt;where&lt;/p&gt;
+
+\[\binom{n}{k_1,k_2,\dots,k_{365}} = \frac{n!}{k_1!k_2!\cdots k_{365}!}\]
+
+&lt;p&gt;is the &lt;a href=&quot;https://en.wikipedia.org/wiki/Multinomial_theorem&quot;&gt;multinomial coefficient&lt;/a&gt;. Because there are $365^n$ ways in which $n$ guests can arrive in order, the probability that no $k$ guests share a birthday after $n$ guests have arrived is&lt;/p&gt;
 
 \[\begin{align*}
-G_{n}(x)
-&amp;amp;= \sum_{k=0}^\infty \frac{p_{n,k}}{k!}x^k \\
-&amp;amp;=\sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{1}{365^k}\frac{1}{a_1!a_2!\cdots +a_{365}!}x^k\\
-&amp;amp; = \sum_{k=0}^\infty \sum_{\substack{a_1+\cdots +a_{365}=k\\a_1&amp;lt;n,\dots,a_{365}&amp;lt;n}} \frac{(x/365)^{a_1}}{a_1!}\frac{(x/365)^{a_2}}{a_2!}\cdots \frac{(x/365)^{a_{365}}}{a_{365}!}\\
-&amp;amp; = \left(\sum_{a_1=0}^{n-1}\frac{(x/365)^{a_1}}{a_1!}\right)
-\cdots \left(\sum_{a_{365}=0}^{n-1}\frac{(x/365)^{a_{365}}}{a_{365}!}\right)\\
-&amp;amp; = \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365}.
+p_{n,k} &amp;amp;= \frac{n!}{365^n}\sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{k_1!k_2!\cdots k_{365}!}
+\\
+&amp;amp;= \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
 \end{align*}\]
 
-&lt;p&gt;Finally, making use of the fact that&lt;/p&gt;
-
-\[\int_{0}^\infty x^k e^{-x}\, \mathrm{d}x = k!\]
-
-&lt;p&gt;for every positive integer $k$, it follows that&lt;/p&gt;
+&lt;p&gt;We now may express the desired expected values as&lt;/p&gt;
 
 \[\begin{align*}
-\sum_{k=0}^\infty p_{n,k}
-&amp;amp; = \sum_{k=0}^\infty \frac{p_{n,k}}{k!} \int_{0}^\infty x^k e^{-x}\, \mathrm{d}x \\
-&amp;amp; = \int_{0}^\infty G_n(x)e^{-x}\, \mathrm{d}x\\
-&amp;amp; = \int_0^\infty \left(\sum_{j=0}^{n-1}\frac{(x/365)^{j}}{j!}\right)^{365} e^{-x}\, \mathrm{d}x
+E_k
+&amp;amp;= \sum_{n=0}^\infty \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}\\
+ &amp;amp; = \sum_{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}}
+ \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
 \end{align*}\]
 
-&lt;p&gt;Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $n$ people share a birthday for different values of $n$, the first few values are shown in the table below.&lt;/p&gt;
+&lt;p&gt;Making use of the fact that&lt;/p&gt;
+
+\[n! = \int_{0}^\infty t^n e^{-t}\, \mathrm{d}t\]
+
+&lt;p&gt;holds for every non-negative integer $n$, we may compute the expected values as&lt;/p&gt;
+
+\[\begin{align*}
+E_k &amp;amp;
+ = \sum_{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{1}{k_1!k_2!\cdots k_{365}!} \int_{0}^\infty t^{k_1+k_2+\cdots+k_{365}} e^{-t}\, \mathrm{d}t\\
+ &amp;amp; = \int_{0}^\infty \sum_{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}}
+ \left(
+   \frac{\left(\frac{t}{365}\right)^{k_1}}{k_1!} \cdots \frac{\left(\frac{t}{365}\right)^{k_{365}}}{k_{365}!}
+   \right)
+   e^{-t}\, \mathrm{d}t\\
+ &amp;amp; = \int_{0}^\infty
+ \left(
+   \sum_{n=0}^{k-1} \frac{\left(\frac{t}{365}\right)^{n}} {n!}
+   \right)^{365}
+   e^{-t}\, \mathrm{d}t\\
+&amp;amp; = 365\int_{0}^\infty \left(e^{-t}\sum_{n=0}^{k-1}\frac{t^n}{n!}\right)^{365}\, \mathrm{d}t,
+\end{align*}\]
+
+&lt;p&gt;where the last line follows after making a change of variables in the integration.&lt;/p&gt;
+
+&lt;p&gt;Using this formula, we can now compute the expected numbers of guests that have arrived at the first instance when $k$ people share a birthday for different values of $k$, the first few values are shown in the table below.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.integrate&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quad&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scipy.special&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Ex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;365&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;365&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;integrand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;integrand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;
 
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;integrand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -105,8 +108,8 @@ G_{n}(x)
 &lt;table&gt;
   &lt;thead&gt;
     &lt;tr&gt;
-      &lt;th&gt;$n$&lt;/th&gt;
-      &lt;th&gt;$E(X_n)$&lt;/th&gt;
+      &lt;th&gt;$k$&lt;/th&gt;
+      &lt;th&gt;$E_k$&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -215,7 +218,11 @@ G_{n}(x)
 
 &lt;p&gt;Plotting these values, we see that the expected size of the party grows roughly linearly with $n$ as $n$ increases.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/riddler-birthday-surprise.png&quot; alt=&quot;Expected size of party the first time when there are n people who share a birthday.&quot; /&gt;&lt;/p&gt;</content><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><category term="programming," /><category term="riddler," /><category term="probability" /><summary type="html"></summary></entry><entry><title type="html">Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)</title><link href="http://localhost:4000/posts/2022/09/riddler-anigrams/" rel="alternate" type="text/html" title="Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)" /><published>2022-09-19T00:00:00-07:00</published><updated>2022-09-19T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/09/riddler-anigrams</id><content type="html" xml:base="http://localhost:4000/posts/2022/09/riddler-anigrams/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+&lt;p&gt;&lt;img src=&quot;/images/riddler-birthday-surprise_1.png&quot; alt=&quot;Expected size of party the first time when there are k people who share a birthday.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/riddler-birthday-surprise_2.png&quot; alt=&quot;Growth of expected party size as k increases appears to be linear, and approaches $365k$ in the limit of large $k$.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It seems that, in the limit of large $k$, the ratio of the expected party size to the maximum party size of $\sim365k$ approaches 1.&lt;/p&gt;</content><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><category term="programming," /><category term="riddler," /><category term="probability" /><summary type="html"></summary></entry><entry><title type="html">Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)</title><link href="http://localhost:4000/posts/2022/09/riddler-anigrams/" rel="alternate" type="text/html" title="Can You Build The Biggest ‘Anigram’? (Riddler 2022-09-16)" /><published>2022-09-19T00:00:00-07:00</published><updated>2022-09-19T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/09/riddler-anigrams</id><content type="html" xml:base="http://localhost:4000/posts/2022/09/riddler-anigrams/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
 &lt;/script&gt;
 
 &lt;p&gt;My solution to &lt;a href=&quot;https://fivethirtyeight.com/features/can-you-build-the-biggest-anigram/&quot;&gt;this week’s riddler&lt;/a&gt;. (See more of &lt;a href=&quot;/riddlers&quot;&gt;my Riddler solutions here&lt;/a&gt;.)&lt;/p&gt;
