@@ -1,7 +1,7 @@
 ---
-title: 'What are the odds of a solo win in Mexican lottery? (Riddler 2022-10-21)'
+title: 'What are the odds of a solo win in Mexican bingo? (Riddler 2022-10-21)'
 date: 2022-10-23
-permalink: /posts/2022/10/riddler-mexican-lottery/
+permalink: /posts/2022/10/riddler-mexican-bingo/
 tags: riddler, probability
 ---
 
@@ -17,7 +17,7 @@ From Roberto Linares comes a puzzle that will have you shouting “Bingo!”:
 >A thousand people are playing Lotería, also known as Mexican bingo. The game consists of a deck of 54 cards, each with a unique picture. Each player has a board with 16 of the 54 pictures, arranged in a 4-by-4 grid. The boards are randomly generated, such that each board has 16 distinct pictures that are equally likely to be any of the 54.
 >
 >During the game, one card from the deck is drawn at a time, and anyone whose board includes that card’s picture marks it on their board. A player wins by marking four pictures that form one of four patterns, as exemplified below: any entire row, any entire column, the four corners of the grid and any 2-by-2 square.
->
+>![Winning bingo boards.](/images/bingo-boards.png)
 >Four four-by-four grids are shown. In the first grid, the third row has four blue markers. In the second grid, the second column has four blue markers. In the third grid, the four corner squares are marked. And in the fourth grid, the two middle squares in the third and fourth columns are marked, forming a smaller two-by-two square.
 >
 >After the fourth card has been drawn, there are no winners. What is the probability that there will be exactly one winner when the fifth card is drawn?
