@@ -24,45 +24,64 @@ From Roberto Linares comes a puzzle that will have you shouting “Bingo!”:
 
 ## The Solution
 
-For simplicity, we can label the distinct pictures with numbers 1 through 54 and assume without loss of generality that the numbers are drawn in order. A valid board therefore consists of a 4x4 grid of squares labelled with 16 distinct numbers in the range from 1 to 54. The number of distinct boards is therefore given by
+This is a pretty simple counting and probability problem. Let $p_4$ and $p_5$ be the probabilities that a given board wins after exactly $4$ or $5$ draws, respectively. The probability that we are seeking is therefore
 
 $$
-n = \binom{54}{16}16! = 164300848531852032000.
+P = \operatorname{Pr}\big(\text{exactly one winner after 5 draws }\big|\text{ no winners after 4 draws}\big) = \frac{1000p_5(1-p_4-p_5)^{999}}{(1-p_4)^{1000}}
 $$
 
-It remains to count the number of distinct boards that win after 4 draws and the number of boards that win after 5 draws.
+It remains to determine $p_4$ and $p_5$. The total number of ways that the first 4 cards can be drawn is simply equal to
 
-There are 18 distinct winning patterns:
+$$
+n_4 = 54\cdot53\cdot52\cdot 51.
+$$
+
+For a given board, we can count the number of ways in which the first 4 cards can be drawn that lead to that board *winning* as follows. First note that there are 18 distinct winning patterns:
  - 4 distinct columns
  - 4 distinct rows
  - 9 distinct 2x2 blocks
  - 1 set of all four corners
 
-For a board to win after exactly 4 draws, the four squares composing the winning pattern must have the numbers 1, 2, 3, and 4 in some arrangement. The remaining 12 squares can have any choice of 12 out of the remaining 50, and those 12 numbers can be in any arrangement. The number of valid boards that win after exactly 4 draws is therefore given by
+To count the number of ways in which a board wins after 4 draws, first pick one of the 18 distinct ways in which that board can win. For the board to win with that pattern, the cards with the four pictures on the four squares composing that pattern must be the first 4 cards that are drawn, in any possible order. Hence there are $18\cdot 4!$ ways that the first 4 cards can be drawn that lead to a given board winning, and thus
 
 $$
-a = 18\cdot4!\binom{50}{12}12! = 25121070914259640320000.
+p_4 = \frac{18\cdot 4!}{54\cdot53\cdot52\cdot 51} = \frac{2}{35139} \approx 0.000056916.
 $$
 
-The number of boards that win after exactly 5 draws is exactly 4 times the number of boards that win after exactly 4 draws. To see this, note that after 5 draws, any valid board can only have at most one of the 18 winning patterns completely filled in. One of the four numbers comprising the winning pattern must be the number 5, the other three must be selected from the first 4 numbers. After arranging those 4 numbers in any order, the remaining 12 squares can be filled with any of the remaining 50 numbers, which can then be in any arrangement. The number of valid boards that win after exactly 5 draws is therefore given by
+The number of ways that a board can win after exactly 5 draws is exactly 4 times the number of boards that win after exactly 4 draws. That is,
 
 $$
-b = 18\cdot\binom{4}{3}\cdot4!\binom{50}{12}12! = 4a = 100484283657038561280000.
+p_5 = 4p_4.
 $$
 
-Given that there are $N$ players, each with a valid board selected uniformly at random, the probability that there are exactly $k$ winners after 5 draws given that there were no winners after 4 draws is computed as
+To see this, note that after 5 draws any valid board can only have at most one of the 18 winning patterns completely filled in. As above, to count the number of ways that a board wins after 5 draws, first pick one of the 18 distinct patterns from above. Of the first 4 cards drawn, exactly one of them cannot match a picture in the four squares comprising the winning pattern (and there are 4 ways this can happen). The 4 cards that do match the pictures in the winning pattern can otherwise be drawn in any order, and thus
+
+$$
+p_5 = 18\cdot 4\cdot 4! = 4p_4.
+$$
+
+The probability in question can therefore be computed as
+
+$$
+P = \frac{1000(4p)(1-5p)^{999}}{(1-p)^{1000}} = 0.1813563126414745,
+$$
+
+where $p=p_4 = 2/35139$. Thus the odds of having exactly one winner after the fifth draw, given that there are 1000 players and no winners after the fourth draw, is about 18.1%.
+
+### More players? More winners?
+
+What happens when there are more players? Does this probability go up or down?
+
+Let $N$ be the number of players (where $N=1000$ in the original problem statement), each with a randomly selected board. The probability that there are exactly $k$ winners after 5 draws given that there were no winners after 4 draws is computed as
 
 $$
 \begin{align*}
 \operatorname{Pr}&\big(\text{exactly }k\text{ winners after 5 draws }\big|\text{ no winners after 4 draws}\big)\\
-&= \frac{\binom{N}{k}b^k(n-b)^{N-k}}{(n-a)^{N}}\\
-&=\binom{N}{k}\left(\frac{b}{n-a}\right)^k \left(\frac{n-b}{n-a}\right)^{N-k}.
+&= \frac{\binom{N}{k}(4p)^k(1-5p)^{N-k}}{(1-p)^{N}}
 \end{align*}
 $$
 
-In the original problem statement, there are 1000 players. With $k=1$, the probability of exactly 1 winner after 5 draws given that there were no winners after 4 draws is approximately 18.1%.
-
-As the number of players grows, this probability increases until $N=4293$, after which this probability starts to shrink as the probability of there being multiple winners begins to outstrip the probability of there being exactly one winner. The plot below shows the probabilities of having exactly $k$ winners after the fifth draw as the number $N$ of participants grows, given that there are no winners after the fourth draw.
+As the number of players grows, this probability increases to roughly 36.8% at $N=4293$, after which this probability starts to shrink (the probability of there being *multiple* winners begins to outstrip the probability of there being *exactly one* winner). The plot below shows the probabilities of having exactly $k$ winners after the fifth draw as the number $N$ of participants grows, given that there are no winners after the fourth draw.
 
 
 ![Probability of exactly k winners after 5 draws as a function of the number of participants, given that there are no winners after 4 draws.](/images/riddler-mexican-lottery.png)

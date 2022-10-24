@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-23T19:33:15-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">What are the odds of a solo win in Mexican bingo? (Riddler 2022-10-21)</title><link href="http://localhost:4000/posts/2022/10/riddler-mexican-bingo/" rel="alternate" type="text/html" title="What are the odds of a solo win in Mexican bingo? (Riddler 2022-10-21)" /><published>2022-10-23T00:00:00-07:00</published><updated>2022-10-23T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/mexican-lottery</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-mexican-bingo/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-10-24T07:34:47-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Mark Girard</title><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><entry><title type="html">What are the odds of a solo win in Mexican bingo? (Riddler 2022-10-21)</title><link href="http://localhost:4000/posts/2022/10/riddler-mexican-bingo/" rel="alternate" type="text/html" title="What are the odds of a solo win in Mexican bingo? (Riddler 2022-10-21)" /><published>2022-10-23T00:00:00-07:00</published><updated>2022-10-23T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/mexican-lottery</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-mexican-bingo/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
 &lt;/script&gt;
 
 &lt;p&gt;My solution to &lt;a href=&quot;https://fivethirtyeight.com/features/can-you-make-the-fidget-spinner-go-backwards/&quot;&gt;this week’s riddler&lt;/a&gt;. (See more of &lt;a href=&quot;/riddlers&quot;&gt;my Riddler solutions here&lt;/a&gt;.)&lt;/p&gt;
@@ -18,13 +18,15 @@ Four four-by-four grids are shown. In the first grid, the third row has four blu
 
 &lt;h2 id=&quot;the-solution&quot;&gt;The Solution&lt;/h2&gt;
 
-&lt;p&gt;For simplicity, we can label the distinct pictures with numbers 1 through 54 and assume without loss of generality that the numbers are drawn in order. A valid board therefore consists of a 4x4 grid of squares labelled with 16 distinct numbers in the range from 1 to 54. The number of distinct boards is therefore given by&lt;/p&gt;
+&lt;p&gt;This is a pretty simple counting and probability problem. Let $p_4$ and $p_5$ be the probabilities that a given board wins after exactly $4$ or $5$ draws, respectively. The probability that we are seeking is therefore&lt;/p&gt;
 
-\[n = \binom{54}{16}16! = 164300848531852032000.\]
+\[P = \operatorname{Pr}\big(\text{exactly one winner after 5 draws }\big|\text{ no winners after 4 draws}\big) = \frac{1000p_5(1-p_4-p_5)^{999}}{(1-p_4)^{1000}}\]
 
-&lt;p&gt;It remains to count the number of distinct boards that win after 4 draws and the number of boards that win after 5 draws.&lt;/p&gt;
+&lt;p&gt;It remains to determine $p_4$ and $p_5$. The total number of ways that the first 4 cards can be drawn is simply equal to&lt;/p&gt;
 
-&lt;p&gt;There are 18 distinct winning patterns:&lt;/p&gt;
+\[n_4 = 54\cdot53\cdot52\cdot 51.\]
+
+&lt;p&gt;For a given board, we can count the number of ways in which the first 4 cards can be drawn that lead to that board &lt;em&gt;winning&lt;/em&gt; as follows. First note that there are 18 distinct winning patterns:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;4 distinct columns&lt;/li&gt;
   &lt;li&gt;4 distinct rows&lt;/li&gt;
@@ -32,25 +34,36 @@ Four four-by-four grids are shown. In the first grid, the third row has four blu
   &lt;li&gt;1 set of all four corners&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;For a board to win after exactly 4 draws, the four squares composing the winning pattern must have the numbers 1, 2, 3, and 4 in some arrangement. The remaining 12 squares can have any choice of 12 out of the remaining 50, and those 12 numbers can be in any arrangement. The number of valid boards that win after exactly 4 draws is therefore given by&lt;/p&gt;
+&lt;p&gt;To count the number of ways in which a board wins after 4 draws, first pick one of the 18 distinct ways in which that board can win. For the board to win with that pattern, the cards with the four pictures on the four squares composing that pattern must be the first 4 cards that are drawn, in any possible order. Hence there are $18\cdot 4!$ ways that the first 4 cards can be drawn that lead to a given board winning, and thus&lt;/p&gt;
 
-\[a = 18\cdot4!\binom{50}{12}12! = 25121070914259640320000.\]
+\[p_4 = \frac{18\cdot 4!}{54\cdot53\cdot52\cdot 51} = \frac{2}{35139} \approx 0.000056916.\]
 
-&lt;p&gt;The number of boards that win after exactly 5 draws is exactly 4 times the number of boards that win after exactly 4 draws. To see this, note that after 5 draws, any valid board can only have at most one of the 18 winning patterns completely filled in. One of the four numbers comprising the winning pattern must be the number 5, the other three must be selected from the first 4 numbers. After arranging those 4 numbers in any order, the remaining 12 squares can be filled with any of the remaining 50 numbers, which can then be in any arrangement. The number of valid boards that win after exactly 5 draws is therefore given by&lt;/p&gt;
+&lt;p&gt;The number of ways that a board can win after exactly 5 draws is exactly 4 times the number of boards that win after exactly 4 draws. That is,&lt;/p&gt;
 
-\[b = 18\cdot\binom{4}{3}\cdot4!\binom{50}{12}12! = 4a = 100484283657038561280000.\]
+\[p_5 = 4p_4.\]
 
-&lt;p&gt;Given that there are $N$ players, each with a valid board selected uniformly at random, the probability that there are exactly $k$ winners after 5 draws given that there were no winners after 4 draws is computed as&lt;/p&gt;
+&lt;p&gt;To see this, note that after 5 draws any valid board can only have at most one of the 18 winning patterns completely filled in. As above, to count the number of ways that a board wins after 5 draws, first pick one of the 18 distinct patterns from above. Of the first 4 cards drawn, exactly one of them cannot match a picture in the four squares comprising the winning pattern (and there are 4 ways this can happen). The 4 cards that do match the pictures in the winning pattern can otherwise be drawn in any order, and thus&lt;/p&gt;
+
+\[p_5 = 18\cdot 4\cdot 4! = 4p_4.\]
+
+&lt;p&gt;The probability in question can therefore be computed as&lt;/p&gt;
+
+\[P = \frac{1000(4p)(1-5p)^{999}}{(1-p)^{1000}} = 0.1813563126414745,\]
+
+&lt;p&gt;where $p=p_4 = 2/35139$. Thus the odds of having exactly one winner after the fifth draw, given that there are 1000 players and no winners after the fourth draw, is about 18.1%.&lt;/p&gt;
+
+&lt;h3 id=&quot;more-players-more-winners&quot;&gt;More players? More winners?&lt;/h3&gt;
+
+&lt;p&gt;What happens when there are more players? Does this probability go up or down?&lt;/p&gt;
+
+&lt;p&gt;Let $N$ be the number of players (where $N=1000$ in the original problem statement), each with a randomly selected board. The probability that there are exactly $k$ winners after 5 draws given that there were no winners after 4 draws is computed as&lt;/p&gt;
 
 \[\begin{align*}
 \operatorname{Pr}&amp;amp;\big(\text{exactly }k\text{ winners after 5 draws }\big|\text{ no winners after 4 draws}\big)\\
-&amp;amp;= \frac{\binom{N}{k}b^k(n-b)^{N-k}}{(n-a)^{N}}\\
-&amp;amp;=\binom{N}{k}\left(\frac{b}{n-a}\right)^k \left(\frac{n-b}{n-a}\right)^{N-k}.
+&amp;amp;= \frac{\binom{N}{k}(4p)^k(1-5p)^{N-k}}{(1-p)^{N}}
 \end{align*}\]
 
-&lt;p&gt;In the original problem statement, there are 1000 players. With $k=1$, the probability of exactly 1 winner after 5 draws given that there were no winners after 4 draws is approximately 18.1%.&lt;/p&gt;
-
-&lt;p&gt;As the number of players grows, this probability increases until $N=4293$, after which this probability starts to shrink as the probability of there being multiple winners begins to outstrip the probability of there being exactly one winner. The plot below shows the probabilities of having exactly $k$ winners after the fifth draw as the number $N$ of participants grows, given that there are no winners after the fourth draw.&lt;/p&gt;
+&lt;p&gt;As the number of players grows, this probability increases to roughly 36.8% at $N=4293$, after which this probability starts to shrink (the probability of there being &lt;em&gt;multiple&lt;/em&gt; winners begins to outstrip the probability of there being &lt;em&gt;exactly one&lt;/em&gt; winner). The plot below shows the probabilities of having exactly $k$ winners after the fifth draw as the number $N$ of participants grows, given that there are no winners after the fourth draw.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/riddler-mexican-lottery.png&quot; alt=&quot;Probability of exactly k winners after 5 draws as a function of the number of participants, given that there are no winners after 4 draws.&quot; /&gt;&lt;/p&gt;</content><author><name>Mark Girard</name><email>mark.w.girard@gmail.com</email></author><category term="riddler," /><category term="probability" /><summary type="html"></summary></entry><entry><title type="html">How big is your birthday surprise party? (Riddler 2022-10-14)</title><link href="http://localhost:4000/posts/2022/10/riddler-birthday-party/" rel="alternate" type="text/html" title="How big is your birthday surprise party? (Riddler 2022-10-14)" /><published>2022-10-14T00:00:00-07:00</published><updated>2022-10-14T00:00:00-07:00</updated><id>http://localhost:4000/posts/2022/10/birthday-party</id><content type="html" xml:base="http://localhost:4000/posts/2022/10/riddler-birthday-party/">&lt;script type=&quot;text/javascript&quot; async=&quot;&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;
 &lt;/script&gt;
@@ -109,16 +122,16 @@ E_k = \operatorname{E}(X_k)
 \[\begin{align*}
 p_{n,k} &amp;amp;= \frac{n!}{365^n}\sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{k_1!k_2!\cdots k_{365}!}
 \\
-&amp;amp;= \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
+&amp;amp;= \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots +k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
 \end{align*}\]
 
 &lt;p&gt;We now may express the desired expected values as&lt;/p&gt;
 
 \[\begin{align*}
 E_k
-&amp;amp;= \sum_{n=0}^\infty \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}\\
+&amp;amp;= \sum_{n=0}^\infty \sum_{\substack{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}\\k_1+k_2+\cdots+k_{365}= n}} \frac{1}{365^{k_1+k_2+\cdots +k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}\\
  &amp;amp; = \sum_{k_1,\dots,k_{365}\in\{0,1,\dots,k-1\}}
- \frac{1}{365^{k_1+k_2+\cdots k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
+ \frac{1}{365^{k_1+k_2+\cdots +k_{365}}}\frac{(k_1+k_2\cdots k_{365})!}{k_1!k_2!\cdots k_{365}!}.
 \end{align*}\]
 
 &lt;p&gt;Making use of the fact that&lt;/p&gt;
