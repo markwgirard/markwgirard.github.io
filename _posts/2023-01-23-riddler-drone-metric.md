@@ -99,7 +99,8 @@ In this slice of the disc (i.e., all the points $(x,y)$ such that $0\leq y\leq x
 
 $$
 \begin{align*}
-\Vert(x,y)\Vert_\text{scooter*} &= \sqrt{2}y + (x-y)\\ & = x + \big(\sqrt{2}-1\big)y
+\Vert(x,y)\Vert_\text{scooter*} &= \sqrt{2}y + (x-y)\\
+& = x + \big(\sqrt{2}-1\big)y
 \end{align*}
 $$
 
