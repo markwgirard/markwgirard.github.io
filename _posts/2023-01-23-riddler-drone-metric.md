@@ -50,7 +50,7 @@ $$
 \Vert(x,y)\Vert_{\text{scooter}} = |x| + |y|.
 $$
 
-Parameterizing the disc in polar coordinates to that $x=r\cos\theta$ and $y=r\sin\theta$, and this expression becomes $r(|\sin\theta| + |\cos\theta|). To compute the expected distance in the taxicab metric, we can simplify the integral by integrating only over the quadrant where $\cos\theta$ and $\sin\theta$ are both positive and multiply the result by $4$. We have
+Parameterizing the disc in polar coordinates to that $x=r\cos\theta$ and $y=r\sin\theta$, and this expression becomes $r(|\sin\theta| + |\cos\theta|)$. To compute the expected distance in the taxicab metric, we can simplify the integral by integrating only over the quadrant where $\cos\theta$ and $\sin\theta$ are both positive and multiply the result by $4$. We have
 
 $$
 \begin{align*}
@@ -70,9 +70,11 @@ In the long run, the ratio of the number of deliveries that a drone can make in 
 #### Extra credit: diagonal scooter
 
 Allowing the scooter to *also* travel along the diagonals gives rise to a new metric that we must now consider. Given a point $(x,y)$ in the City, the distance from this point to the center is the *shortest path* that the scooter can take to get there by traveling only along diagonals and orthogonal cross streets. How might we compute this metric? Let's denote this metric as
+
 $$
 \Vert(x,y)\Vert_{\text{scooter*}}
 $$
+
 where we use $\text{scooter*}$ to indicate the augmented scooter.
 
 To examine the most efficient routes for the scooters, first note that, if the scooter can't get to its destination by traveling in a single cardinal direction (i.e., needing only to go straight N, S, E, or W), traveling along a diagonal is much more efficient than traveling along two different cardinal directions.
