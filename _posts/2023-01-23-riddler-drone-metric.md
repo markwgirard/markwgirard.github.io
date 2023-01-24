@@ -24,7 +24,7 @@ _Extra credit:_ In addition to traveling parallel to the city blocks, suppose s
 
 ### Solution
 
-Let the radius of Riddler City be equal to 1, so that the extent of the city is simply the unit disc. As indicated in the (non-extra-credit) problem statement, the scooter travels according to the [taxicab metric](https://mathworld.wolfram.com/TaxicabMetric.html) (also known as the \emph{Manhattan} distance). To solve this problem, we need to compute the expected distance that the drone and scooter will travel given a randomly chosen point in the City.
+Let the radius of Riddler City be equal to 1, so that the extent of the city is simply the unit disc. As indicated in the (non-extra-credit) problem statement, the scooter travels according to the [taxicab metric](https://mathworld.wolfram.com/TaxicabMetric.html) (also known as the *Manhattan* distance). To solve this problem, we need to compute the expected distance that the drone and scooter will travel given a randomly chosen point in the City.
 
 The amount of time a delivery takes is proportional to its distance,   and the expected number of deliveries that can be made in a given amount of time is proportional to the *inverse* of the average time. So the ratio of the expected numbers of deliveries is equal to the inverse of the ratio of the expected distances.
 
@@ -70,11 +70,9 @@ In the long run, the ratio of the number of deliveries that a drone can make in 
 #### Extra credit: diagonal scooter
 
 Allowing the scooter to *also* travel along the diagonals gives rise to a new metric that we must now consider. Given a point $(x,y)$ in the City, the distance from this point to the center is the *shortest path* that the scooter can take to get there by traveling only along diagonals and orthogonal cross streets. How might we compute this metric? Let's denote this metric as
-
 $$
 \Vert(x,y)\Vert_{\text{scooter*}}
 $$
-
 where we use $\text{scooter*}$ to indicate the augmented scooter.
 
 To examine the most efficient routes for the scooters, first note that, if the scooter can't get to its destination by traveling in a single cardinal direction (i.e., needing only to go straight N, S, E, or W), traveling along a diagonal is much more efficient than traveling along two different cardinal directions.
@@ -84,3 +82,44 @@ For example, if a route involved some amount of travel on a street headed due no
 Thus, the most efficient routes for the scooter will always be to first take a diagonal as far as possible, until you are at a point where you can then travel a straight line in a single cardinal direction (N, S, E, or W) until you reach your destination.
 
 For points in the first eighth slice of the City, we have the following diagram to help us find the shortest path.
+
+![Diagonally augmented scooter distance](/images/2023_drone_metric.png)
+
+That is, the shortest path to the point $(x,y)$ is to travel NW along the diagonal until you are as far north as the destination, then travel due west until you arrive.
+
+In this slice of the disc (i.e., all the points $(x,y)$ such that $0\leq y\leq x$ and $x^2+y^2\leq 1$), the augmented scooter distance evaluates to
+
+$$
+\begin{align*}
+\Vert(x,y)\Vert_\text{scooter*} &= \sqrt{2}y + (x-y)\\& = x + \big(\sqrt{2}-1\big)y
+\end{align*}
+$$
+
+In polar coordinates, this expression becomes
+
+$$
+r\big(\cos\theta + \big(\sqrt{2}-1\big)\sin\theta\big).
+$$
+
+By symmetry, the expected distance will be the same for all eight slices, so we can integrate over just this slice and divide by its area ($\pi/8$) to get the expected distance over the whole City. Thus, we have
+
+$$
+\begin{align*}
+E_{\text{scooter*}} & = \frac{8}{\pi}\int_0^{\pi/4}\int_0^1 r\Big(\cos\theta + \big(\sqrt{2}-1\big)\sin\theta\Big)r\,\textup{d}r\,\textup{d}\theta
+\\
+& = \frac{8}{\pi}\int_0^1 r^2\, \textup{d}r \int_0^{\pi/4}\big(\cos\theta + \big(\sqrt{2}-1\big)\sin\theta\big)\,\textup{d}\theta\\
+& = \frac{8}{3\pi}\Bigg(\frac{1}{\sqrt{2}} + \big(\sqrt{2}-1\big)\left(1-\frac{1}{\sqrt{2}}\right)\Bigg)\\
+&=\frac{8}{3\pi}\left(\frac{1}{\sqrt{2}}+\left(\frac{3}{\sqrt{2}}-2\right)\right)\\
+&= \frac{8}{3\pi}2\left(\sqrt{2}-1\right).
+\end{align*}
+$$
+
+Hence, the average distance that the diagonal scooter travels is on average $2(\sqrt{2}-1)\approx0.828$ times the distance that the regular scooter travels.
+
+In relation to the drone, the ratio of the expected number of deliveries that the drone can make vs the scooter is equal to
+
+$$
+\frac{E_{\text{scooter*}}}{E_{\text{drone}}} = \frac{8\big(\sqrt{2}-1\big)}{\pi}\approx1.055,
+$$
+
+so the drone only makes about 5.5% more deliveries than the diagonal scooter.
