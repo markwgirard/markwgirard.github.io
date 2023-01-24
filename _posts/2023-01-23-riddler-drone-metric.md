@@ -55,7 +55,7 @@ Parameterizing the disc in polar coordinates to that $x=r\cos\theta$ and $y=r\si
 $$
 \begin{align*}
 E_{\text{scooter}}
-&= \frac{1}{\pi}\int_{\text{City}}r\big(|\sin\theta| + |\cos\theta|\big)\, \textup{dA}\\
+&= \frac{1}{\pi}\int_{\text{City}}r\big(|\sin\theta| + |\cos\theta|\big)\, \operatorname{d}\!A\\
 &= \frac{4}{\pi}\int_0^{\pi/2}\int_0^1r^2(\sin\theta + \cos\theta)\, {\operatorname{d} \!}r\,{\operatorname{d} \!}\theta\\
 &= \frac{4}{\pi}\Big(\int_0^{\pi/2}(\sin\theta + \cos\theta)\,{\operatorname{d} \!}\theta\Big)\frac{1}{3}\\
 & = \frac{8}{3\pi}.
