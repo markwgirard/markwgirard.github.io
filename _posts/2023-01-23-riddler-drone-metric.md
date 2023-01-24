@@ -34,7 +34,7 @@ We first consider the drone, which always takes the most direct route by flying 
 $$
 \begin{align*}
 E_{\text{drone}}
-&= \frac{1}{\pi}\int_{\text{City}}r\, \textup{dA}\\
+&= \frac{1}{\pi}\int_{\text{City}}r\, {\operatorname{d} \mspace{-1mu}}A\\
 &= \frac{1}{\pi}\int_0^{2\pi}\int_0^1r^2\, {\operatorname{d} \mspace{-1mu}}r\,{\operatorname{d} \mspace{-1mu}}\theta\\
 &= \frac{1}{\pi}(2\pi)\frac{1}{3}\\
 & = \frac{2}{3},
