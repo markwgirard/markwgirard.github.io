@@ -30,6 +30,7 @@ The amount of time a delivery takes is proportional to its distance,   and the e
 
 #### As the drone flies
 We first consider the drone, which always takes the most direct route by flying in a straight line. Using polar coordinates $r\in[0,1]$ and $\theta\in[0,2\pi)$ to parameterize the disc, the distance to a point from the origin is just the radial distance $r$. The desired expected value is simply the average of $r$ over the disc divided by the total area (which is equal to π). The area element for this integral is $\textup{d}A=r\,\textup{d}r\,\textup{d}\theta$, so to compute the expected distance that the drone travels, we have
+
 $$
 \begin{align*}
 E_{\text{drone}}
@@ -39,14 +40,18 @@ E_{\text{drone}}
 & = \frac{2}{3},
 \end{align*}
 $$
+
 so the average distance as the drone flies is equal to $2/3$.
 
 #### Cardinal scooter
 Now let's figure out what the expected distance the scooter has to  travel given a randomly chosen point in the City. Given a point $(x,y)$ in the disc, the distance (as the scooter drives) from the center to that point is given by
+
 $$
 \Vert(x,y)\Vert_{\text{scooter}} = |x| + |y|.
 $$
+
 Parameterizing the disc in polar coordinates to that $x=r\cos\theta$ and $y=r\sin\theta$, and this expression becomes $r(|\sin\theta| + |\cos\theta|). To compute the expected distance in the taxicab metric, we can simplify the integral by integrating only over the quadrant where $\cos\theta$ and $\sin\theta$ are both positive and multiply the result by $4$. We have
+
 $$
 \begin{align*}
 E_{\text{scooter}}
@@ -56,6 +61,7 @@ E_{\text{scooter}}
 & = \frac{8}{3\pi}.
 \end{align*}
 $$
+
 Hence the scooter restricted to travelling along the cardinal streets will travel on average $E_\text{drone}/E_{\text{scooter}} = 4/\pi$ ($\approx1.27$) times the distance to make the same delivery!
 
 In the long run, the ratio of the number of deliveries that a drone can make in the same time as the scooter is equal to the same ratio, $4/\pi$. That is, the drone makes on average roughly 27% more deliveries.
@@ -64,9 +70,11 @@ In the long run, the ratio of the number of deliveries that a drone can make in 
 #### Extra credit: diagonal scooter
 
 Allowing the scooter to *also* travel along the diagonals gives rise to a new metric that we must now consider. Given a point $(x,y)$ in the City, the distance from this point to the center is the *shortest path* that the scooter can take to get there by traveling only along diagonals and orthogonal cross streets. How might we compute this metric? Let's denote this metric as
+
 $$
 \Vert(x,y)\Vert_{\text{scooter*}}
 $$
+
 where we use $\text{scooter*}$ to indicate the augmented scooter.
 
 To examine the most efficient routes for the scooters, first note that, if the scooter can't get to its destination by traveling in a single cardinal direction (i.e., needing only to go straight N, S, E, or W), traveling along a diagonal is much more efficient than traveling along two different cardinal directions.
