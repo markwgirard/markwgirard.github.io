@@ -29,13 +29,13 @@ Let the radius of Riddler City be equal to 1, so that the extent of the city is 
 The amount of time a delivery takes is proportional to its distance,   and the expected number of deliveries that can be made in a given amount of time is proportional to the *inverse* of the average time. So the ratio of the expected numbers of deliveries is equal to the inverse of the ratio of the expected distances.
 
 #### As the drone flies
-We first consider the drone, which always takes the most direct route by flying in a straight line. Using polar coordinates $r\in[0,1]$ and $\theta\in[0,2\pi)$ to parameterize the disc, the distance to a point from the origin is just the radial distance $r$. The desired expected value is simply the average of $r$ over the disc divided by the total area (which is equal to π). The area element for this integral is ${\operatorname{d} \mspace{-5mu}}A=r\,{\operatorname{d} \mspace{-5mu}}r\,{\operatorname{d} \mspace{-5mu}}\theta$, so to compute the expected distance that the drone travels, we have
+We first consider the drone, which always takes the most direct route by flying in a straight line. Using polar coordinates $r\in[0,1]$ and $\theta\in[0,2\pi)$ to parameterize the disc, the distance to a point from the origin is just the radial distance $r$. The desired expected value is simply the average of $r$ over the disc divided by the total area (which is equal to π). The area element for this integral is ${\operatorname{d} \mspace{-2mu}}A=r\,{\operatorname{d} \mspace{-2mu}}r\,{\operatorname{d} \mspace{-2mu}}\theta$, so to compute the expected distance that the drone travels, we have
 
 $$
 \begin{align*}
 E_{\text{drone}}
 &= \frac{1}{\pi}\int_{\text{City}}r\, \textup{dA}\\
-&= \frac{1}{\pi}\int_0^{2\pi}\int_0^1r^2\, {\operatorname{d} \mspace{-5mu}}r\,{\operatorname{d} \mspace{-5mu}}\theta\\
+&= \frac{1}{\pi}\int_0^{2\pi}\int_0^1r^2\, {\operatorname{d} \mspace{-2mu}}r\,{\operatorname{d} \mspace{-2mu}}\theta\\
 &= \frac{1}{\pi}(2\pi)\frac{1}{3}\\
 & = \frac{2}{3},
 \end{align*}
@@ -55,9 +55,9 @@ Parameterizing the disc in polar coordinates to that $x=r\cos\theta$ and $y=r\si
 $$
 \begin{align*}
 E_{\text{scooter}}
-&= \frac{1}{\pi}\int_{\text{City}}r\big(|\sin\theta| + |\cos\theta|\big)\, \operatorname{d}\mspace{-5mu}A\\
-&= \frac{4}{\pi}\int_0^{\pi/2}\int_0^1r^2(\sin\theta + \cos\theta)\, {\operatorname{d} \mspace{-5mu}}r\,{\operatorname{d} \mspace{-5mu}}\theta\\
-&= \frac{4}{\pi}\Big(\int_0^{\pi/2}(\sin\theta + \cos\theta)\,{\operatorname{d} \mspace{-5mu}}\theta\Big)\frac{1}{3}\\
+&= \frac{1}{\pi}\int_{\text{City}}r\big(|\sin\theta| + |\cos\theta|\big)\, \operatorname{d}\mspace{-2mu}A\\
+&= \frac{4}{\pi}\int_0^{\pi/2}\int_0^1r^2(\sin\theta + \cos\theta)\, {\operatorname{d} \mspace{-2mu}}r\,{\operatorname{d} \mspace{-2mu}}\theta\\
+&= \frac{4}{\pi}\Big(\int_0^{\pi/2}(\sin\theta + \cos\theta)\,{\operatorname{d} \mspace{-2mu}}\theta\Big)\frac{1}{3}\\
 & = \frac{8}{3\pi}.
 \end{align*}
 $$
@@ -113,9 +113,9 @@ By symmetry, the expected distance will be the same for all eight slices, so we 
 
 $$
 \begin{align*}
-E_{\text{scooter*}} & = \frac{8}{\pi}\int_0^{\pi/4}\int_0^1 r\Big(\cos\theta + \big(\sqrt{2}-1\big)\sin\theta\Big)r\,{\operatorname{d} \mspace{-5mu}}r\,{\operatorname{d} \mspace{-5mu}}\theta
+E_{\text{scooter*}} & = \frac{8}{\pi}\int_0^{\pi/4}\int_0^1 r\Big(\cos\theta + \big(\sqrt{2}-1\big)\sin\theta\Big)r\,{\operatorname{d} \mspace{-2mu}}r\,{\operatorname{d} \mspace{-2mu}}\theta
 \\
-& = \frac{8}{\pi}\int_0^1 r^2\, {\operatorname{d} \mspace{-5mu}}r \int_0^{\pi/4}\big(\cos\theta + \big(\sqrt{2}-1\big)\sin\theta\big)\,{\operatorname{d} \mspace{-5mu}}\theta\\
+& = \frac{8}{\pi}\int_0^1 r^2\, {\operatorname{d} \mspace{-2mu}}r \int_0^{\pi/4}\big(\cos\theta + \big(\sqrt{2}-1\big)\sin\theta\big)\,{\operatorname{d} \mspace{-2mu}}\theta\\
 & = \frac{8}{3\pi}\Bigg(\frac{1}{\sqrt{2}} + \big(\sqrt{2}-1\big)\left(1-\frac{1}{\sqrt{2}}\right)\Bigg)\\
 &=\frac{8}{3\pi}\left(\frac{1}{\sqrt{2}}+\left(\frac{3}{\sqrt{2}}-2\right)\right)\\
 &= \frac{8}{3\pi}2\left(\sqrt{2}-1\right).
