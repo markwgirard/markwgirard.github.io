@@ -83,7 +83,7 @@ Thus, the most efficient routes for the scooter will always be to first take a d
 
 For points in the first eighth slice of the City, we have the following diagram to help us find the shortest path.
 
-![Diagonally augmented scooter distance](/images/2023_drone_metric.png)
+![Diagonally augmented scooter distance](/images/riddler_2023_drone_metric.png)
 
 That is, the shortest path to the point $(x,y)$ is to travel NW along the diagonal until you are as far north as the destination, then travel due west until you arrive.
 
