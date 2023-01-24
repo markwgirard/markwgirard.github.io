@@ -62,7 +62,13 @@ E_{\text{scooter}}
 \end{align*}
 $$
 
-Hence the scooter restricted to travelling along the cardinal streets will travel on average $E_\text{drone}/E_{\text{scooter}} = 4/\pi$ ($\approx1.27$) times the distance to make the same delivery!
+Note that
+
+$$
+\frac{E_\text{drone}}{E_{\text{scooter}}} = \frac{4}{\pi} \approx 1.27,
+$$
+
+so the scooter needs to travel on average about 27% further to make the same delivery!
 
 In the long run, the ratio of the number of deliveries that a drone can make in the same time as the scooter is equal to the same ratio, $4/\pi$. That is, the drone makes on average roughly 27% more deliveries.
 
