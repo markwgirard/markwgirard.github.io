@@ -7,7 +7,7 @@ tags: mathematics, combinitorics
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
-I picked up a book at a used book store recently: *(Probabilistic Methods in Combinitorics)[https://www.amazon.ca/Probabilistic-Methods-Combinatorics-Paul-Erdos/dp/0122409604]* (1974) by Paul Erdős and Joel Spencer. Always a sucker for neat-looking old math books, I picked it up and browse through it ocassionally.
+I picked up a book at a used book store recently: *[Probabilistic Methods in Combinitorics](https://www.amazon.ca/Probabilistic-Methods-Combinatorics-Paul-Erdos/dp/0122409604)* (1974) by Paul Erdős and Joel Spencer. Always a sucker for neat-looking old math books, I picked it up and browse through it ocassionally.
 
 As with most of Erdős' writing, I found the statements and proofs in the book rather obtuse. To help me understand some of the contents, I wanted to write some blog posts as I read through it.
 
@@ -184,7 +184,7 @@ $$
 \end{align*}
 $$
 
-as $0<p^{\|S\|}(1-p)^{\|T\|} < 1$. Now, the event that the random graph is *not* universal is
+as $0<p^{\|S\|}(1-p)^{\|T\|}<1$. Now, the event that the random graph is *not* universal is
 
 $$
 \bigcup_{n\in\mathbb{N}}\bigcup_{S\in\binom{\mathbb{N}}{k}}\bigcup_{n\in\mathbb{N}}\bigcup_{T\in\binom{\mathbb{N}\setminus S}{k}}\Bigg(\bigcap_{a\in\mathbb{N}\setminus(S\cup T)}A(S,T,a)^c\Bigg),
