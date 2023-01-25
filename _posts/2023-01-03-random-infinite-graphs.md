@@ -1,7 +1,7 @@
 ---
 title: 'Random infinite graphs: They are all the same!'
 date: 2023-01-03
-permalink: /posts/2022/01/random-infinite-graphs/
+permalink: /posts/2023/01/random-infinite-graphs/
 tags: mathematics, combinitorics
 ---
 
