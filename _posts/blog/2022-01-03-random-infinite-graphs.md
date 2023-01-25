@@ -5,9 +5,7 @@ permalink: /posts/2022/01/random-infinite-graphs/
 tags: mathematics, combinitorics
 ---
 
-<script type="text/javascript" async
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 I picked up a book at a used book store recently: *(Probabilistic Methods in Combinitorics)[https://www.amazon.ca/Probabilistic-Methods-Combinatorics-Paul-Erdos/dp/0122409604]* (1974) by Paul Erdős and Joel Spencer. Always a sucker for neat-looking old math books, I picked it up and browse through it ocassionally.
 
@@ -26,7 +24,9 @@ $$
 
 (where we recall that given a set $S$ and an integer $k$, the notation $\binom{S}{k}$ is used to denote the collection of all subsets of $S$ containing exactly $k$ elements).  We may write $\operatorname{Vertices}(G)=V$ and $\operatorname{Edges}(G)=E$. Two distinct vertices $a,b\in \operatorname{Vertices}(G)$ are said to be *adjacent* in $G$ if it holds that
 
-$$\{a,b\}\in \operatorname{Edges}(G)$$
+$$
+\{a,b\}\in \operatorname{Edges}(G)
+$$
 
 and not adjacent otherwise.
 
@@ -35,11 +35,13 @@ Two graphs $G$ and $H$ are said to be *isomorphic* if there exists a bijection
 $$
 f:\operatorname{Vertices}(G)\to\operatorname{Vertices}(H)
 $$
+
 with the property that, for every choice of distinct pairs of vertices $a,b\in\operatorname{Vertices}(G)$, we have the equivalence
 
 $$
 \{a,b\}\in \operatorname{Edges}(G)\iff\{f(a),f(b)\}\in \operatorname{Edges}(H).
 $$
+
 Graph isomorphism defines an equivalence relation on a collection of graphs.
 
 ## Infinite graphs and universality
