@@ -1,6 +1,6 @@
 ---
 title: 'Random infinite graphs: They are all the same!'
-date: 2022-01-03
+date: 2023-01-03
 permalink: /posts/2022/01/random-infinite-graphs/
 tags: mathematics, combinitorics
 ---
@@ -116,7 +116,7 @@ $$
 A_1\subseteq A_2\subseteq \cdots.
 $$
 
-Moreover, for every $n\in\mathbb{N}$, it holds that $f_{n+1}|_{A_n} = f_n$ and for pair of distinct numbers $a,b\in A_n$ we have the equivalence
+Moreover, for every $n\in\mathbb{N}$, it holds that $f_{n+1}\|_{A_n} = f_n$ and for pair of distinct numbers $a,b\in A_n$ we have the equivalence
 
 $$
 \{a,b\}\in \operatorname{Edges}(G) \iff \{f_n(a),f_n(b)\}\in \operatorname{Edges}(H).
@@ -184,7 +184,7 @@ $$
 \end{align*}
 $$
 
-as $0<p^{|S|}(1-p)^{|T|} < 1$. Now, the event that the random graph is *not* universal is
+as $0<p^{\|S\|}(1-p)^{\|T\|} < 1$. Now, the event that the random graph is *not* universal is
 
 $$
 \bigcup_{n\in\mathbb{N}}\bigcup_{S\in\binom{\mathbb{N}}{k}}\bigcup_{n\in\mathbb{N}}\bigcup_{T\in\binom{\mathbb{N}\setminus S}{k}}\Bigg(\bigcap_{a\in\mathbb{N}\setminus(S\cup T)}A(S,T,a)^c\Bigg),
