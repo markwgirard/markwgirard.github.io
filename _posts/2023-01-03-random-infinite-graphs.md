@@ -161,7 +161,7 @@ and these events are all independent of each other.
 
 We now turn our attention to infinite graphs. It turns out that random graphs constructed this way are almost always all isomorphic to each other. This is because a graph constructed this way is almost always universal!
 
->*Theorem.* Let $G$ be a random graph with $\operatorname{Vertices}(G)=\mathbb{N}$ constructed as above. The ranom graph $G$ is universal with probability $1$.
+>**Theorem.** Let $G$ be a random graph with $\operatorname{Vertices}(G)=\mathbb{N}$ constructed as above. The ranom graph $G$ is universal with probability $1$.
 
 *Proof.* We prove that the set of graphs that are not universal is a set of measure zero. Given disjoint finite sets $S,T\subseteq\mathbb{N}$ and a number $a\in\mathbb{N}\setminus (S\cup T)$, let $A(S,T,a)$ denote the event that in the graph $G$, the vertex $a$ is adjacent to every vertex in $S$ and not adjacent to every vertex in $T$. That is,
 
