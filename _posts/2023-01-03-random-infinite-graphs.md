@@ -68,7 +68,7 @@ $$
 
 for each $n\in\mathbb{N}$ recursively as follows.
 
-Define $A_1=\lbrace  1\rbrace $ and $f_1(1)=1$. Note that $f_1$ is injective and trivially satisfies the relations $$\lbrace  1\rbrace \subseteq A_1$$ and $\lbrace 1\rbrace \subseteq f_1(A_1)$.
+Define $A_1=\lbrace 1\rbrace$ and $f_1(1)=1$. Note that $f_1$ is injective and trivially satisfies the relations $\lbrace  1\rbrace \subseteq A_1$ and $\lbrace 1\rbrace \subseteq f_1(A_1)$.
 
 Given a number $n\in\mathbb{N}$, suppose we have defined $A_n$ and $f_n$ such that $f_n$ is injective and satisfies the properties that
 
