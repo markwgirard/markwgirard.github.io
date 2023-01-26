@@ -186,7 +186,7 @@ $$
 \end{align*}
 $$
 
-as $0<p^{\vert S\vert}(1-p)^{\vert T\vert}<1$. Now, the event that the random graph is *not* universal is
+as $0 \lt p^{\vert S\vert}(1-p)^{\vert T\vert}\lt 1 $. Now, the event that the random graph is *not* universal is
 
 $$
 \bigcup_{n\in\mathbb{N}}\bigcup_{S\in\binom{\mathbb{N}}{k}}\bigcup_{n\in\mathbb{N}}\bigcup_{T\in\binom{\mathbb{N}\setminus S}{k}}\Bigg(\bigcap_{a\in\mathbb{N}\setminus(S\cup T)}A(S,T,a)^c\Bigg),
