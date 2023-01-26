@@ -108,6 +108,7 @@ and $f_{n+1}:A_{n+1}\to\mathbb{N}$ as $f_{n+1}(s)= f_n(s)$ for every $s\in A_n\s
 $$
 f_{n+1}(n+1) = b \quad\text{and}\quad f_{n+1}(a) = n+1.
 $$
+
 It is evident that $f_{n+1}$ is injective, and that $\lbrace 1,\dots,n+1\rbrace \subseteq A_{n+1}\cap f_{n+1}(A_{n+1})$.
 
 With the subsets $A_1,A_2,\dots$ and functions $f_1,f_2,\dots$ defined this way, note that we have the chain of inclusions
@@ -155,6 +156,7 @@ to be the event that the randomly generated graph contains the edge connecting $
 $$
 \operatorname{Pr}\big(\lbrace a,b\rbrace \in\operatorname{Edges}(G)\big) = \operatorname{Pr}(A_{\lbrace a,b\rbrace }) = p,
 $$
+
 and these events are all independent of each other.
 
 We now turn our attention to infinite graphs. It turns out that random graphs constructed this way are almost always all isomorphic to each other. This is because a graph constructed this way is almost always universal!
@@ -184,7 +186,7 @@ $$
 \end{align*}
 $$
 
-as $0<p^{\|S\|}(1-p)^{\|T\|}<1$. Now, the event that the random graph is *not* universal is
+as $0<p^{\vert S\vert}(1-p)^{\vert T\vert}<1$. Now, the event that the random graph is *not* universal is
 
 $$
 \bigcup_{n\in\mathbb{N}}\bigcup_{S\in\binom{\mathbb{N}}{k}}\bigcup_{n\in\mathbb{N}}\bigcup_{T\in\binom{\mathbb{N}\setminus S}{k}}\Bigg(\bigcap_{a\in\mathbb{N}\setminus(S\cup T)}A(S,T,a)^c\Bigg),
