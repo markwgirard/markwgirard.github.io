@@ -25,7 +25,7 @@ $$
 (where we recall that given a set $S$ and an integer $k$, the notation $\binom{S}{k}$ is used to denote the collection of all subsets of $S$ containing exactly $k$ elements).  We may write $\operatorname{Vertices}(G)=V$ and $\operatorname{Edges}(G)=E$. Two distinct vertices $a,b\in \operatorname{Vertices}(G)$ are said to be *adjacent* in $G$ if it holds that
 
 $$
-\{a,b\}\in \operatorname{Edges}(G)
+\lbrace a,b\rbrace \in \operatorname{Edges}(G)
 $$
 
 and not adjacent otherwise.
@@ -39,7 +39,7 @@ $$
 with the property that, for every choice of distinct pairs of vertices $a,b\in\operatorname{Vertices}(G)$, we have the equivalence
 
 $$
-\{a,b\}\in \operatorname{Edges}(G)\iff\{f(a),f(b)\}\in \operatorname{Edges}(H).
+\lbrace a,b\rbrace \in \operatorname{Edges}(G)\iff\lbrace f(a),f(b)\rbrace \in \operatorname{Edges}(H).
 $$
 
 Graph isomorphism defines an equivalence relation on a collection of graphs.
@@ -53,7 +53,7 @@ The set of vertices in a graph is usually taken to be finite, but there is no re
 Symbolically, a graph $G$ is universal if the following statement holds:
 
 $$
-\forall n,k\in \mathbb{N},\,\forall S\in\binom{\mathbb{N}}{n},\,\forall T\in\binom{\mathbb{N}\setminus S}{k},\, \exists a\in \mathbb{N}\setminus(S\cup T), \,\forall s\in S\cup T, \bigg(s\in S \iff \{a,s\}\in\operatorname{Edges}(G)\bigg)
+\forall n,k\in \mathbb{N},\,\forall S\in\binom{\mathbb{N}}{n},\,\forall T\in\binom{\mathbb{N}\setminus S}{k},\, \exists a\in \mathbb{N}\setminus(S\cup T), \,\forall s\in S\cup T, \bigg(s\in S \iff \lbrace a,s\rbrace \in\operatorname{Edges}(G)\bigg)
 $$
 
 Fascinatingly, it turns out that all universal graphs are isomorphic!
@@ -68,12 +68,12 @@ $$
 
 for each $n\in\mathbb{N}$ recursively as follows.
 
-Define $A_1=\{1\}$ and $f_1(1)=1$. Note that $f_1$ is injective and trivially satisfies the relations $\{1\}\subseteq A_1$ and $\{1\}\subseteq f_1(A_1)$.
+Define $A_1=\lbrace  1\rbrace $ and $f_1(1)=1$. Note that $f_1$ is injective and trivially satisfies the relations $$\lbrace  1\rbrace \subseteq A_1$$ and $\lbrace 1\rbrace \subseteq f_1(A_1)$.
 
 Given a number $n\in\mathbb{N}$, suppose we have defined $A_n$ and $f_n$ such that $f_n$ is injective and satisfies the properties that
 
 $$
-\{1,2,\dots n\}\subseteq A_n \quad\text{and}\quad \{1,2,\dots n\}\subseteq f_n(A_n).
+\lbrace 1,2,\dots n\rbrace \subseteq A_n \quad\text{and}\quad \lbrace 1,2,\dots n\rbrace \subseteq f_n(A_n).
 $$
 
 Consider two cases concerning whether $n+1\in f_n(A_n)$.
@@ -81,7 +81,7 @@ Consider two cases concerning whether $n+1\in f_n(A_n)$.
 - Conversely, if $n+1\notin f_n(A_n)$, by universality of $G$, there exists a choice of vertex $a\in\mathbb{N}\setminus A_n$ such that, for all $s\in A_n$, the equivalence
 
 $$
-\{a,s\}\in \operatorname{Edges}(G) \iff \{n+1,f_n(s)\}\in\operatorname{Edges}(H)
+\lbrace  a,s\rbrace \in \operatorname{Edges}(G) \iff \lbrace n+1,f_n(s)\rbrace \in\operatorname{Edges}(H)
 $$
 
   holds.
@@ -92,7 +92,7 @@ Similarly, consider the following cases:
 - Otherwise, analogous to the step above, by universality of $H$ there exists a choice of vertex $b\in\mathbb{N}\setminus f_n(A_n)$ such that, for all $s\in A_n$, the equivalence
 
 $$
-\{n+1,s\}\in \operatorname{Edges}(G) \iff \{b,f_n(s)\}\in\operatorname{Edges}(H)
+\lbrace n+1,s\rbrace \in \operatorname{Edges}(G) \iff \lbrace b,f_n(s)\rbrace \in\operatorname{Edges}(H)
 $$
 
    holds.
@@ -100,15 +100,15 @@ $$
 Regardless of which of the cases above were used, define
 
 $$
-A_{n+1} = A_n\cup\{n+1, a\}
+A_{n+1} = A_n\cup\lbrace n+1, a\rbrace
 $$
 
-and $f_{n+1}:A_{n+1}\to\mathbb{N}$ as $f_{n+1}(s)= f_n(s)$ for every $s\in A_n\setminus\{n+1,a\}$, and
+and $f_{n+1}:A_{n+1}\to\mathbb{N}$ as $f_{n+1}(s)= f_n(s)$ for every $s\in A_n\setminus\lbrace n+1,a\rbrace $, and
 
 $$
 f_{n+1}(n+1) = b \quad\text{and}\quad f_{n+1}(a) = n+1.
 $$
-It is evident that $f_{n+1}$ is injective, and that $\{1,\dots,n+1\}\subseteq A_{n+1}\cap f_{n+1}(A_{n+1})$.
+It is evident that $f_{n+1}$ is injective, and that $\lbrace 1,\dots,n+1\rbrace \subseteq A_{n+1}\cap f_{n+1}(A_{n+1})$.
 
 With the subsets $A_1,A_2,\dots$ and functions $f_1,f_2,\dots$ defined this way, note that we have the chain of inclusions
 
@@ -119,7 +119,7 @@ $$
 Moreover, for every $n\in\mathbb{N}$, it holds that $f_{n+1}\|_{A_n} = f_n$ and for pair of distinct numbers $a,b\in A_n$ we have the equivalence
 
 $$
-\{a,b\}\in \operatorname{Edges}(G) \iff \{f_n(a),f_n(b)\}\in \operatorname{Edges}(H).
+\lbrace a,b\rbrace \in \operatorname{Edges}(G) \iff \lbrace f_n(a),f_n(b)\rbrace \in \operatorname{Edges}(H).
 $$
 
 We may now define the desired graph isomorphism $f:\mathbb{N}\to\mathbb{N}$ as
@@ -147,13 +147,13 @@ $$
 where $\mathcal{P}(S)$ denotes the power set of a set $S$. For each pair of distinct elements $a,b\in V$, define
 
 $$
-A_{\{a,b\}} = \big\{G\in \operatorname{Graph}(V)\,:\, \{a,b\}\in\operatorname{Edges}(G)\big\}
+A_{\lbrace a,b\rbrace } = \big\lbrace G\in \operatorname{Graph}(V)\,:\, \lbrace a,b\rbrace \in\operatorname{Edges}(G)\big\rbrace
 $$
 
 to be the event that the randomly generated graph contains the edge connecting $a$ and $b$ such that
 
 $$
-\operatorname{Pr}\big(\{a,b\}\in\operatorname{Edges}(G)\big) = \operatorname{Pr}(A_{\{a,b\}}) = p,
+\operatorname{Pr}\big(\lbrace a,b\rbrace \in\operatorname{Edges}(G)\big) = \operatorname{Pr}(A_{\lbrace a,b\rbrace }) = p,
 $$
 and these events are all independent of each other.
 
@@ -164,7 +164,7 @@ We now turn our attention to infinite graphs. It turns out that random graphs co
 *Proof.* We prove that the set of graphs that are not universal is a set of measure zero. Given disjoint finite sets $S,T\subseteq\mathbb{N}$ and a number $a\in\mathbb{N}\setminus (S\cup T)$, let $A(S,T,a)$ denote the event that in the graph $G$, the vertex $a$ is adjacent to every vertex in $S$ and not adjacent to every vertex in $T$. That is,
 
 $$
-A(S,T,a) = \Bigg(\bigcup_{s\in S} A_{\{a,t\}}\Bigg)\cup\Bigg(\bigcup_{t\in T} (A_{\{a,t\}})^c\Bigg).
+A(S,T,a) = \Bigg(\bigcup_{s\in S} A_{\lbrace a,t\rbrace }\Bigg)\cup\Bigg(\bigcup_{t\in T} (A_{\lbrace a,t\rbrace })^c\Bigg).
 $$
 
 Note that the probability of this event is given by
