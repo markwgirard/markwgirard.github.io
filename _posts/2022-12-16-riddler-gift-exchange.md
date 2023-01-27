@@ -244,7 +244,12 @@ A_{\lbrace i,j\rbrace } = \lbrace \pi\in S_m\,:\, \pi(i)=j,\, \pi(j)=i\rbrace .
 $$
 
 The collection of all permutations in $S_m$ that have no 2-cycles can be expressed as
-$$S_n\setminus \Bigg(\bigcup_{\substack{i,j\in\lbrace 1,2,\dots,m\rbrace \\i\neq j}}A_{\lbrace i,j\rbrace }\Bigg).\tag{1}$$The cardinality of this set is equal to $a_{m,0}$. We will prove that
+
+$$
+S_n\setminus \Bigg(\bigcup_{\substack{i,j\in\lbrace 1,2,\dots,m\rbrace \\i\neq j}}A_{\lbrace i,j\rbrace }\Bigg).\tag{1}
+$$
+
+The cardinality of this set is equal to $a_{m,0}$. We will prove that
 
 $$
 a_{m,0} = m!\sum_{k=0}^{\lfloor m/2\rfloor}\frac{(-1)^{k} }{2^k k!}.
@@ -347,7 +352,7 @@ $$
 as desired.
 
 ### Back to permutations with $k$ disjoint 2-cycles
-We finally return to counting the permutations of $\lbrace 1,2,\dots,n\rbrace $ that contain exactly $k$ 2-cycles. This is
+We finally return to counting the permutations of $\lbrace 1,2,\dots,n\rbrace$ that contain exactly $k$ disjoint 2-cycles. This is
 
 $$
 \begin{align*}
