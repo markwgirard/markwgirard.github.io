@@ -38,16 +38,18 @@ In the variant problem that I considered, each participant writes their own name
 Suppose there are $n$ initial participants. (Note that $n$ must be even or the game doesn't work.) Miraculously, it turns out that the expected number of rounds that must be played until completion is simply $n$.
 
 That is, if we let $E_n$ denote the expected number of rounds that must be played in a game that starts with $n$ players until every one is paired off, it holds that
+
 $$
 E_n = n
 $$
+
 when $n$ is even (and $E_n=\infty$ otherwise).
 
 Despite the solution having a simple expression, I was unable to come up with a simple argument. I have a long convoluted method to determine this answer, that involves counting certain types of permutations. The proof is convoluted, but the simple expression for the answer makes me believe that perhaps there is a simpler way... oh well.
 
 ### Permutations and cycles
 
-Suppose there are $n$ participants at the start of a given round. We may identify the names with the numbers $1$ to $n$. The set of permutations of $\{1,2,\dots, n\}$ is denoted $S_n$ (i.e., the [symmetric group](https://en.wikipedia.org/wiki/Symmetric_group) of $n$ elements). Now, when does a permutation of the participants have two people perfectly pair up? This requires two people to take each other's names. We can express this mathematically by saying that the permutation has a *cycle* of size 2.
+Suppose there are $n$ participants at the start of a given round. We may identify the names with the numbers $1$ to $n$. The set of permutations of $\{1,2,\dots, n\rbrace $ is denoted $S_n$ (i.e., the [symmetric group](https://en.wikipedia.org/wiki/Symmetric_group) of $n$ elements). Now, when does a permutation of the participants have two people perfectly pair up? This requires two people to take each other's names. We can express this mathematically by saying that the permutation has a *cycle* of size 2.
 
 Let's recall now the cycle representation of a permutation. Consider the permutation $\pi\in S_6$ defined by the following diagram:
 
@@ -77,7 +79,7 @@ For non-negative integers $n$ and $k$:
 - Let $E_n$ denote the expected number of rounds that the game will last when it begins with $n$ participants.
 When $n=0$, there is no game to be played as there are no remaining participants to pair up and thus $E_0 = 0$. However, if $n$ is odd then it will be impossible to pair off everybody in the group, and thus $E_n$ is infinite. We have already determined that $E_2=2$.
 
-Otherwise, if $n$ is even and positive, then $n=2m$ for some positive integer $m$. In a round that starts with $2m$ players there will be some number $k\in\lbrace 0,1,\dots, m\}$ of pairs that form, and the next round starts with $E_{2m-2k}$ players. It follows that
+Otherwise, if $n$ is even and positive, then $n=2m$ for some positive integer $m$. In a round that starts with $2m$ players there will be some number $k\in\lbrace 0,1,\dots, m\rbrace$ of pairs that form, and the next round starts with $E_{2m-2k}$ players. It follows that
 
 $$
 E_{2m} = 1 + \sum_{k=0}^{m} p_{2m,k} E_{2(m-k)}.
@@ -129,12 +131,14 @@ $$
 We proceed now with the statement of the main result.
 
 >**Proposition.** Let $E_n$ denote the expected number of rounds in a game that starts with $n$ players. It holds that
->$$
+
+$$
 E_{2m} = 2m
 $$
+
 >for all $m\in\mathbb{N}$.
 
-*Proof.* We proceed by induction. As discussed above, the trivial game requires no rounds so $E_0=0$. Let $m\in\mathbb{N}$ and suppose that $E_{2k} = 2k$ holds for all integers $k\in\{0,1,\dots,m\}$. Note that
+*Proof.* We proceed by induction. As discussed above, the trivial game requires no rounds so $E_0=0$. Let $m\in\mathbb{N}$ and suppose that $E_{2k} = 2k$ holds for all integers $k\in\{0,1,\dots,m\rbrace $. Note that
 
 $$\tag{$\ast$}
 E_{2m} = \sum_{k=1}^m p_{2m,m-k}E_{2k}= 2m
@@ -233,14 +237,14 @@ $$
 To see this, note that we can count the number of ways to partition $2k$ elements into $k$ disjoint ordered pairs in two different ways. One way is to partition the $2k$ elements into $k$ unordered pairs, then decide on an ordering for each pair. Another way is to choose $k$ of the $2k$ elements to be the first elements of each pair, then arrange the remaining $k$ elements with the chosen $k$ elements. It follows that $$a_{2k,k}2^k=\binom{2k}{k}k!$$and the result follows. It remains to determine an expression for $a_{m,0}$ for an integer $m$.
 
 ### Permutations with *no* 2-cycles
-Note that $a_{m,0}$ is the number of permutations of $m$ elements containing no 2-cycles. To find an expression for this number, for each distinct subset $\lbrace i,j\}\subset\lbrace 1,2,\dots,m\}$ of exactly two elements, define $A_{\lbrace i,j\}}$ as the set of all permutations of $\lbrace 1,2,\dots,m\}$ for which $(ij)$ is a 2-cycle. That is,
+Note that $a_{m,0}$ is the number of permutations of $m$ elements containing no 2-cycles. To find an expression for this number, for each distinct subset $\lbrace i,j\rbrace \subset\lbrace 1,2,\dots,m\rbrace $ of exactly two elements, define $A_{\lbrace i,j\rbrace}$ as the set of all permutations of $\lbrace 1,2,\dots,m\rbrace $ for which $(ij)$ is a 2-cycle. That is,
 
 $$
-A_{\lbrace i,j\}} = \lbrace \pi\in S_m\,:\, \pi(i)=j,\, \pi(j)=i\}.
+A_{\lbrace i,j\rbrace } = \lbrace \pi\in S_m\,:\, \pi(i)=j,\, \pi(j)=i\rbrace .
 $$
 
 The collection of all permutations in $S_m$ that have no 2-cycles can be expressed as
-$$S_n\setminus \Bigg(\bigcup_{\substack{i,j\in\lbrace 1,2,\dots,m\}\\i\neq j}}A_{\lbrace i,j\}}\Bigg).\tag{1}$$The cardinality of this set is equal to $a_{m,0}$. We will prove that
+$$S_n\setminus \Bigg(\bigcup_{\substack{i,j\in\lbrace 1,2,\dots,m\rbrace \\i\neq j}}A_{\lbrace i,j\rbrace }\Bigg).\tag{1}$$The cardinality of this set is equal to $a_{m,0}$. We will prove that
 
 $$
 a_{m,0} = m!\sum_{k=0}^{\lfloor m/2\rfloor}\frac{(-1)^{k} }{2^k k!}.
@@ -249,13 +253,13 @@ $$
 #### Inclusion--Exclusion Principle
 If one wants to count the number of elements in the union $A\cup B$ of two finite sets $A$ and $B$, one way to do this is to use the formula $$\vert A\cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A\cap B\vert .$$This can be observed that $\vert A\vert +\vert B\vert $ is too large, because the elements in the intersection have been double counted. This technique can be generalizes to any finite number of finite sets.
 
-Let $\lbrace A_a\,:\, a\in\Omega\}$ be a finite family of finite sets indexed by some finite index set $\Omega$. First some notation. For a fixed integer $k$, the collection of all subsets of $\Omega$ having exactly $k$ elements is expressed as
+Let $\lbrace A_a\,:\, a\in\Omega\rbrace $ be a finite family of finite sets indexed by some finite index set $\Omega$. First some notation. For a fixed integer $k$, the collection of all subsets of $\Omega$ having exactly $k$ elements is expressed as
 
 $$
-\binom{\Omega}{k} = \lbrace B\subset \Omega\,:\, \vert B\vert =k\}.
+\binom{\Omega}{k} = \lbrace B\subset \Omega\,:\, \vert B\vert =k\rbrace .
 $$
 
-To count the number of elements in the union of every set in $\lbrace A_a\,:\,a\in\Omega\}$, we can count the number of elements the intersection of every possible subfamily and apply a useful formula. Namely,
+To count the number of elements in the union of every set in $\lbrace A_a\,:\,a\in\Omega\rbrace $, we can count the number of elements the intersection of every possible subfamily and apply a useful formula. Namely,
 
 $$
 \bigg\vert \bigcup_{a\in\Omega}A_a\bigg\vert  = \sum_{k=1}^{\vert \Omega\vert }(-1)^{k+1} \sum_{B\in\binom{\Omega}{k}}\bigg\vert \bigcap_{b\in B}A_b\bigg\vert .
@@ -267,7 +271,7 @@ In words, to count the number of elements in a finite union of finite sets, firs
 Let us now use the inclusion--exclusion principle to find an expression for the cardinality of the set in (1). For brevity we use the notation
 
 $$
-\Omega_m=\lbrace 1,2,\dots,m\}.
+\Omega_m=\lbrace 1,2,\dots,m\rbrace .
 $$
 
 For an integer $k$, we define
@@ -279,37 +283,37 @@ $$
 as the collection of all sets of $k$ distinct pairs of elements of $\Omega_m$. For example,
 
 $$
-B_{3,2} = \Big\lbrace \big\lbrace \lbrace 1,2\},\lbrace 1,3\}\big\},\, \big\lbrace \lbrace 1,2\},\lbrace 2,3\}\big\},\, \big\lbrace \lbrace 1,3\},\lbrace 2,3\}\big\}\Big\}
+B_{3,2} = \Big\lbrace \big\lbrace \lbrace 1,2\rbrace ,\lbrace 1,3\rbrace \big\rbrace ,\, \big\lbrace \lbrace 1,2\rbrace ,\lbrace 2,3\rbrace \big\rbrace ,\, \big\lbrace \lbrace 1,3\rbrace ,\lbrace 2,3\rbrace \big\rbrace \Big\rbrace
 $$
 
 Note that
 
 $$
 \begin{align*}
-\Bigg\vert \bigcup_{\substack{\lbrace i,j\}\in\binom{\Omega_m}{2}}} A_{\lbrace i,j\}} \Bigg\vert = \sum_{k=1}^{\big\vert \binom{\Omega_m}{2}\big\vert }(-1)^{k+1}\sum_{B\in B_{m,k}} \bigg\vert\bigcap_{\lbrace i,j\}\in B}A_{\lbrace i,j\}}\bigg\vert.
+\Bigg\vert \bigcup_{\substack{\lbrace i,j\rbrace \in\binom{\Omega_m}{2}}} A_{\lbrace i,j\rbrace } \Bigg\vert = \sum_{k=1}^{\big\vert \binom{\Omega_m}{2}\big\vert }(-1)^{k+1}\sum_{B\in B_{m,k}} \bigg\vert\bigcap_{\lbrace i,j\rbrace \in B}A_{\lbrace i,j\rbrace }\bigg\vert.
 \end{align*}
 
 $$
 Now, if a collection $B\in B_{m,k}$ is not pairwise disjoint then one has that
 
 $$
-\bigcap_{\lbrace i,j\}\in B}A_{\lbrace i,j\}} = \emptyset.
+\bigcap_{\lbrace i,j\rbrace \in B}A_{\lbrace i,j\rbrace } = \emptyset.
 $$
 
-Indeed, an element of $\Omega_m=\lbrace 1,2,\dots,m\}$ cannot be in more than one 2-cycle of a given permutation of $\Omega_m$. The only non-empty intersections are those where the family $B$ consists of pairwise disjoint subsets of size 2.
+Indeed, an element of $\Omega_m=\lbrace 1,2,\dots,m\rbrace $ cannot be in more than one 2-cycle of a given permutation of $\Omega_m$. The only non-empty intersections are those where the family $B$ consists of pairwise disjoint subsets of size 2.
 
 A family $B\in B_{m,k}$ that is pairwise disjoint is of the form
 
 $$
-B = \big\lbrace \lbrace i_1,j_1\},\dots,\lbrace i_k,j_k\}\big\},
+B = \big\lbrace \lbrace i_1,j_1\rbrace ,\dots,\lbrace i_k,j_k\rbrace \big\rbrace ,
 $$
 
 where the elements $i_1,\dots,i_k,j_1,\dots,j_k$ are all distinct.
 
-To find the cardinality of $A_{\lbrace i_1,j_1\}}\cap\cdots\cap A_{\lbrace i_k,j_k\}}$, we count the number of permutations that contain the $k$ 2-cycles $(i_1,j_1), \cdots, (i_kj_k)$. To do so, we simply count the number of ways that the remaining $m-2k$ elements can be permuted, and thus
+To find the cardinality of $A_{\lbrace i_1,j_1\rbrace }\cap\cdots\cap A_{\lbrace i_k,j_k\rbrace }$, we count the number of permutations that contain the $k$ 2-cycles $(i_1,j_1), \cdots, (i_kj_k)$. To do so, we simply count the number of ways that the remaining $m-2k$ elements can be permuted, and thus
 
 $$
-\bigg\vert \bigcap_{\lbrace i,j\}\in B}A_{\lbrace i,j\}}\bigg\vert  = (m-2k)!.
+\bigg\vert \bigcap_{\lbrace i,j\rbrace \in B}A_{\lbrace i,j\rbrace }\bigg\vert  = (m-2k)!.
 $$
 
 The number of families $B\in B_{m,k}$ that are pairwise disjoint is equal to
@@ -318,19 +322,19 @@ $$
 \binom{m}{2k}a_{2k,k} = \binom{m}{2k}\frac{(2k)!}{2^k k!},
 $$
 
-as we may simply count the number of ways to select $2k$ elements from $\lbrace 1,2,\dots,m\}$ and subsequently decide how to pair up those $2k$ elements into $k$ pairs.
+as we may simply count the number of ways to select $2k$ elements from $\lbrace 1,2,\dots,m\rbrace $ and subsequently decide how to pair up those $2k$ elements into $k$ pairs.
 
 It follows that
 
 $$
 \begin{align*}
-\bigcup_{\substack{\lbrace i,j\}\in\binom{\Omega_m}{2}}} A_{\lbrace i,j\}}
+\bigcup_{\substack{\lbrace i,j\rbrace \in\binom{\Omega_m}{2}}} A_{\lbrace i,j\rbrace }
 &= \sum_{k=1}^{\lfloor m/2\rfloor}(-1)^{k+1}\binom{m}{2k}\frac{(2k)!}{2^k k!}(m-2k)!\\
 & = m!\sum_{k=1}^{\lfloor m/2\rfloor}\frac{(-1)^{k+1} }{2^k k!}
 \end{align*}
 $$
 
-Finally, the number of permutations of $\lbrace 1,2,\dots,m\}$ containing no 2-cycles is equal to
+Finally, the number of permutations of $\lbrace 1,2,\dots,m\rbrace $ containing no 2-cycles is equal to
 
 $$
 \begin{align*}
@@ -343,7 +347,7 @@ $$
 as desired.
 
 ### Back to permutations with $k$ disjoint 2-cycles
-We finally return to counting the permutations of $\lbrace 1,2,\dots,n\}$ that contain exactly $k$ 2-cycles. This is
+We finally return to counting the permutations of $\lbrace 1,2,\dots,n\rbrace $ that contain exactly $k$ 2-cycles. This is
 
 $$
 \begin{align*}
