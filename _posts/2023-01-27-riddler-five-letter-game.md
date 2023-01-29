@@ -45,9 +45,11 @@ If the original game can be described as "place 5 randomly chosen letters from a
 - "place 1 randomly chosen letter from a 6-letter alphabet into 1 slot".
 
 More generally, suppose we are playing a game in which we are randomly given $k$ letters from an $n$-letter alphabet that we must place into $k$ slots in order. Each of the $n$ letters has a $1/n$ probability of being the first letter to be selected. Suppose letter $j\in\lbrace 1,2,\dots,n\rbrace$ is the first letter drawn. If we decide to place this letter $j$ into the $i^\text{th}$ slot (where $i\in\lbrace 1,2,\dots,k\rbrace$), the probability that of the remaining ($k-1$) letters, there are $(i-1)$ chosen from the first $(j-1)$ letters and $(k-i)$ letters chosen from the remaining $(n-j)$ letters is
+
 $$
 \frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}.
 $$
+
 If this does *not* happen, we are guaranteed to lose, but if that *does* happen, we are effectively left with with two separate games: one where we must place $(i-1)$ randomly chosen letters from the first $(j-1)$ letters of the alphabet, and another where we must place $(k-i)$ randomly chosen letters from the last $(n-j)$ letters of the alphabet. To find the optimal odds of winning, we have to maximize over all possible choices $i\in\lbrace 1,2,\dots, k\rbrace$ of where to place letter $j$. Finally, to compute the optimal odds of winning the whole game, we add up the optimal probabilities of winning in each of the $n$ different cases for the first letter $j\in\lbrace 1,2,\dots, n\rbrace$.
 
 If we let $p(n,k)$ denote the the optimal probability of winning a game with an $n$-letter alphabet where we must place $k$ letters, we have
