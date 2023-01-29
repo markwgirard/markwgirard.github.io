@@ -9,11 +9,6 @@ tags: riddler, programming
   src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<style>
-.tablelines table, .tablelines td, .tablelines th {
-        border: 1px solid black;
-        }
-</style>
 
 My solution to [this week's riddler](https://fivethirtyeight.com/features/can-you-defeat-the-tiktok-meme/). (See more of [my Riddler solutions here](/riddlers).)
 
@@ -36,8 +31,7 @@ To get a sense of how to solve this problem more generally, let's look at an exa
 
 |   |   |   | s |   |
 |---|---|---|---|---|
-||||||
-{: .tablelines}
+|1|2|3|4|5|
 
 After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from "a" to "r" (17 letters) and exactly one is in the range from "t" to "z" (6 letters). Given that 4 more letters total must be selected out of the remaining 24, the odds of us having a chance of not losing are
 
