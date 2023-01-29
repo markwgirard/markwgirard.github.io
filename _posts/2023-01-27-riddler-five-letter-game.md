@@ -53,7 +53,7 @@ If this does *not* happen, we are guaranteed to lose, but if that *does* happen,
 If we let $p(n,k)$ denote the the optimal probability of winning a game with an $n$-letter alphabet where we must place $k$ letters, we have
 
 $$
-p(n,k) = \frac{1}{n}\sum_{j=1}^n \max\Bigg\lbrace \frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}p(j-1,i-1)p(n-j, k-i)\,:\, i\in\lbrace 1,\dots,k\rbrace \Bigg\rbrace .
+p(n,k) = \frac{1}{n}\sum_{j=1}^n \max\Bigg\lbrace \frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}p(j-1,i-1)p(n-j, k-i)\quad:\quad i\in\lbrace 1,\dots,k\rbrace \Bigg\rbrace .
 $$
 
 Let's note a few edge cases. If there are no letters left to place (i.e., $k=0$) then we win by default, and thus $p(n,0)=1$ for every $n\in\mathbb{N}$. Moreover, if the number of slots remaining is exactly equal to the size of the alphabet we pick from, then we can win simply by placing each letter as it appears in its ordered slot, and thus $p(n,n)=1$.
