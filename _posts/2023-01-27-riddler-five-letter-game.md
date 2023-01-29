@@ -37,7 +37,7 @@ $$
 \frac{\binom{17}{3}\binom{6}{1}}{\binom{24}{4}}
 $$
 
-because, out of the $\binom{24}{4}$ ways that the remaining 4 letters can be chosen, we can only win if 3 of the letters come from the first 17 letters of the alphabet and the last 1 is chosen from the final 6 letters.  Supposing that we *do* get lucky enough to get this kind of combination for the remaining letters, what is the best probability of winning at the end? It turns out that we can view the remaining game as two separate similarly structured sub-games!
+because, out of the $\binom{24}{4}$ ways that the remaining 4 letters can be chosen, we can only win if 3 of the letters come from the first 17 letters of the alphabet and the remaining 1 letter is chosen from the final 6 letters.  Supposing that we *do* get lucky enough to get this kind of combination for the remaining letters, what is the best probability of winning at the end? It turns out that we can view the remaining game as two separate similarly structured sub-games!
 
 If the original game can be described as "place 5 randomly chosen letters from an alphabet of size 25 into 5 slots in order", then if we are guaranteed to get three more letters from the first 17 letters and one more letter from the final 6, the remaining game (after placing the "s" in the fourth slot) can be described as a combination of the two following sub-games:
 
