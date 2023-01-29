@@ -44,16 +44,16 @@ If the original game can be described as "place 5 randomly chosen letters from a
 - "place 3 randomly chosen letters from a 17-letter alphabet into 3 slots" and
 - "place 1 randomly chosen letter from a 6-letter alphabet into 1 slot".
 
-More generally, suppose we are playing a game in which we are randomly given $k$ letters from an $n$-letter alphabet that we must place into $k$ slots in order. Each of the $n$ letters has a $1/n$ probability of being the first letter to be selected. Suppose letter $j\in\{1,2,\dots,n\}$ is the first letter drawn. If we decide to place this letter $j$ into the $i^\text{th}$ slot (where $i\in\{1,2,\dots,k\}$), the probability that of the remaining ($k-1$) letters, there are $(i-1)$ chosen from the first $(j-1)$ letters and $(k-i)$ letters chosen from the remaining $(n-j)$ letters is
+More generally, suppose we are playing a game in which we are randomly given $k$ letters from an $n$-letter alphabet that we must place into $k$ slots in order. Each of the $n$ letters has a $1/n$ probability of being the first letter to be selected. Suppose letter $j\in\lbrace 1,2,\dots,n\rbrace $ is the first letter drawn. If we decide to place this letter $j$ into the $i^\text{th}$ slot (where $i\in\lbrace 1,2,\dots,k\rbrace $), the probability that of the remaining ($k-1$) letters, there are $(i-1)$ chosen from the first $(j-1)$ letters and $(k-i)$ letters chosen from the remaining $(n-j)$ letters is
 $$
 \frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}.
 $$
-If this does *not* happen, we are guaranteed to lose, but if that *does* happen, we are effectively left with with two separate games: one where we must place $(i-1)$ randomly chosen letters from the first $(j-1)$ letters of the alphabet, and another where we must place $(k-i)$ randomly chosen letters from the last $(n-j)$ letters of the alphabet. To find the optimal odds of winning, we have to maximize over all possible choices $i\in\{1,2,\dots, k\}$ of where to place letter $j$. Finally, to compute the optimal odds of winning the whole game, we add up the optimal probabilities of winning in each of the $n$ different cases for the first letter $j\in\{1,2,\dots, n\}$.
+If this does *not* happen, we are guaranteed to lose, but if that *does* happen, we are effectively left with with two separate games: one where we must place $(i-1)$ randomly chosen letters from the first $(j-1)$ letters of the alphabet, and another where we must place $(k-i)$ randomly chosen letters from the last $(n-j)$ letters of the alphabet. To find the optimal odds of winning, we have to maximize over all possible choices $i\in\lbrace 1,2,\dots, k\rbrace $ of where to place letter $j$. Finally, to compute the optimal odds of winning the whole game, we add up the optimal probabilities of winning in each of the $n$ different cases for the first letter $j\in\lbrace 1,2,\dots, n\rbrace $.
 
 If we let $p(n,k)$ denote the the optimal probability of winning a game with an $n$-letter alphabet where we must place $k$ letters, we have
 
 $$
-p(n,k) = \frac{1}{n}\sum_{j=1}^n \max\Bigg\{\frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}p(j-1,i-1)p(n-j, k-i)\,:\, i\in\{1,\dots,k\}\Bigg\}.
+p(n,k) = \frac{1}{n}\sum_{j=1}^n \max\Bigg\lbrace \frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}p(j-1,i-1)p(n-j, k-i)\,:\, i\in\lbrace 1,\dots,k\rbrace \Bigg\rbrace .
 $$
 
 Let's note a few edge cases. If there are no letters left to place (i.e., $k=0$) then we win by default, and thus $p(n,0)=1$ for every $n\in\mathbb{N}$. Moreover, if the number of slots remaining is exactly equal to the size of the alphabet we pick from, then we can win simply by placing each letter as it appears in its ordered slot, and thus $p(n,n)=1$.
@@ -107,7 +107,7 @@ Suppose you are given 5 independent and uniformly distributed random numbers on 
 Using similar arguments as above in the finite-alphabet game, we arrive at the following recursive expression for $p(k)$, the optimal probability of winning the continuous $k$-letter challenge:
 
 $$
-p(k) = \int_0^1 \max_{i\in\{1,\dots,k\}} \Bigg(\binom{k-1}{i-1}x^{i-1}(1-x)^{k-i}p(i-1)p(k-i)\Bigg)\mathrm{d}x
+p(k) = \int_0^1 \max_{i\in\lbrace 1,\dots,k\rbrace } \Bigg(\binom{k-1}{i-1}x^{i-1}(1-x)^{k-i}p(i-1)p(k-i)\Bigg)\mathrm{d}x
 $$
 
 I've worked out the first few exact values of this probability, all the way up to the continuous 5-letter challenge.
