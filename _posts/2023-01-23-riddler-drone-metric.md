@@ -47,15 +47,15 @@ so the average distance as the drone flies is equal to $2/3$.
 Now let's figure out what the expected distance the scooter has to  travel given a randomly chosen point in the City. Given a point $(x,y)$ in the disc, the distance (as the scooter drives) from the center to that point is given by
 
 $$
-\Vert(x,y)\Vert_{\text{scooter}} = |x| + |y|.
+\Vert(x,y)\Vert_{\text{scooter}} = \vert x\vert + \vert y\vert.
 $$
 
-Parameterizing the disc in polar coordinates to that $x=r\cos\theta$ and $y=r\sin\theta$, and this expression becomes $r(|\sin\theta| + |\cos\theta|)$. To compute the expected distance in the taxicab metric, we can simplify the integral by integrating only over the quadrant where $\cos\theta$ and $\sin\theta$ are both positive and multiply the result by $4$. We have
+Parameterizing the disc in polar coordinates to that $x=r\cos\theta$ and $y=r\sin\theta$, and this expression becomes $r(\vert \sin\theta\vert  + \vert \cos\theta\vert)$. To compute the expected distance in the taxicab metric, we can simplify the integral by integrating only over the quadrant where $\cos\theta$ and $\sin\theta$ are both positive and multiply the result by $4$. We have
 
 $$
 \begin{align*}
 E_{\text{scooter}}
-&= \frac{1}{\pi}\int_{\text{City}}r\big(|\sin\theta| + |\cos\theta|\big)\, \operatorname{d}\mspace{-1mu}A\\
+&= \frac{1}{\pi}\int_{\text{City}}r\big(\vert \sin\theta\vert  + \vert \cos\theta\vert \big)\, \operatorname{d}\mspace{-1mu}A\\
 &= \frac{4}{\pi}\int_0^{\pi/2}\int_0^1r^2(\sin\theta + \cos\theta)\, \operatorname{d} \mspace{-1mu}r\,\operatorname{d} \mspace{-1mu}\theta\\
 &= \frac{4}{\pi}\Big(\int_0^{\pi/2}(\sin\theta + \cos\theta)\,\operatorname{d} \mspace{-1mu}\theta\Big)\frac{1}{3}\\
 & = \frac{8}{3\pi}.

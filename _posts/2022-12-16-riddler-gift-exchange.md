@@ -49,7 +49,7 @@ Despite the solution having a simple expression, I was unable to come up with a 
 
 ### Permutations and cycles
 
-Suppose there are $n$ participants at the start of a given round. We may identify the names with the numbers $1$ to $n$. The set of permutations of $\{1,2,\dots, n\rbrace $ is denoted $S_n$ (i.e., the [symmetric group](https://en.wikipedia.org/wiki/Symmetric_group) of $n$ elements). Now, when does a permutation of the participants have two people perfectly pair up? This requires two people to take each other's names. We can express this mathematically by saying that the permutation has a *cycle* of size 2.
+Suppose there are $n$ participants at the start of a given round. We may identify the names with the numbers $1$ to $n$. The set of permutations of $\lbrace 1,2,\dots, n\rbrace$ is denoted $S_n$ (i.e., the [symmetric group](https://en.wikipedia.org/wiki/Symmetric_group) of $n$ elements). Now, when does a permutation of the participants have two people perfectly pair up? This requires two people to take each other's names. We can express this mathematically by saying that the permutation has a *cycle* of size 2.
 
 Let's recall now the cycle representation of a permutation. Consider the permutation $\pi\in S_6$ defined by the following diagram:
 
@@ -138,7 +138,7 @@ $$
 
 >for all $m\in\mathbb{N}$.
 
-*Proof.* We proceed by induction. As discussed above, the trivial game requires no rounds so $E_0=0$. Let $m\in\mathbb{N}$ and suppose that $E_{2k} = 2k$ holds for all integers $k\in\{0,1,\dots,m\rbrace $. Note that
+*Proof.* We proceed by induction. As discussed above, the trivial game requires no rounds so $E_0=0$. Let $m\in\mathbb{N}$ and suppose that $E_{2k} = 2k$ holds for all integers $k\in\lbrace 0,1,\dots,m\rbrace$. Note that
 
 $$\tag{$\ast$}
 E_{2m} = \sum_{k=1}^m p_{2m,m-k}E_{2k}= 2m
@@ -297,8 +297,8 @@ $$
 \begin{align*}
 \Bigg\vert \bigcup_{\substack{\lbrace i,j\rbrace \in\binom{\Omega_m}{2}}} A_{\lbrace i,j\rbrace } \Bigg\vert = \sum_{k=1}^{\big\vert \binom{\Omega_m}{2}\big\vert }(-1)^{k+1}\sum_{B\in B_{m,k}} \bigg\vert\bigcap_{\lbrace i,j\rbrace \in B}A_{\lbrace i,j\rbrace }\bigg\vert.
 \end{align*}
-
 $$
+
 Now, if a collection $B\in B_{m,k}$ is not pairwise disjoint then one has that
 
 $$
