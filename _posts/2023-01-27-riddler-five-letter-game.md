@@ -12,8 +12,6 @@ tags: riddler, programming
 
 My solution to [this week's riddler](https://fivethirtyeight.com/features/can-you-defeat-the-tiktok-meme/). (See more of [my Riddler solutions here](/riddlers).)
 
-## The Problem
-
 ## Riddler Classic
 
 From Angela Zhou comes a challenging meme analysis:
