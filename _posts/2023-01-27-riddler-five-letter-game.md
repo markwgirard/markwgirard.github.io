@@ -33,15 +33,15 @@ $$
 \underline{-} \underline{-}  \underline{-}  \underline{\text{s}}  \underline{-}
 $$
 
-After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from "a" to "r" (17 letters) and exactly one is in the range from "t" to "z" (6 letters). Given that 4 more letters total must be selected out of the remaining 24, the odds of us having a chance of not losing are
+After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from "a" to "r" (18 letters) and exactly one is in the range from "t" to "z" (6 letters). Given that 4 more letters total must be selected out of the remaining 24, the odds of us having a chance of not losing are
 
 $$
-\frac{\binom{17}{3}\binom{6}{1}}{\binom{24}{4}}
+\frac{\binom{18}{3}\binom{6}{1}}{\binom{25}{4}}
 $$
 
-because, out of the $\binom{24}{4}$ ways that the remaining 4 letters can be chosen, we can only win if 3 of the letters come from the first 17 letters of the alphabet and the remaining 1 letter is chosen from the final 6 letters.  Supposing that we *do* get lucky enough to get this kind of combination for the remaining letters, what is the best probability of winning at the end? It turns out that we can view the remaining game as two separate similarly structured sub-games!
+because, out of the $\binom{25}{4}$ ways that the remaining 4 letters can be chosen, we can only win if 3 of the letters come from the first 18 letters of the alphabet and the remaining 1 letter is chosen from the final 6 letters.  Supposing that we *do* get lucky enough to get this kind of combination for the remaining letters, what is the best probability of winning at the end? It turns out that we can view the remaining game as two separate similarly structured sub-games!
 
-If the original game can be described as "place 5 randomly chosen letters from an alphabet of size 25 into 5 slots in order", then if we are guaranteed to get three more letters from the first 17 letters and one more letter from the final 6, the remaining game (after placing the "s" in the fourth slot) can be described as a combination of the two following sub-games:
+If the original game can be described as "place 5 randomly chosen letters from an alphabet of size 26 into 5 slots in order", then if we are guaranteed to get three more letters from the first 17 letters and one more letter from the final 6, the remaining game (after placing the "s" in the fourth slot) can be described as a combination of the two following sub-games:
 
 - "place 3 randomly chosen letters from a 17-letter alphabet into 3 slots" and
 - "place 1 randomly chosen letter from a 6-letter alphabet into 1 slot".
@@ -89,10 +89,10 @@ def p(n, k):
 The standard English alphabet has 25 letters, and computing the result we find that
 
 $$
-p(25,5) \approx 0.255339.
+p(25,5) \approx 0.254335
 $$
 
-Hence playing optimally gives us approximately 25.5% chance of winning a game (although this result doesn't tell us anything about what the strategy is...).
+Hence playing optimally gives us approximately 25.4% chance of winning a game (although this result doesn't tell us anything about what the strategy is...).
 
 The following plot shows how the maximal probability of winning changes for different sizes of alphabet and different numbers of slots, outside of the standard 25-letter alphabet game with 5 slots. (The heat map uses a logarithmic scale, otherwise it wouldn't show much. )
 
@@ -105,7 +105,7 @@ What happens when the size of the alphabet gets infinitely large, but we keep th
 
 Indeed, with a 1,000-letter alphabet, we have:
 
-	`p(1000,5) = 0.222138.`
+	`p(1000, 5) = 0.222138.`
 
 In the limit as $n\to\infty$, this game approaches what I'm calling "The Blind Continuum Challenge". That is, the "letters" are picked uniformly at random from the unit interval. This game can be described as follows.
 
@@ -117,7 +117,7 @@ $$
 p(k) = \int_0^1 \max_{i\in\lbrace 1,\dots,k\rbrace } \Bigg(\binom{k-1}{i-1}x^{i-1}(1-x)^{k-i}p(i-1)p(k-i)\Bigg)\mathrm{d}x
 $$
 
-I've worked out the first few exact values of this probability, all the way up to the continuous 5-letter challenge.
+I've worked out the first few exact values of this probability, all the way up to the blind continuum challenge with 5 "letters".
 
 | $k$ | $p(k)$| |
 |--|--|-|
