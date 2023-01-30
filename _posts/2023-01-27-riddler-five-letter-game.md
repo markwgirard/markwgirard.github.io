@@ -33,7 +33,7 @@ $$
 \underline{\quad} \text{ }\underline{\quad} \text{ } \underline{\quad} \text{ } \underline{\text{ }s\text{ }} \text{ } \underline{\quad}
 $$
 
-After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from a to r (18 letters) and exactly one is in the range from t to z (6 letters). Given that 4 more letters total must be selected out of the remaining 24, the odds of us having a chance of not losing are
+After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from a to r (18 letters) and exactly one is in the range from t to z (6 letters). Given that 4 more letters total must be selected out of the remaining 25 letters, the odds of us having a chance of not losing are
 
 $$
 \frac{\binom{18}{3}\binom{6}{1}}{\binom{25}{4}}
