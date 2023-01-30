@@ -1,5 +1,5 @@
 ---
-title: 'Tackling the 5-letter challenge --- Can You Defeat The TikTok Meme? (Riddler 2023-01-27)'
+title: 'Tackling the blind letter challenge --- Can You Defeat The TikTok Meme? (Riddler 2023-01-27)'
 date: 2023-01-29
 permalink: /posts/2023/01/riddler-five-letter-challenge/
 tags: riddler, programming
@@ -98,13 +98,16 @@ The following plot shows how the maximal probability of winning changes for diff
 
 ![Optimal probability f winning different games](/images/riddler/20230127_alphabet.png)
 
-## The continuous 5-letter challenge
+## The Blind Continuum Challenge
 
-What happens when the size of the alphabet gets infinitely large, but we keep the number of slots fixed at 5? The probability of winning in this large-alphabet game appears to level off at around 0.22. Indeed, with a 1,000-letter alphabet, we have:
+What happens when the size of the alphabet gets infinitely large, but we keep the number of slots fixed at 5? The probability of winning in this large-alphabet game appears to level off at around 0.22. The following plot shows the optimal probability of winning the 5-letter challenge with different sizes of alphabets.
+![Optimal probability f winning different games](/images/riddler/20230127_5letter.png)
+
+Indeed, with a 1,000-letter alphabet, we have:
 
 	`p(1000,5) = 0.222138.`
 
-In the limit as $n\to\infty$, this game approaches what I'm calling "The Continuous 5-letter challenge". That is, the "letters" are picked uniformly at random from the unit interval. This game can be described as follows.
+In the limit as $n\to\infty$, this game approaches what I'm calling "The Blind Continuum Challenge". That is, the "letters" are picked uniformly at random from the unit interval. This game can be described as follows.
 
 Suppose you are given 5 independent and uniformly distributed random numbers on the interval from 0 to 1. Similar to the 5 letter challenge, you must try to place them in order into 5 slots as they appear. What are your optimal odds of winning?
 
