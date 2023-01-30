@@ -101,6 +101,7 @@ The following plot shows how the maximal probability of winning changes for diff
 ## The Blind Continuum Challenge
 
 What happens when the size of the alphabet gets infinitely large, but we keep the number of slots fixed at 5? The probability of winning in this large-alphabet game appears to level off at around 0.22. The following plot shows the optimal probability of winning the 5-letter challenge with different sizes of alphabets.
+
 ![Optimal probability f winning different games](/images/riddler/20230127_5letter.png)
 
 Indeed, with a 1,000-letter alphabet, we have:
