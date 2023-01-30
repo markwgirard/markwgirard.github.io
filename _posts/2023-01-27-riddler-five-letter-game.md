@@ -27,13 +27,13 @@ If you play with an optimal strategy, always placing letters in slots to maximiz
 
 ## Solution
 
-To get a sense of how to solve this problem more generally, let's look at an example of this game and see how we might recursively develop a strategy to find the optimal probability of winning. Suppose the first letter we are given is "s", which we decide to place in the in the 4th slot.
+To get a sense of how to solve this problem more generally, let's look at an example of this game and see how we might recursively develop a strategy to find the optimal probability of winning. Suppose the first letter we are given is s, which we decide to place in the in the 4th slot.
 
 $$
 \underline{\quad} \text{ }\underline{\quad} \text{ } \underline{\quad} \text{ } \underline{\text{ }s\text{ }} \text{ } \underline{\quad}
 $$
 
-After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from "a" to "r" (18 letters) and exactly one is in the range from "t" to "z" (6 letters). Given that 4 more letters total must be selected out of the remaining 24, the odds of us having a chance of not losing are
+After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from a to r (18 letters) and exactly one is in the range from t to z (6 letters). Given that 4 more letters total must be selected out of the remaining 24, the odds of us having a chance of not losing are
 
 $$
 \frac{\binom{18}{3}\binom{6}{1}}{\binom{25}{4}}
@@ -41,7 +41,7 @@ $$
 
 because, out of the $\binom{25}{4}$ ways that the remaining 4 letters can be chosen, we can only win if 3 of the letters come from the first 18 letters of the alphabet and the remaining 1 letter is chosen from the final 6 letters.  Supposing that we *do* get lucky enough to get this kind of combination for the remaining letters, what is the best probability of winning at the end? It turns out that we can view the remaining game as two separate similarly structured sub-games!
 
-If the original game can be described as "place 5 randomly chosen letters from an alphabet of size 26 into 5 slots in order", then if we are guaranteed to get three more letters from the first 17 letters and one more letter from the final 6, the remaining game (after placing the "s" in the fourth slot) can be described as a combination of the two following sub-games:
+If the original game can be described as "place 5 randomly chosen letters from an alphabet of size 26 into 5 slots in order", then if we are guaranteed to get three more letters from the first 17 letters and one more letter from the final 6, the remaining game (after placing the s in the fourth slot) can be described as a combination of the two following sub-games:
 
 - "place 3 randomly chosen letters from a 17-letter alphabet into 3 slots" and
 - "place 1 randomly chosen letter from a 6-letter alphabet into 1 slot".
@@ -54,7 +54,7 @@ $$
 
 If this does *not* happen, we are guaranteed to lose, but if that *does* happen, we are effectively left with with two separate games: one where we must place $(i-1)$ randomly chosen letters from the first $(j-1)$ letters of the alphabet, and another where we must place $(k-i)$ randomly chosen letters from the last $(n-j)$ letters of the alphabet. To find the optimal odds of winning, we have to maximize over all possible choices $i\in\lbrace 1,2,\dots, k\rbrace$ of where to place letter $j$. Finally, to compute the optimal odds of winning the whole game, we add up the optimal probabilities of winning in each of the $n$ different cases for the first letter $j\in\lbrace 1,2,\dots, n\rbrace$.
 
-If we let $p(n,k)$ denote the the optimal probability of winning a game with an $n$-letter alphabet where we must place $k$ letters, we have
+If we let $p(n,k)$ denote the optimal probability of winning a game with an $n$-letter alphabet where we must place $k$ letters, we have
 
 $$
 p(n,k) = \frac{1}{n}\sum_{j=1}^n \max\Bigg\lbrace \frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}p(j-1,i-1)p(n-j, k-i)\quad:\quad i\in\lbrace 1,\dots,k\rbrace \Bigg\rbrace .
