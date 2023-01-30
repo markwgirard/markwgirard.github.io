@@ -86,10 +86,10 @@ def p(n, k):
     return out
 ```
 
-The standard English alphabet has 25 letters, and computing the result we find that
+The standard English alphabet has 26 letters, and computing the result we find that
 
 $$
-p(25,5) \approx 0.254335
+p(26, 5) \approx 0.254335
 $$
 
 Hence playing optimally gives us approximately 25.4% chance of winning a game (although this result doesn't tell us anything about what the strategy is...).
