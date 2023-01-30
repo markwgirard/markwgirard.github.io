@@ -94,7 +94,7 @@ $$
 
 Hence playing optimally gives us approximately 25.4% chance of winning a game (although this result doesn't tell us anything about what the strategy is...).
 
-The following plot shows how the maximal probability of winning changes for different sizes of alphabet and different numbers of slots, outside of the standard 25-letter alphabet game with 5 slots. (The heat map uses a logarithmic scale, otherwise it wouldn't show much. )
+The following plot shows how the maximal probability of winning changes for different sizes of alphabet and different numbers of slots, outside of the standard 26-letter alphabet game with 5 slots (up to 75 letters and 75 slots). (The heat map uses a logarithmic scale, otherwise it wouldn't show much. )
 
 ![Optimal probability f winning different games](/images/riddler/20230127_alphabet.png)
 
