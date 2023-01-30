@@ -30,7 +30,7 @@ If you play with an optimal strategy, always placing letters in slots to maximiz
 To get a sense of how to solve this problem more generally, let's look at an example of this game and see how we might recursively develop a strategy to find the optimal probability of winning. Suppose the first letter we are given is "s", which we decide to place in the in the 4th slot.
 
 $$
-\underline{\enskip} \underline{\enskip}  \underline{\enskip}  \underline{\text{s}}  \underline{\enskip}
+\underline{\quad} \underline{\quad}  \underline{\quad}  \underline{\text{ }s\text{ }}  \underline{\quad}
 $$
 
 After this placement, we can only win if *exactly* three of the remaining letters drawn are in the range from "a" to "r" (18 letters) and exactly one is in the range from "t" to "z" (6 letters). Given that 4 more letters total must be selected out of the remaining 24, the odds of us having a chance of not losing are
