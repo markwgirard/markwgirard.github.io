@@ -18,8 +18,8 @@ This course introduced the mathematical foundations of quantum computing and inf
 
 | Title            | Type        | Link |
 |------------------|-------------|------|
-| Lecture Notes    | Notes       | [Download PDF](coursework/QI/QI_main.pdf) |
-| Assignment 2     | Homework    | [Download PDF](coursework/QI/QI_HW2.pdf) |
+| Lecture Notes    | Notes       | [Download PDF](QI/QI_main.pdf) |
+| Assignment 2     | Homework    | [Download PDF](QI/QI_HW2.pdf) |
 
 ---
 
@@ -32,13 +32,13 @@ _All assignment problems were taken from *Complex Analysis* by Theodore Gamelin.
 
 | Title               | Type       | Link |
 |---------------------|------------|------|
-| Assignment 1        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz1.pdf) |
-| Assignment 2        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz2.pdf) |
-| Assignment 3        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz3.pdf) |
-| Midterm             | Exam       | [Download PDF](coursework/CompAna/ComplexAnalysis_midterm.pdf) |
-| Assignment 4        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz4.pdf) |
-| Assignment 5        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz5.pdf) |
-| Final Problem Set   | Problem Set| [Download PDF](coursework/CompAna/ComplexAnalysis_ProblemSet.pdf) |
+| Assignment 1        | Homework   | [Download PDF](CompAna/ComplexAnalysis_Quiz1.pdf) |
+| Assignment 2        | Homework   | [Download PDF](CompAna/ComplexAnalysis_Quiz2.pdf) |
+| Assignment 3        | Homework   | [Download PDF](CompAna/ComplexAnalysis_Quiz3.pdf) |
+| Midterm             | Exam       | [Download PDF](CompAna/ComplexAnalysis_midterm.pdf) |
+| Assignment 4        | Homework   | [Download PDF](CompAna/ComplexAnalysis_Quiz4.pdf) |
+| Assignment 5        | Homework   | [Download PDF](CompAna/ComplexAnalysis_Quiz5.pdf) |
+| Final Problem Set   | Problem Set| [Download PDF](CompAna/ComplexAnalysis_ProblemSet.pdf) |
 
 ---
 
@@ -51,13 +51,13 @@ _All assignment roblems were taken from *Algebra: Chapter 0* by Paolo Aluffi._
 
 | Title               | Type       | Link |
 |---------------------|------------|------|
-| Lecture Notes       | Notes      | [Download PDF](coursework/Alg/AlgIII-main.pdf) |
-| Assignment 1        | Homework   | [Download PDF](coursework/Alg/Algebra_HW1.pdf) |
-| Assignment 2        | Homework   | [Download PDF](coursework/Alg/Algebra_HW2.pdf) |
-| Assignment 3        | Homework   | [Download PDF](coursework/Alg/Algebra_HW3.pdf) |
-| Assignment 4        | Homework   | [Download PDF](coursework/Alg/Algebra_HW4.pdf) |
-| Assignment 5        | Homework   | [Download PDF](coursework/Alg/Algebra_HW5.pdf) |
-| Final Exam Review   | Review     | [Download PDF](coursework/Alg/examreview.pdf) |
+| Lecture Notes       | Notes      | [Download PDF](Alg/AlgIII-main.pdf) |
+| Assignment 1        | Homework   | [Download PDF](Alg/Algebra_HW1.pdf) |
+| Assignment 2        | Homework   | [Download PDF](Alg/Algebra_HW2.pdf) |
+| Assignment 3        | Homework   | [Download PDF](Alg/Algebra_HW3.pdf) |
+| Assignment 4        | Homework   | [Download PDF](Alg/Algebra_HW4.pdf) |
+| Assignment 5        | Homework   | [Download PDF](Alg/Algebra_HW5.pdf) |
+| Final Exam Review   | Review     | [Download PDF](Alg/examreview.pdf) |
 
 ---
 
@@ -70,10 +70,10 @@ _All assignment problems were taken from *Introductory Functional Analysis with 
 
 | Title               | Type       | Link |
 |---------------------|------------|------|
-| Lecture Notes       | Notes      | [Download PDF](coursework/FuncAna/FuncAna-main.pdf) |
-| Assignment 1        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW1.pdf) |
-| Assignment 2        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW2.pdf) |
-| Assignment 3        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW3.pdf) |
-| Assignment 4        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW4.pdf) |
-| Assignment 5        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW5.pdf) |
-| Final Exam Review   | Review     | [Download PDF](coursework/FuncAna/FuncAna-review.pdf) |
+| Lecture Notes       | Notes      | [Download PDF](FuncAna/FuncAna-main.pdf) |
+| Assignment 1        | Homework   | [Download PDF](FuncAna/FunctionalAnalysis_HW1.pdf) |
+| Assignment 2        | Homework   | [Download PDF](FuncAna/FunctionalAnalysis_HW2.pdf) |
+| Assignment 3        | Homework   | [Download PDF](FuncAna/FunctionalAnalysis_HW3.pdf) |
+| Assignment 4        | Homework   | [Download PDF](FuncAna/FunctionalAnalysis_HW4.pdf) |
+| Assignment 5        | Homework   | [Download PDF](FuncAna/FunctionalAnalysis_HW5.pdf) |
+| Final Exam Review   | Review     | [Download PDF](FuncAna/FuncAna-review.pdf) |
