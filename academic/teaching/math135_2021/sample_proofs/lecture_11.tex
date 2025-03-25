@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+
+\usepackage{mathpazo}
+\usepackage{fullpage}
+
+\theoremstyle{plain}
+\newtheorem*{claim}{Claim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+
+\usepackage[most,breakable]{tcolorbox}
+\renewenvironment{boxed}%
+	{\begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]}%
+	{\end{tcolorbox}}
+
+\begin{document}
+
+
+\title{MATH 135 --- Fall 2021\\ Sample Proofs from Lecture 11}
+\author{Mark Girard}
+
+\maketitle
+
+\section*{Principle of Strong Induction}
+When assuming only the one previous step is not enough to prove the next step, Strong Induction is needed! 
+The principle of strong induction can be stated more generally as follows.
+\begin{tcolorbox}
+\textbf{Principle of Strong Induction.}
+Let $b\in\naturals$ and suppose $P(b),\, P(b+1),\, P(b+2),\, \dots$ is a sequence of statements. Let $c\in\naturals$. If the following are true:
+\begin{itemize}
+\item[(i)] $P(b),P(b+1),\dots,P(b+c-1)$, and
+\item[(ii)] For all $k\geq b+c-1$, if $P(b)\wedge P(b+1) \wedge\cdots\wedge P(k)$ then $P(k+1)$
+\end{itemize}
+then it is also true that
+\begin{itemize}
+ \item[(iii)]For all $n\geq b$,  $P(n)$. 
+\end{itemize}
+\end{tcolorbox}
+Note that the base cases are $P(b),P(b+1),\dots,P(b+c-1)$, where
+\begin{itemize}
+ \item $b$ is the \emph{first} base case (there must always be at least one base case), and 
+ \item $c$ is the \emph{total number of base cases}.
+\end{itemize}
+
+
+
+\subsubsection*{Example: Recursively defined sequences}
+(Note: The example I did in class is on the homework, so I've typed up a different example here.)
+\begin{tcolorbox}
+Consider a sequence $x_1,x_2,x_3,\dots$ defined as follows. Define $x_1=2$ and $x_2 = 34$, and for every integer $n\geq 2$ define
+\[
+ x_{n+1} = 2x_n + 15x_{n-1}.
+\]
+It holds that 
+\[
+ x_n = (-3)^n  + 5^{n} \tag{$\ast$}
+\]
+for every $n\in\naturals$.
+\end{tcolorbox}
+
+\begin{proof}
+ We prove by induction. For each $n\in\naturals$,  let  $P(n)$ be the statement that $x_n = (-3)^n  + 5^{n}$. 
+ \begin{itemize}
+  \item\underline{Base cases:} When $n=1$, we have
+  \[
+   x_1 = 2 = -3 + 5 = (-3)^1 + 5^1,
+  \]
+  so $P(1)$ is true. When $n=2$, we have
+  \[
+   x_2 = 34 = 9 + 25 = (-3)^2 + 5^2,
+  \]
+  so $P(2)$ is true.
+\item\underline{\smash{Induction step}:} Let $k\in\naturals$ and suppose $k\geq 2$.  Assume for every $m\in\{1,2,\dots,k\}$ that $P(m)$ is true. That is, we assume that for every $m\in\{1,2,\dots,k\}$ it holds that
+\[
+ x_m = (-3)^m  + 5^{m}. \tag{IH}
+\]
+Now, because $k\geq2$ we may use $(\ast)$ to write
+\begin{align*}
+ x_{k+1} &= 2x_k + 15x_{k-1} &&\text{by }(\ast)\\ 
+  & = 2\left((-3)^k  + 5^{k}\right)  + 15\left((-3)^{k-1}  + 5^{k-1}\right) &&\text{by IH}\\
+  & = 2\cdot (-3)^k + 2\cdot 5^k - 5\cdot (-3)^k + 3\cdot 5^k\\
+  & = (-3)\cdot(-3)^k + 5\cdot 5^k\\\
+  & = (-3)^{k+1}  + 5^{k+1},
+\end{align*}
+ and thus $P(k+1)$ is true.
+ \end{itemize}
+By the principle of strong induction, it follows that $x_n = (-3)^n  + 5^{n}$ for every $n\in\naturals$.
+\end{proof}
+
+\subsubsection*{Example: Breaking up a chocolate bar}
+Note that using strong induction does not necessarily mean that we need multiple base cases. Here is an example of a proof that requires strong induction but has only one base case.
+
+\begin{tcolorbox}
+\begin{claim}
+For every $n\in\naturals$, breaking a rectangular chocolate bar consisting of $n$ identical squares requires $n-1$ breaks to completely break into individual pieces.
+\end{claim}
+\end{tcolorbox}
+ 
+ 
+ 
+\begin{proof}
+ We prove by induction. For each $n\in\naturals$,  let  $P(n)$ be the statement: 
+ \begin{quotation}
+  \noindent ``Every rectangular chocolate bar consisting of $n$ identical squares requires $n-1$ breaks to completely break into individual pieces.''
+ \end{quotation}
+
+ \begin{itemize}
+  \item\underline{Base case:} When $n=1$, every rectangular chocolate bar of $1$ square is already completely broken apart and requires zero breaks, so $P(1)$ is true.
+\item\underline{\smash{Induction step}:} Let $k$ be an arbitrary natural number and suppose that $P(1),P(2),\dots$ and $P(k)$ are all true. Now, suppose you are given a rectangular chocolate bar consisting of $k+1$ identical squares. As $k\geq1$, the chocolate bar requires at least one break to break apart. Suppose we break the bar into two smaller rectangles such that the two smaller rectangles consist of  $a$ and $b$ squares respectively, where $a,b\in\{1,2,\dots,k\}$. By the induction hypothesis, breaking each of these two smaller rectangles requires a total of $a-1$ and $b-1$ breaks respectively. Thus, the total number of breaks to break the original chocolate bar of size $k+1$ squares into individual pieces is 
+\begin{align*}
+ \underbrace{1}_{\text{for the first break}} + \underbrace{(a-1)}_{\text{to break the bar of size }a} + \underbrace{(b-1)}_{\text{to break the bar of size }b} &= \underbrace{a+b}_{=k+1} - 1 \\
+  &= (k+1)-1,
+\end{align*}
+and thus $P(k+1)$ is true.
+ \end{itemize}
+By the principle of mathematical induction, it holds that $P(n)$ is true for every $n\in\naturals$. This completes the proof.
+\end{proof}
+
+
+\end{document}

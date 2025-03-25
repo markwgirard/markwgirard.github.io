@@ -1,0 +1,45 @@
+---
+title: "Mark Girard"
+about:
+  template: trestles
+  image-width: 10em
+  image-shape: round
+  image: images/profile.jpg
+  links:
+    - icon: pin-map-fill
+      text: Port Moody, BC, Canada
+    - icon: github
+      text: Github
+      href: https://github.com/markwgirard
+    - icon: envelope
+      text: Email
+      href: mailto:mark.w.girard+website@gmail.com
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/markwgirard
+---
+
+
+
+
+# 👋 Hello!
+
+I’m a Quantum Algorithm Developer at [Photonic Inc.](https://photonic.com) (a quantum computing  start-up), where I employ my mathematical expertise to optimize and benchmark implementations of quantum algorithms on Photonic's quantum stack. 
+
+I live in beautiful Port Moody, BC, with my family.
+
+I enjoy mathematical puzzles and challenges! Sometimes I like to solve 538’s Riddlers and started compiling my solutions [here](/riddlers.qmd), or ponder mathematical musings on my [blog](/blog/).
+
+Outside of mathematics, I enjoy playing ultimate frisbee, homebrewing beer, tabletop games, and various outdoor activities (hiking, camping, climbing, skiing, snowshoeing).
+
+## 🎓 Academic Background
+
+When I was still in academia, my research interests centred around solving mathematical problems motivated by questions in quantum information theory. I primarily made use of convex analysis, convex optimization, linear algebra, matrix analysis, and operator algebras to tackle questions related to the theory of quantum entanglement.
+
+### Education
+
+- B.Sc. in Math/Physics – Trinity University, San Antonio, TX 
+- Diplom in Physics – Universität Freiburg, Germany
+- Ph.D. in Applied Mathematics – University of Calgary, Alberta, Canada
+- Postdoc & Instructor – Institute for Quantum Computing, University of Waterloo, Ontario, Canada
+

@@ -1,0 +1,31 @@
+---
+title: "Publications"
+format: html
+---
+
+Below is a list of my peer-reviewed research publications in quantum information theory. 
+
+## Peer-Reviewed Publications
+
+| Year | Title | Journal | DOI | arXiv |
+|------|-------|---------|-----|-------|
+| 2022 | **On the mixed-unitary rank of quantum channels**<br>*M. Girard, D. Leung, J. Levick, C.-K. Li, V. Paulsen, Y.-T. Poon, J. Watrous* | *Communications in Mathematical Physics*, 394(2), 919–951 | [10.1007/s00220-022-04412-y](https://doi.org/10.1007/s00220-022-04412-y) | [2003.14405](https://arxiv.org/abs/2003.14405) |
+| 2021 | **Certifying optimality for convex quantum channel optimization problems**<br>*B. Coutts, M. Girard, J. Watrous* | *Quantum*, 5, 448 | [10.22331/q-2021-05-01-448](https://doi.org/10.22331/q-2021-05-01-448) | [1810.13295](https://arxiv.org/abs/1810.13295) |
+| 2021 | **Twirling channels have minimal mixed-unitary rank**<br>*M. Girard, J. Levick* | *Linear Algebra and its Applications*, 615, 207–227 | [10.1016/j.laa.2020.12.027](https://doi.org/10.1016/j.laa.2020.12.027) | [2005.07056](https://arxiv.org/abs/2005.07056) |
+| 2021 | **Jordan products of quantum channels and their compatibility**<br>*M. Girard, M. Plávala, J. Sikora* | *Nature Communications*, 12, 2129 | [10.1038/s41467-021-22275-0](https://doi.org/10.1038/s41467-021-22275-0) | [2009.03279](https://arxiv.org/abs/2009.03279) |
+| 2021 | **Convex cones in mapping spaces between matrix algebras**<br>*M. Girard, S.-H. Kye, E. Størmer* | *Linear Algebra and its Applications*, 608, 248–269 | [10.1016/j.laa.2020.08.017](https://doi.org/10.1016/j.laa.2020.08.017) | [2001.11166](https://arxiv.org/abs/2001.11166) |
+| 2017 | **Entanglement monotones and transformations of symmetric bipartite states**<br>*M. W. Girard, G. Gour* | *Physical Review A*, 95, 012308 | [10.1103/PhysRevA.95.012308](https://doi.org/10.1103/PhysRevA.95.012308) | [1609.08016](https://arxiv.org/abs/1609.08016) |
+| 2015 | **Computable entanglement conversion witness that is better than the negativity**<br>*M. W. Girard, G. Gour* | *New Journal of Physics*, 17, 093013 | [10.1088/1367-2630/17/9/093013](https://doi.org/10.1088/1367-2630/17/9/093013) | [1410.7094](https://arxiv.org/abs/1410.7094) |
+| 2015 | **Erratum: Numerical estimation of the relative entropy of entanglement**<br>*M. W. Girard, Y. Zinchenko, S. Friedland, G. Gour* | *Physical Review A*, 91, 029901 | [10.1103/PhysRevA.91.029901](https://doi.org/10.1103/PhysRevA.91.029901) | — |
+| 2014 | **On convex optimization problems in quantum information theory**<br>*M. W. Girard, G. Gour, S. Friedland* | *Journal of Physics A: Mathematical and Theoretical*, 47, 505302 | [10.1088/1751-8113/47/50/505302](https://doi.org/10.1088/1751-8113/47/50/505302) | [1402.0034](https://arxiv.org/abs/1402.0034) |
+| 2012 | **Gradient-based stopping rules for maximum-likelihood quantum-state tomography**<br>*S. Glancy, E. Knill, M. Girard* | *New Journal of Physics*, 14, 095017 | [10.1088/1367-2630/14/9/095017](https://doi.org/10.1088/1367-2630/14/9/095017) | [1205.4043](https://arxiv.org/abs/1205.4043) |
+
+## Theses
+
+- **Ph.D. Thesis (2017):** *Convex Analysis in Quantum Information*  
+  University of Calgary.  
+  [Full text](/academic/Girard_Calgary_PhDthesis.pdf)
+
+- **Diplom Thesis (2012):** *Optimal Control of Many-Body Entanglement with Measures Optimized on the Fly*  
+  University of Freiburg.  
+  [Full text](/academic/MarksDiplomThesis.pdf)

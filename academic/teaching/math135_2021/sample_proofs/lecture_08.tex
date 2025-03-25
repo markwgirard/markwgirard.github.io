@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+
+\usepackage{mathpazo}
+\usepackage{fullpage}
+
+\theoremstyle{plain}
+\newtheorem*{claim}{Claim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+
+\usepackage[most,breakable]{tcolorbox}
+\renewenvironment{boxed}%
+	{\begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]}%
+	{\end{tcolorbox}}
+
+\begin{document}
+
+
+\title{MATH 135 --- Fall 2021\\ Sample Proofs from Lecture 8}
+\author{Mark Girard}
+
+\maketitle
+
+\section*{Proof by contrapositive}
+
+A universally quantified statement of the form
+\[
+ \forall x\in\mathcal{S},\, P(x)\implies Q(x)
+\]
+is logically equivalent to its contrapositive:
+\[
+ \forall x\in\mathcal{S},\, \neg Q(x)\implies \neg P(x).
+\]
+For some universally quantified statements, it is easier to prove the contrapositive than to prove the original statement directly. 
+
+\begin{tcolorbox}
+\begin{claim}
+$ \forall x\in\reals,\, x^3 - 5x^2 + 3x \neq 15 \implies x\neq 5.$
+\end{claim}
+\end{tcolorbox}
+
+\begin{proof}
+ We prove the contraspositive. Let $x$ be a real numbers and suppose that $x=5$. Then
+ \[
+  x^3 - 5x^2 + 3x = 5^3 - 5\cdot 5^2 + 3\cdot 5 = 5^3 - 5^3 - 15 = 15,
+ \]
+which completes the proof.
+\end{proof}
+
+\begin{tcolorbox}
+\begin{claim}
+ For all integers $k$, if $k^2+4k-2$ is odd then $k$ is odd.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ We prove the contrapositive. Let $k$ be an integer and suppose that $k$ is even. There exists an integer $m$ such that $k=2m$. Now,
+ \[
+  k^2+4k-2 = (2m)^2 + 4k - 2 = 2(2m^2 + 2k - 1),
+ \]
+which is even as $2m^2 + 2k - 1$ is an integer.
+\end{proof}
+
+\begin{tcolorbox}
+\begin{claim}
+ For all real numbers $x$ and $y$, if $xy$ is irrational then $x$ is irrational or $y$ is irrational. 
+\end{claim}
+\end{tcolorbox}
+Symbollically, this claim can be written as:
+\[
+ \forall x,y\in\reals,\, xy\notin \rationals \implies (x\notin\rationals\vee y\notin\rationals).
+\]
+The contrapositive of this statement is 
+\[
+ \forall x,y\in\reals,\,  (x\in\rationals\wedge y\in\rationals \implies xy\in \rationals).
+\]
+\begin{proof}
+ We prove the contrapositive. Let $x$ and $y$ be real numbers ans suppose that both $x$ and $y$ are rational. There exist integers $a,b,m,$ and $n$ such that $b\neq0$ and $n\neq0$ and 
+ \[
+  x = \frac{a}{b}\quad \text{and} \quad y = \frac{m}{n}.
+ \]
+Now
+\[
+ xy = \frac{a}{b}\cdot \frac{m}{n} = \frac{am}{bn},
+\]
+where $am$ and $bn$ are integers and $bn\neq 0$ as both $b$ and $n$ are nonzero. We conclude that $xy$ is rational, which completes the proof.
+\end{proof}
+
+
+
+\section*{Proof by Method of Elimination}
+
+For sentences $A$, $B$, and $C$, it can be shown that
+\[
+ \bigl(A\implies (B\vee C)\bigr)\equiv \bigl((A\wedge \neg B)\implies C\bigr).
+\]
+That is, to prove that either $B$ or $C$ is true, we can suppose $B$ is false, which `eliminates' the possibility of $B$ being true, and then prove in this case that $C$ must be true.
+
+For universally quantified statements, this looks like:
+\[
+ \Bigl(\forall x\in S,\bigl(P(x)\implies (Q(x)\vee R(x))\bigr)\Bigr)\equiv \Bigl(\forall x\in S,\bigl((P(x)\wedge \neg Q(x))\implies R(x)\bigr)\Bigr).
+\]
+
+
+
+\begin{tcolorbox}
+\begin{claim}
+ For all real numbers $x$, if $|2x-6|=4$ then $x\geq3$ or $x=1$.
+\end{claim}
+\end{tcolorbox}
+
+
+\begin{proof}
+We prove this statement by the Method of Elimination. Let $x$ be a real number and suppose that $|2x-6|=4$. Suppose further that $x<3$. Then $2x\leq 6$ and thus $2x-6\leq 0$ which implies that $|2x-6|=6-2x$. It follows that from the assumption that $|2x-6|=4$ that 
+\[
+ 6-2x=4
+\]
+and solving this equation for $x$ yields $x=1$, as desired.
+\end{proof}
+
+
+
+\section*{Proving ``if and only if'' statements}
+
+To prove a statement of the form $A\iff B$, one must prove both $A\implies B$ and $B\implies A$. For universally quantified statements, this equivalence is 
+\[
+ \Bigl(\forall x\in S,\, P(x)\iff Q(x)\Bigr)\equiv \Bigl(\forall x\in S,\, (P(x)\implies Q(x)) \wedge (Q(x)\implies P(x))\Bigr).
+\]
+
+
+\begin{tcolorbox}
+\begin{claim}
+ Suppose $x$ and $y$ are real numbers such that $x\geq0$ and $y\geq 0$. Then $\frac{x+y}{2} = \sqrt{xy}$ if and only if $x=y$.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ First suppose that $x=y$. Then 
+ \[
+  \frac{x+y}{2} = \frac{x+x}{2} = x = \sqrt{x\cdot x} = \sqrt{xy}.
+ \]
+Conversely, suppose instead that $\frac{x+y}{2} = \sqrt{xy}$. Multiplying both sides by 2 yields 
+\[
+ x+y = 2\sqrt{xy}.
+\]
+Squaring both sides, we find that 
+\[
+ x^2+ 2xy + y^2 = 4xy,
+\]
+which is equivalent to 
+\[
+ x^2-2xy+y^2 =0
+\]
+and thus 
+\[
+ (x-y)^2 = 0.
+\]
+We conclude that $x-y=0$ and thus $x=y$. This completes the proof.
+\end{proof}
+
+Note that $B\implies A$ is equivalent to $\neg A\implies \neg B$. Hence sometimes it is easier to prove 
+\[
+ A\implies B \quad \text{and}\quad \neg A\implies \neg B,
+\]
+which also proves equivalence.
+
+\begin{tcolorbox}
+\begin{claim}
+ For all integers $a$, one has that $a$ is even if and only if $a^2$ is even.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ Let $a$ be an integer. First suppose that $a$ is even, such that there is an integer $k$ satisfying $2k=a$. Thus 
+ \[
+  a^2 = 4k^2 = 2\cdot(2k^2),
+ \]
+which is even as $2k^2$ is an integer. Conversely, suppose that $a$ is odd such that there is an integer $k$ satisfying $2k+1=a$. Thus
+\[
+  a^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2\cdot(2k^2 + 2k) + 1,
+ \]
+ which is odd as $2k^2 + 2k$ is an integer. This completes the proof.
+\end{proof}
+
+\end{document}

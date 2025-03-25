@@ -1,0 +1,370 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathpazo}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{empheq}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem*{remark}{Remark}
+
+\usepackage{xcolor}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+
+\usepackage[most,breakable]{tcolorbox}
+\usepackage{environ}
+
+\newif\ifshowsolution
+\showsolutionfalse
+\showsolutiontrue
+
+\NewEnviron{Solution}{%
+    \ifshowsolution%
+        \begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]%
+            \textbf{Solution.} \BODY
+        \end{tcolorbox}%
+    \fi%
+}%
+
+
+\usepackage{textcomp}
+
+\date{November 23, 2021}
+
+\begin{document}
+
+\title{MATH 135 --- Fall 2021\\ Practice Problems \ifshowsolution(Solutions)\fi  --- Chapter 9}
+\author{Mark Girard}
+
+\maketitle
+\noindent This document contains some extra notes and practice problems related to cryptography and RSA encryption.
+
+\subsection*{RSA encryption}
+
+\begin{tcolorbox}
+\textbf{RSA encryption}
+\begin{itemize}
+ \item Bob's set up.
+ \begin{itemize}
+  \item Bob picks distinct primes $p$ and $q$ and calculates $n=pq$.
+  \item Bob chooses numbers $e$ and $d$ such that $ed\equiv 1\pmod{(p-1)(q-1)}$.
+  \item Bob publishes his public key $(n,e)$ and keeps his private key $(n,d)$ secret. 
+ \end{itemize}
+ \item Alice picks a message, then encrypts and sends the encrypted message.
+  \begin{itemize}
+  \item Alice wants to send a message to Bob using his public key $(n,e)$.
+  \item Alice picks a message $M\in\{0,1,2,\dots,n-1\}$.
+  \item Alice encrypts the message by solving for the remainder $C$ when $M^e$ is divided by $n$:
+  \[
+   C \equiv M^e\pmod{n}
+  \]
+  \item Alice sends the ciphertext (encrypted message) $C$ to Bob.
+ \end{itemize}
+ \item Bob receives and recovers the message.
+  \begin{itemize}
+  \item Bob receives the ciphertext $C$ from Alice.
+  \item Bob uses private key $(n,d)$ to decrypt the message by solving for the remainder $R$ when dividing $C^d$ by $n$:
+  \[
+   R \equiv C^d\pmod{n}
+  \]
+  \item Bob perfectly recovers the message $R=M$.
+ \end{itemize}
+\end{itemize}
+Note that $R\equiv C^d \equiv (M^e)^d \equiv M^{ed} \pmod{p}$. 
+\end{tcolorbox}
+
+The fact that Bob can perfectly recover Alice's message by decrypting the ciphertext is a consequence of the following theorem.
+\begin{tcolorbox}
+\begin{theorem}
+ Suppose $p$ and $q$ are distinct prime numbers and  define $n=pq$. Suppose $e,d\in\integers$ are integers such that 
+\[
+ ed\equiv 1\pmod{(p-1)(q-1)}.
+\]
+For every $M\in\{0,1,2,\dots,n-1\}$, it holds that 
+\[
+ M^{ed} \equiv M\,(\text{mod }n).
+\]
+
+\end{theorem}
+\end{tcolorbox}
+
+\begin{proof}
+ Because $ed\equiv 1\pmod{(p-1)(q-1)}$, by definition of modular congruence there exists an integer $k\in\integers$ such that 
+ \[
+  ed = 1+k(p-1)(q-1).
+ \]
+Let $R\in\{0,1,2,\dots,n-1\}$ be the remainder of $M^{de}$ when dividing by $n$. That is,
+\[
+ R\equiv M^{ed}\pmod{pq},
+\]
+where $n=pq$. Because $p$ and $q$ are coprime, by Splitting the Modulus this is equivalent to 
+\begin{empheq}[left=\empheqlbrace]{align}
+R&\equiv M^{ed}\pmod{p} \tag{1}\label{eq:RMedmodp}\\
+R&\equiv M^{ed}\pmod{q} \tag{2}\label{eq:RMedmodq}.
+\end{empheq}
+We now prove that $R\equiv M\pmod{p}$. There are two cases to consider.
+\begin{itemize}
+\setlength{\itemindent}{2em}
+ \item[Case 1:] Suppose $p\nmid M$. By Fermat's Little Theorem, it follows that $M^{p-1}\equiv 1\, \pmod{p}$. Now
+ \begin{align*}
+  R&\equiv M^{ed} &\pmod{p}&&[\text{from \eqref{eq:RMedmodp}}]\\
+   &\equiv M^{1+k(p-1)(q-1)} &\pmod{p}&& \text{[because }ed = 1+k(p-1)(q-1)]\\
+   &\equiv M\cdot (M^{p-1})^{k(q-1)}&\pmod{p} \\
+   &\equiv M\cdot 1&\pmod{p}&&[\text{by Fermat's Little Theorem}]\\
+   &\equiv M&\pmod{p}
+ \end{align*}
+\item[Case 1:] Suppose $p\mid M$. Then $M\equiv 0\pmod{p}$, and thus
+\[
+ R\equiv M^{ed} \equiv 0^{ed} \equiv 0 \equiv M\pmod{p}.
+\]
+\end{itemize}
+In either case, we have proved that $R\equiv M\pmod{p}$. This proves \eqref{eq:RMedmodp}, which is to say, this proves that $R\equiv M^{ed}\pmod{p}$. The proof of \eqref{eq:RMedmodq} is similar. (That is, it is essentially the same proof to prove that $R\equiv M^{ed}\pmod{q}$.) So we can conclude that 
+\[
+ R\equiv M^{ed}\pmod{p}\qquad \text{and}\qquad R\equiv M^{ed}\pmod{q}.
+\]
+By Splitting the Modulus, this is equivalent to 
+\[
+ R\equiv M^{ed}\pmod{pq}.
+\]
+This completes the proof.
+\end{proof}
+
+\subsection*{Example}
+
+Suppose Alice and Bob choose to use the following encoding of letters of the alphabet into numbers:
+\begin{center}
+ \begin{tabular}{|c|c|}
+ \hline 
+ `` '' & 00\\
+ ``A'' & 01\\
+ ``B'' & 02\\
+ ``C'' & 03\\
+ \vdots & \vdots\\
+ ``Z'' & 26\\\hline  
+ \end{tabular}
+\end{center}
+The word ``HELLO'' would be encoded as the ten-digit number
+\[
+ 0805121215
+\]
+while the message ``FROM ALICE'' would be encoded as
+\[
+ 06181513000112090305.
+\]
+Bob constructs his public--private key pair by choosing primes $p= 36809$ and $q=77377$, and defines $n=p\cdot q = 2848169993$. Bob chooses $e=5$ and $d=4556889293$. It can be checked (\href{https://www.wolframalpha.com/input/?i=5*4556889293+mod+2848055808}{with a computer}) that these numbers satisfy \[e\cdot d\equiv 1\pmod{2848055808},\] where $(p-1)(q-1) = 2848055808$. We now have:
+\begin{center}
+\begin{tabular}{ccc}
+ \underline{\smash{Bob's public key:}} & &\underline{\smash{Bob's private key:}}\\
+ ($2848169993$,\,$5$) & &($2848169993$,\,$4556889293$).
+\end{tabular}
+\end{center}
+Alice chooses to send the message ``HELLO'' which corresponds to the plaintext $M=805121215$. Note that $0\leq M< n$, so this is a valid message. \href{https://www.wolframalpha.com/input/?i=805121215\%5E5+mod+2848169993}{Using a computer}, we can solve the congruence \[C\equiv M^5\pmod{n}\] to find the ciphertext $C=751696144$. Alice sends this resulting ciphertext to Bob, who then decrypts it. Again, \href{https://www.wolframalpha.com/input/?i=751696144\%5E4556889293+mod+2848169993}{using a computer}, we can check that Bob perfectly recovers the message $R=M$ when solving the congruence \[R\equiv C^d\pmod{n},\]
+and Bob finds $R=805121215$, which he can decode to ``HELLO''.
+
+\begin{remark}
+ What if the message that Alice wants to send is bigger than $n$? She can split up her message into multiple components and send each component separately. For example, to send the message ``FROM ALICE'' using the public key above, Alice could send messages ``FROM '' and ``ALICE'' separately as \[M_1 = 0618151300\qquad\text{and}\qquad M_2 =0112090305.\] The corresponding ciphertexts for these messages can be determined to be
+ \[
+  C_1 = 1643373961 \qquad\text{and}\qquad C_2 = 2028678151,
+ \]
+which Bob would receive and decrypt separately.
+\end{remark}
+
+
+\subsection*{Practice problems}
+ 
+\begin{enumerate}%\itemsep0em 
+ \item Check (using a computer) that Bob perfectly recovers the messages $M_1$ and $M_2$ from the ciphertexts $C_1$ and $C_2$ using his private key from the example above.
+ \begin{Solution}
+  Defining $R_1$ and $R_2$ as the remainders of ${C_1}^d$ and ${C_2}^d$ when divided by $n$, we can use a computer to check that \href{https://www.wolframalpha.com/input/?i=1643373961\%5E4556889293+mod+2848169993}{$R=618151300$} and \href{https://www.wolframalpha.com/input/?i=2028678151\%5E4556889293+mod+2848169993}{$R_2=112090305$}, which are equal to the messages $M_1$ and $M_2$, as desired. 
+ \end{Solution}
+
+ \end{enumerate}
+
+ 
+ \noindent \textbf{Note.} For the rest of the practice problems, you should try solving these by hand to make sure you understand how to properly solve these types of congruences. It may be useful to use a computer to check your work!
+ 
+ \begin{enumerate}\setcounter{enumi}{1}
+ \item To generate a public--private key pair, Bob chooses primes $p=11$ and $q=13$ and computes $n=pq$. He then chooses $e=23$.
+ \begin{enumerate}
+ \item What is Bob's public key?
+ \item What value for $d$ should Bob choose to make his private key?
+ \item Suppose Alice wishes to send the message $M=25$ to Bob. What should her ciphertext (encrypted message) be that she transmits for Bob to decrypt?
+ \item Check to make sure that $C^d\equiv M\pmod{n}$.
+\end{enumerate}
+
+\begin{Solution}
+\begin{enumerate}
+\item[(a)] Bob's public key is the pair $(143,23)$, because $n=pq = 11\times13 = 143$.
+\item[(b)] Bob needs to solve the congruence $ed\equiv 1\pmod{(p-1)(q-1)}$ for $d$. That is, he needs to solve
+\[
+ 23d\equiv 1\pmod{120},
+\]
+where $(p-1)(q-1)=10\times12=120$. We can use the Extended Euclidean Algorithm to compute $\gcd(120,23)$, which produces the following table:
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+ & $x$ & $y$ & $r$\\\hline
+ $R_1$             &   $1$ &   $0$ & 120\\
+ $R_2$             &   $0$ &   $1$ &  23\\
+ $R_1 -5R_2 = R_3$ &   $1$ &  $-5$ &   5\\
+ $R_2 -4R_3 = R_4$ &  $-4$ &  $21$ &   3\\
+ $R_3 - R_4 = R_5$ &   $5$ & $-26$ &   2\\
+ $R_4 - R_5 = R_6$ &  $-9$ &  $47$ &   1\\\hline
+\end{tabular}
+\end{center}
+From the table, we see that $120\cdot(-9) + 23\cdot(47) = 1$. It follows that 
+\[
+ 23\cdot 47 \equiv 1 \pmod{120}
+\]
+and thus Bob should choose $d=47$. Bob's private key is therefore $(143,47)$.
+
+\item[(c)] To find the ciphertext, Alice needs to solve the congruence $C\equiv M^d\pmod{n}$ for the value $C\in\{0,1,\dots,142\}$, where $n=pq=143$, $d=23$, and $M = 25$. That is, she needs to solve
+\[
+ C\equiv 25^{23}\pmod{143}.
+\]
+Note that $23 = 16 + 4 + 3$. We will compute the remainders of each of $25^{16}$, $25^{4}$ and $25^{3}$ when divided by 143.  We have
+\[
+ 25^2\equiv 625 \equiv 4\cdot 143 + 53 \equiv 53\pmod{143}
+\]
+so $25^2\equiv53\pmod{143}$. Now,
+\[
+ 53^2\equiv 2809 \equiv 19\cdot 143 + 92 \equiv 92\pmod{143}
+\]
+so $25^4\equiv(25^2)^2\equiv 53^2\equiv 92\pmod{143}$. Continuing this process, we find
+\[
+ 92^2\equiv 8464 \equiv 59\cdot 143 + 27 \equiv 27\pmod{143}
+\]
+so $25^8\equiv(25^4)^2\equiv 92^2\equiv 27\pmod{143}$, and once more to find
+\[
+ 27^2\equiv 729 \equiv 5\cdot 143 + 14 \equiv 14\pmod{143}
+\]
+so $25^{16}\equiv(25^8)^2\equiv 27^2\equiv 14\pmod{143}$. Moreover,
+\[
+ 24^3 \equiv 25^2\cdot 25\equiv 53\cdot 25\equiv 1325\equiv 9\cdot 143 +38\equiv 38\pmod{143}.
+\]
+Thus, $25^7 \equiv 25^4\cdot25^3 \equiv 92\cdot 38\equiv 3496 \equiv 24\cdot 143 + 64 \equiv 64\pmod{143}$, and finally
+\[
+ 25^{23}\equiv 25^{16}\cdot 25^7 \equiv 14\cdot 64\equiv 896 \equiv 6\cdot 143 + 38 \equiv 38\pmod{143}.
+\]
+Thus, Alice finds her ciphertext to be
+\[
+ C \equiv 25^{23}\equiv38\pmod{143},
+\]
+or $C=38$. This is what she sends to Bob.
+
+\item We can check (\href{https://www.wolframalpha.com/input/?i=38\%5E47+mod+143}{using a computer}) that $C^{d}\equiv 38^{47} \equiv 25\pmod{143}$. Thus, Bob successfully decrypts Alice's message.
+\end{enumerate}
+\end{Solution}
+
+ \item To generate a public--private key pair, Bob chooses primes $p=23$ and $q=13$ and computes $n=pq$. He then chooses $e=283$.
+ \begin{enumerate}
+  \item What is Bob's public key?
+  \item What value of $d$ should Bob choose to make his private key?
+  \item Suppose Alice picks a message $M\in\{0,1,\dots,n-1\}$ to send to Bob. She computes the ciphertext $C$ by solving the congruence $C\equiv M^e\pmod{n}$ for $C\in\{0,1,\dots,n-1\}$ which she sends to Bob. The ciphertext she sends is $C=7$. What is the original plaintext message she was trying to send?
+ \end{enumerate}
+
+
+\begin{Solution}
+\begin{enumerate}
+\item[(a)] Bob's public key is the pair $(391,283)$, because $n=pq = 23\times17 = 391$.
+\item[(b)] Bob needs to solve $ed\equiv 1\pmod{(p-1)(q-1)}$ for $d$. That is, he needs to solve
+\[
+ 283d\equiv 1\pmod{352},
+\]
+where $(p-1)(q-1)=22\times16=352$. We can use the Extended Euclidean Algorithm to compute $\gcd(352,283)$, which produces the following table:
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+ & $x$ & $y$ & $r$\\\hline
+ $R_1$             &   $1$ &   $0$ & 352\\
+ $R_2$             &   $0$ &   $1$ & 283\\
+ $R_1 - R_2 = R_3$ &   $1$ &  $-1$ &  69\\
+ $R_2 -4R_3 = R_4$ &  $-4$ &   $5$ &   7\\
+ $R_3 -9R_4 = R_5$ &  $37$ & $-46$ &   6\\
+ $R_4 -R_5  = R_6$ & $-41$ &  $51$ &   1\\\hline
+\end{tabular}
+\end{center}
+From the table, we see that $352\cdot(-41) + 283\cdot(51) = 1$. It follows that 
+\[
+ 283\cdot 51 \equiv 1 \pmod{352}
+\]
+and thus Bob should choose $d=51$. Bob's private key is therefore $(391,51)$.
+
+\item[(c)] Bob needs to solve $R\equiv C^d\pmod{391}$ for $R\in\{0,1,\dots,390\}$, where $n=pq$ and $C = 7$. The number $R$ that Bob recovers will be equal to the original message $M$. By  Splitting the Modulus, the congruence $R\equiv 7^51\pmod{391}$ is equivalent to 
+\begin{empheq}[left=\empheqlbrace]{align}
+R&\equiv 7^{51}\pmod{23} \notag\\
+R&\equiv 7^{51}\pmod{17} \notag.
+\end{empheq}
+Note that $23\nmid 7$ and $17\nmid 7$, thus by Fermat's Little Theorem we have that \[7^{22}\equiv 1\pmod{23}\qquad \text{and}\qquad 7^{16}\equiv 1\pmod{17}.\] Moreover, we have $51 = 2\cdot 22 + 7$ and $51 = 3\cdot 16 + 3$. Thus,
+\[
+ 7^{51} \equiv 7^{2\cdot 22 + 7} \equiv (7^{22})^2\cdot 7^7\equiv 7^7\pmod{23}.
+\]
+Now $7^2 \equiv 49 \equiv 2\cdot 23 + 3\equiv 3\pmod{23}$ and $3^3\equiv 27 \equiv 4\pmod{23}$, so
+\[
+ 7^7 \equiv 7^6\cdot 7\equiv (7^2)^3 \equiv 7\cdot3^3\equiv 7\cdot 4 \equiv 28\equiv 5 \pmod{23}.
+\]
+Also, note that $7^2 \equiv 49 \equiv 51 - 2\equiv 3\cdot 17 -2\equiv -2\pmod{17}$, and thus
+\[
+ 7^3 \equiv 7^2\cdot 7\equiv (-2)\cdot 7 \equiv -14 \equiv -17 +3\equiv 3\pmod{17}.
+\]
+Thus, we have found that $R$ must satisfy
+\begin{empheq}[left=\empheqlbrace]{align}
+R&\equiv 5\pmod{23} \notag\\
+R&\equiv 3\pmod{17} \notag.
+\end{empheq}
+From the first congruence, we see that there must be some integer $k\in\integers$ such that $R=5+23k$. We need to find a value of $k$ such that $5+23k\equiv 3\pmod{17}$, or equivalently
+\[
+ 23k\equiv -2\pmod{17}.\tag{$\ast$}
+\]
+We now compute $\gcd(23,17)$ using the Euclidean Algorithm, which produces the resulting table:
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+ & $x$ & $y$ & $r$\\\hline
+ $R_1$             &   $1$ &   $0$ & 23\\
+ $R_2$             &   $0$ &   $1$ & 17\\
+ $R_1 - R_2 = R_3$ &   $1$ &  $-1$ &  6\\
+ $R_2 -2R_3 = R_4$ &  $-2$ &   $3$ &  5\\
+ $R_3 - R_4 = R_5$ &  $3$  &  $-4$ &  1\\\hline
+\end{tabular}
+\end{center}
+From the table above, we see that $23\cdot3 - 17\cdot 4 = 1$. Multiplying this equation by $-2$ yields
+\[
+ 23\cdot(-6) + 17\cdot 8 = -2,
+\]
+and so $k_0=-6$ is one solution to ($\ast$). By the Linear Congruence Theorem, all other solutions must satisfy $k\equiv -6\equiv 11\pmod{17}.$ That is, $k=11+17m$ for some integer $m$. Thus we have found that $R$ is
+\[
+ R = 5+23k = 5+23(11+17m) = 5 + 23\cdot 11 + 23\cdot 17m = 5 + 253 + 391m = 258 + 391m ,
+\]
+and thus $R \equiv 258\pmod{391}$. This is the recovered message, which must be equal to the original plaintext message $R\equiv M\pmod{391}$. 
+\end{enumerate}
+\end{Solution}
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}

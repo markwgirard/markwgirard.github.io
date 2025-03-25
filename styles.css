@@ -1,0 +1,12 @@
+
+/* Make all links bright academic blue */
+a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+/* Optional: Slightly soften background and tighten font */
+body {
+  background-color: #ffffff;
+
+}
