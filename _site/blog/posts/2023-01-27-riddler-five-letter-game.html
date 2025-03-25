@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mark Girard">
+<meta name="dcterms.date" content="2023-01-27">
+<meta name="description" content="On optimal strategies in a TikTok-inspired puzzle game.">
+
+<title>Mark W. Girard - Riddler: Tackling the blind letter challenge — Can You Defeat The TikTok Meme?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Mark W. Girard</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../academic/academic.html" rel="" target="">
+ <span class="menu-text">Academic</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../riddlers.html" rel="" target="">
+ <span class="menu-text">Puzzles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#riddler-classic" id="toc-riddler-classic" class="nav-link active" data-scroll-target="#riddler-classic">Riddler Classic</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#the-blind-continuum-challenge" id="toc-the-blind-continuum-challenge" class="nav-link" data-scroll-target="#the-blind-continuum-challenge">The Blind Continuum Challenge</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Riddler: Tackling the blind letter challenge — Can You Defeat The TikTok Meme?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">riddler</div>
+    <div class="quarto-category">programming</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    On optimal strategies in a TikTok-inspired puzzle game.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mark Girard </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 27, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>My solution to <a href="https://fivethirtyeight.com/features/can-you-defeat-the-tiktok-meme/">this week’s riddler</a>. (See more of <a href="../../riddlers">my Riddler solutions here</a>.)</p>
+<section id="riddler-classic" class="level2">
+<h2 class="anchored" data-anchor-id="riddler-classic">Riddler Classic</h2>
+<p>From Angela Zhou comes a challenging meme analysis:</p>
+<blockquote class="blockquote">
+<p>The&nbsp;<a href="https://www.tiktok.com/tag/blindletterchallenge">#blindletterchallenge</a>&nbsp;has recently taken TikTok by storm. In this challenge, you are presented with five letters, one at a time. Letters are picked randomly, but you can assume that no two letters are the same (i.e., letters are picked without replacement). As each letter is presented, you must identify which of five slots you will place it. The goal is for the letters in all five slots to be in alphabetical order at the end.</p>
+<p>For example, consider&nbsp;<a href="https://www.tiktok.com/@michael.dicostanzo/video/7183869058045988138">an attempt</a>&nbsp;at the challenge by Michael DiCostanzo. The first letter is X. Since this occurs relatively late in the alphabet, he puts this in the fifth slot. The second letter is U. He puts that in the fourth slot, since it also comes relatively late (and the fifth slot is already occupied). Next, the third letter is E. He takes a gamble, and places E in the first slot. The fourth letter is D. Since D comes before E alphabetically, but no slots prior to E are now available, Michael loses this attempt.</p>
+<p>If you play with an optimal strategy, always placing letters in slots to maximize your chances of victory, what is your probability of winning?</p>
+</blockquote>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<p>To get a sense of how to solve this problem more generally, let’s look at an example of this game and see how we might recursively develop a strategy to find the optimal probability of winning. Suppose the first letter we are given is s, which we decide to place in the in the 4th slot.</p>
+<p><span class="math display">\[
+\underline{\quad} \text{ }\underline{\quad} \text{ } \underline{\quad} \text{ } \underline{\text{ }s\text{ }} \text{ } \underline{\quad}
+\]</span></p>
+<p>After this placement, we can only win if <em>exactly</em> three of the remaining letters drawn are in the range from a to r (18 letters) and exactly one is in the range from t to z (6 letters). Given that 4 more letters total must be selected out of the remaining 25 letters, the odds of us having a chance of not losing are</p>
+<p><span class="math display">\[
+\frac{\binom{18}{3}\binom{6}{1}}{\binom{25}{4}}
+\]</span></p>
+<p>because, out of the <span class="math inline">\(\binom{25}{4}\)</span> ways that the remaining 4 letters can be chosen, we can only win if 3 of the letters come from the first 18 letters of the alphabet and the remaining 1 letter is chosen from the final 6 letters. Supposing that we <em>do</em> get lucky enough to get this kind of combination for the remaining letters, what is the best probability of winning at the end? It turns out that we can view the remaining game as two separate similarly structured sub-games!</p>
+<p>If the original game can be described as “place 5 randomly chosen letters from an alphabet of size 26 into 5 slots in order”, then if we are guaranteed to get three more letters from the first 17 letters and one more letter from the final 6, the remaining game (after placing the s in the fourth slot) can be described as a combination of the two following sub-games:</p>
+<ul>
+<li>“place 3 randomly chosen letters from a 17-letter alphabet into 3 slots” and</li>
+<li>“place 1 randomly chosen letter from a 6-letter alphabet into 1 slot”.</li>
+</ul>
+<p>More generally, suppose we are playing a game in which we are randomly given <span class="math inline">\(k\)</span> letters from an <span class="math inline">\(n\)</span>-letter alphabet that we must place into <span class="math inline">\(k\)</span> slots in order. Each of the <span class="math inline">\(n\)</span> letters has a <span class="math inline">\(1/n\)</span> probability of being the first letter to be selected. Suppose letter <span class="math inline">\(j\in\lbrace 1,2,\dots,n\rbrace\)</span> is the first letter drawn. If we decide to place this letter <span class="math inline">\(j\)</span> into the <span class="math inline">\(i^\text{th}\)</span> slot (where <span class="math inline">\(i\in\lbrace 1,2,\dots,k\rbrace\)</span>), the probability that of the remaining (<span class="math inline">\(k-1\)</span>) letters, there are <span class="math inline">\((i-1)\)</span> chosen from the first <span class="math inline">\((j-1)\)</span> letters and <span class="math inline">\((k-i)\)</span> letters chosen from the remaining <span class="math inline">\((n-j)\)</span> letters is</p>
+<p><span class="math display">\[
+\frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}.
+\]</span></p>
+<p>If this does <em>not</em> happen, we are guaranteed to lose, but if that <em>does</em> happen, we are effectively left with with two separate games: one where we must place <span class="math inline">\((i-1)\)</span> randomly chosen letters from the first <span class="math inline">\((j-1)\)</span> letters of the alphabet, and another where we must place <span class="math inline">\((k-i)\)</span> randomly chosen letters from the last <span class="math inline">\((n-j)\)</span> letters of the alphabet. To find the optimal odds of winning, we have to maximize over all possible choices <span class="math inline">\(i\in\lbrace 1,2,\dots, k\rbrace\)</span> of where to place letter <span class="math inline">\(j\)</span>. Finally, to compute the optimal odds of winning the whole game, we add up the optimal probabilities of winning in each of the <span class="math inline">\(n\)</span> different cases for the first letter <span class="math inline">\(j\in\lbrace 1,2,\dots, n\rbrace\)</span>.</p>
+<p>If we let <span class="math inline">\(p(n,k)\)</span> denote the optimal probability of winning a game with an <span class="math inline">\(n\)</span>-letter alphabet where we must place <span class="math inline">\(k\)</span> letters, we have</p>
+<p><span class="math display">\[
+p(n,k) = \frac{1}{n}\sum_{j=1}^n \max\Bigg\lbrace \frac{\binom{j-1}{i-1}\binom{n-j}{k-i}}{\binom{n-1}{k-1}}p(j-1,i-1)p(n-j, k-i)\quad:\quad i\in\lbrace 1,\dots,k\rbrace \Bigg\rbrace .
+\]</span></p>
+<p>Let’s note a few edge cases. If there are no letters left to place (i.e., <span class="math inline">\(k=0\)</span>) then we win by default, and thus <span class="math inline">\(p(n,0)=1\)</span> for every <span class="math inline">\(n\in\mathbb{N}\)</span>. Moreover, if the number of slots remaining is exactly equal to the size of the alphabet we pick from, then we can win simply by placing each letter as it appears in its ordered slot, and thus <span class="math inline">\(p(n,n)=1\)</span>.</p>
+<p>It’s now pretty straightforward to write a recursive program (using memoization to reduce computation time) to compute the optimal winning probabilities for different sized games.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span>  scipy.special <span class="im">import</span> binom</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> cache</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">@cache</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> q(n, k, j, i):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> binom(j,i) <span class="op">*</span> binom(n<span class="op">-</span>j<span class="op">-</span><span class="dv">1</span>, k<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>) <span class="op">/</span> binom(n<span class="op">-</span><span class="dv">1</span>,k<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">@cache</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> p(n, k):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> k <span class="op">&lt;=</span> <span class="dv">1</span> <span class="kw">or</span> n <span class="op">&lt;=</span> k:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> (</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">sum</span>(</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">max</span>(q(n, k, j, i) <span class="op">*</span> p(j, i) <span class="op">*</span> p(n<span class="op">-</span>j<span class="op">-</span><span class="dv">1</span>, k<span class="op">-</span>i<span class="op">-</span><span class="dv">1</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(k))</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        ) <span class="op">/</span> n</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The standard English alphabet has 26 letters, and computing the result we find that</p>
+<p><span class="math display">\[
+p(26, 5) \approx 0.254335
+\]</span></p>
+<p>Hence playing optimally gives us approximately 25.4% chance of winning a game (although this result doesn’t tell us anything about what the strategy is…).</p>
+<p>The following plot shows how the maximal probability of winning changes for different sizes of alphabet and different numbers of slots, outside of the standard 26-letter alphabet game with 5 slots (up to 75 letters and 75 slots). (The heat map uses a logarithmic scale, otherwise it wouldn’t show much. )</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../..\blog/images/20230127_alphabet.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Optimal probability f winning different games</figcaption>
+</figure>
+</div>
+</section>
+<section id="the-blind-continuum-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-blind-continuum-challenge">The Blind Continuum Challenge</h2>
+<p>What happens when the size of the alphabet gets infinitely large, but we keep the number of slots fixed at 5? The probability of winning in this large-alphabet game appears to level off at around 0.22. The following plot shows the optimal probability of winning the 5-letter challenge with different sizes of alphabets.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../..\blog/images/20230127_5letter.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Optimal probability f winning different games</figcaption>
+</figure>
+</div>
+<p>Indeed, with a 1,000-letter alphabet, we have:</p>
+<pre><code>`p(1000, 5) = 0.222138.`</code></pre>
+<p>In the limit as <span class="math inline">\(n\to\infty\)</span>, this game approaches what I’m calling “The Blind Continuum Challenge”. That is, the “letters” are picked uniformly at random from the unit interval. This game can be described as follows.</p>
+<p>Suppose you are given 5 independent and uniformly distributed random numbers on the interval from 0 to 1. Similar to the 5 letter challenge, you must try to place them in order into 5 slots as they appear. What are your optimal odds of winning?</p>
+<p>Using similar arguments as above in the finite-alphabet game, we arrive at the following recursive expression for <span class="math inline">\(p(k)\)</span>, the optimal probability of winning the continuous <span class="math inline">\(k\)</span>-letter challenge:</p>
+<p><span class="math display">\[
+p(k) = \int_0^1 \max_{i\in\lbrace 1,\dots,k\rbrace } \Bigg(\binom{k-1}{i-1}x^{i-1}(1-x)^{k-i}p(i-1)p(k-i)\Bigg)\mathrm{d}x
+\]</span></p>
+<p>I’ve worked out the first few exact values of this probability, all the way up to the blind continuum challenge with 5 “letters”.</p>
+<table class="table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 40%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(k\)</span></th>
+<th><span class="math inline">\(p(k)\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(\frac{3}{4}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math inline">\(\frac{377}{726}\)</span></td>
+<td>≈0.519284</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span class="math inline">\(\frac{1037891564126671}{3020778029791104}\)</span></td>
+<td>≈0.343584</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><span class="math inline">\(\frac{300437410741595765908031780282088610389625054477278441195747716452053155421581064323185688795147}{1356952251391926002664799322274919178558749179143258568252348272194427343469119954161606283821760}\)</span></td>
+<td>≈0.221406</td>
+</tr>
+</tbody>
+</table>
+<p>Indeed, it seems that the continuous version of this game has an optimal winning probability of around 22.14%.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

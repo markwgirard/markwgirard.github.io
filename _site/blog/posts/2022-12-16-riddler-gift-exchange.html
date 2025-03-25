@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mark Girard">
+<meta name="dcterms.date" content="2022-12-16">
+<meta name="description" content="How many gifts survive in a white elephant exchange with random rules?">
+
+<title>Mark W. Girard - Riddler: The Riddler Gift Exchange?</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Mark W. Girard</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../academic/academic.html" rel="" target="">
+ <span class="menu-text">Academic</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../riddlers.html" rel="" target="">
+ <span class="menu-text">Puzzles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-problem" id="toc-the-problem" class="nav-link active" data-scroll-target="#the-problem">The Problem</a></li>
+  <li><a href="#solution-to-the-variant-problem" id="toc-solution-to-the-variant-problem" class="nav-link" data-scroll-target="#solution-to-the-variant-problem">Solution (to the variant problem)</a>
+  <ul class="collapse">
+  <li><a href="#permutations-and-cycles" id="toc-permutations-and-cycles" class="nav-link" data-scroll-target="#permutations-and-cycles">Permutations and cycles</a></li>
+  <li><a href="#pairing-up" id="toc-pairing-up" class="nav-link" data-scroll-target="#pairing-up">Pairing up</a></li>
+  </ul></li>
+  <li><a href="#proof-of-the-claim-counting-permutations-with-k-disjoint-2-cycles" id="toc-proof-of-the-claim-counting-permutations-with-k-disjoint-2-cycles" class="nav-link" data-scroll-target="#proof-of-the-claim-counting-permutations-with-k-disjoint-2-cycles">Proof of the claim: Counting permutations with <span class="math inline">\(k\)</span> disjoint 2-cycles</a>
+  <ul class="collapse">
+  <li><a href="#permutations-with-no-2-cycles" id="toc-permutations-with-no-2-cycles" class="nav-link" data-scroll-target="#permutations-with-no-2-cycles">Permutations with <em>no</em> 2-cycles</a></li>
+  <li><a href="#back-to-permutations-with-k-disjoint-2-cycles" id="toc-back-to-permutations-with-k-disjoint-2-cycles" class="nav-link" data-scroll-target="#back-to-permutations-with-k-disjoint-2-cycles">Back to permutations with <span class="math inline">\(k\)</span> disjoint 2-cycles</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Riddler: The Riddler Gift Exchange?</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">combinitorics</div>
+    <div class="quarto-category">riddler</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    How many gifts survive in a white elephant exchange with random rules?
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mark Girard </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 16, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>My solution to <a href="https://fivethirtyeight.com/features/can-you-make-it-to-2023/">this week’s riddler</a>. (See more of <a href="../../riddlers">my Riddler solutions here</a>.)</p>
+<section id="the-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-problem">The Problem</h2>
+<p>From Gary Yane comes a puzzle that’s just in time for Christmas:</p>
+<blockquote class="blockquote">
+<p>Every Christmas, Gary’s family has a gift exchange. And every year, there is a big fight over how much folks should spend on the gifts. This year, they decided to pair up. So if Virginia gives Justin a gift, then Justin gives Virginia a gift. This way, while there will still be arguments, only two people will be involved in each argument.</p>
+<p>There are 20 people in the gift exchange. In the first round, everyone writes down the name of a random person (other than themselves) and the names go in a hat. Then if two people randomly pick each other’s names out of that hat, they will exchange gifts, and they no longer participate in the drawing. The remaining family members go on to round two. Again, they write down the name of anyone left, and again, any two people who pick each other exchange gifts.&nbsp;&nbsp;</p>
+<p>This continues until everyone is paired up. And yes, if exactly two people remain, they still go through the process of selecting each other, even though they know who their partner will be.</p>
+<p>On average, what is the expected number of rounds until everyone is paired up?</p>
+</blockquote>
+<p>I misread the statement when I first read this, which resulted in me solving the wrong problem…. :(. It turns out that the <em>actual</em> problem is difficult to solve analytically, and without resorting to simulation I wasn’t able to come up with a solution.</p>
+<p>(<strong><em>Edit:</em></strong> After posting this, I found that no other solvers were able to find a solution that didn’t rely on simulation, so I don’t feel bad. Also, other solvers played around with my same misinterpretation of the problem!)</p>
+<p><strong>However!</strong> My misinterpretation of the problem provided me with a similar problem that, although still relatively difficult, I was able to find an analytic solution to!</p>
+<p>In the original problem statement, each participant writes down any name <em>other than</em> their own name. When I first read this, I thought that each participant writes exactly their own name. This minor variation makes the problem still interesting, but much easier to solve.</p>
+<p>So, for the rest of the post I will focus on the solution to the variant problem where each participant writes their own name. Putting the names into the hat and redistributing them to the participants is essentially a standard permutation of the names. The number of outcomes different outcomes at the end of a given round is just the number of permutations of the participants. What makes this easy is that we guarantee that each name is in the hat exactly once, something that doesn’t happen in the original problem statement.</p>
+</section>
+<section id="solution-to-the-variant-problem" class="level2">
+<h2 class="anchored" data-anchor-id="solution-to-the-variant-problem">Solution (to the variant problem)</h2>
+<p>In the variant problem that I considered, each participant writes their own name on the slip of paper and puts it into the hat. The names are then randomly permuted and given back to the participants.</p>
+<p>Suppose there are <span class="math inline">\(n\)</span> initial participants. (Note that <span class="math inline">\(n\)</span> must be even or the game doesn’t work.) Miraculously, it turns out that the expected number of rounds that must be played until completion is simply <span class="math inline">\(n\)</span>.</p>
+<p>That is, if we let <span class="math inline">\(E_n\)</span> denote the expected number of rounds that must be played in a game that starts with <span class="math inline">\(n\)</span> players until every one is paired off, it holds that</p>
+<p><span class="math display">\[
+E_n = n
+\]</span></p>
+<p>when <span class="math inline">\(n\)</span> is even (and <span class="math inline">\(E_n=\infty\)</span> otherwise).</p>
+<p>Despite the solution having a simple expression, I was unable to come up with a simple argument. I have a long convoluted method to determine this answer, that involves counting certain types of permutations. The proof is convoluted, but the simple expression for the answer makes me believe that perhaps there is a simpler way… oh well.</p>
+<section id="permutations-and-cycles" class="level3">
+<h3 class="anchored" data-anchor-id="permutations-and-cycles">Permutations and cycles</h3>
+<p>Suppose there are <span class="math inline">\(n\)</span> participants at the start of a given round. We may identify the names with the numbers <span class="math inline">\(1\)</span> to <span class="math inline">\(n\)</span>. The set of permutations of <span class="math inline">\(\lbrace 1,2,\dots, n\rbrace\)</span> is denoted <span class="math inline">\(S_n\)</span> (i.e., the <a href="https://en.wikipedia.org/wiki/Symmetric_group">symmetric group</a> of <span class="math inline">\(n\)</span> elements). Now, when does a permutation of the participants have two people perfectly pair up? This requires two people to take each other’s names. We can express this mathematically by saying that the permutation has a <em>cycle</em> of size 2.</p>
+<p>Let’s recall now the cycle representation of a permutation. Consider the permutation <span class="math inline">\(\pi\in S_6\)</span> defined by the following diagram:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../..\blog/images/riddler_20221216_permutations.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">A permutation</figcaption>
+</figure>
+</div>
+<p>We can picture this in our game as person 1 drawing person 5’s name, person 5 drew person 3’s name, and person 3 drew person 1’s name. Person 4 drew their own name while participants 2 and 6 drew each others names. In this way, we can see that the permutation splits out nicely into three disjoint <em>cycles</em>. In cycle notation, we can express this permutation as</p>
+<p><span class="math display">\[
+(153)(26)(4),
+\]</span></p>
+<p>which has cycles of size 1, 2 and 3. The length of the cycle is the number of elements it cycles through. A cycle of length <span class="math inline">\(k\)</span> is called a <span class="math inline">\(k\)</span>-cycle. The number of pairs that form in a given round is equal to the number of disjoint <span class="math inline">\(2\)</span>-cycles in the permutation! In this example, players 2 and 6 pair off in the gift exchange, and the four remaining players (1, 3, 4, and 5) that are not part of a <span class="math inline">\(2\)</span>-cycle continue on to the next round and place their names back in the had.</p>
+</section>
+<section id="pairing-up" class="level3">
+<h3 class="anchored" data-anchor-id="pairing-up">Pairing up</h3>
+<p>Suppose at the start of a round there are <span class="math inline">\(n\)</span> people remaining in the group of yet-to-be-paired-off participants. A random permutation of the <span class="math inline">\(n\)</span> names is chosen as the participants draw names out of the hat. If the permutation has <span class="math inline">\(k\)</span> disjoint <span class="math inline">\(2\)</span>-cycles, then <span class="math inline">\(2k\)</span> of those participants pair off in to <span class="math inline">\(k\)</span> pairs and there are <span class="math inline">\(n-2k\)</span> participants remaining in the pool in the next round.</p>
+<p>When there only two people remaining, there are two possibilities that each occur with 50% probability: either they choose each other’s names (pairing up) or they choose their own names and continue to another round. Since each round has a 50% chance of ending the game and a 50% chance of continuing to another round, the expected number of rounds to be had once their are two people remaining is</p>
+<p><span class="math display">\[
+1 + \frac{1}{2} + \frac{1}{2^2} + \cdots = 2.
+\]</span></p>
+<p>Now, the question we want to answer is: If there are <span class="math inline">\(n\)</span> participants initially, what is the expected number of rounds until all participants have been paired off this way? We can set this problem up mathematically as follows.</p>
+<p>For non-negative integers <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span>: - Let <span class="math inline">\(p_{n,k}\)</span> be the probability that a randomly selected permutation of <span class="math inline">\(n\)</span> elements contains exactly <span class="math inline">\(k\)</span> disjoint <span class="math inline">\(2\)</span>-cycles, and - Let <span class="math inline">\(E_n\)</span> denote the expected number of rounds that the game will last when it begins with <span class="math inline">\(n\)</span> participants. When <span class="math inline">\(n=0\)</span>, there is no game to be played as there are no remaining participants to pair up and thus <span class="math inline">\(E_0 = 0\)</span>. However, if <span class="math inline">\(n\)</span> is odd then it will be impossible to pair off everybody in the group, and thus <span class="math inline">\(E_n\)</span> is infinite. We have already determined that <span class="math inline">\(E_2=2\)</span>.</p>
+<p>Otherwise, if <span class="math inline">\(n\)</span> is even and positive, then <span class="math inline">\(n=2m\)</span> for some positive integer <span class="math inline">\(m\)</span>. In a round that starts with <span class="math inline">\(2m\)</span> players there will be some number <span class="math inline">\(k\in\lbrace 0,1,\dots, m\rbrace\)</span> of pairs that form, and the next round starts with <span class="math inline">\(E_{2m-2k}\)</span> players. It follows that</p>
+<p><span class="math display">\[
+E_{2m} = 1 + \sum_{k=0}^{m} p_{2m,k} E_{2(m-k)}.
+\]</span></p>
+<p>Slightly rearranging and solving for <span class="math inline">\(E_n\)</span> (and using the fact that <span class="math inline">\(E_0=0\)</span>), we find that</p>
+<p><span class="math display">\[
+E_{2m}= \frac{1}{1-p_{2m,0}}\left(1 + \sum_{k=1}^{m-1}p_{2m,k}E_{2(m-k)}\right).
+\]</span></p>
+<p>It remains now to find an expression for <span class="math inline">\(p_{n,k}\)</span>. If we let <span class="math inline">\(a_{n,k}\)</span> denote the number of permutations of <span class="math inline">\(n\)</span> elements that contain exactly <span class="math inline">\(k\)</span> distinct <span class="math inline">\(2\)</span>-cycles, then we may write</p>
+<p><span class="math display">\[
+p_{n,k} = \frac{a_{n,k}}{n!}.
+\]</span></p>
+<p>The latter half of this blog post will be devoted to proving the following claim.</p>
+<blockquote class="blockquote">
+<p><strong>Claim.</strong> Let <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> be nonnegative integers. The number of permutations of <span class="math inline">\(n\)</span> elements that contain exactly <span class="math inline">\(k\)</span> distinct <span class="math inline">\(2\)</span>-cycles is given by <span class="math display">\[a_{n,k} = \frac{n!}{2^kk!}\sum_{j=0}^{\lfloor n/2-k\rfloor}\frac{(-1)^{j} }{2^j j!}.\]</span></p>
+</blockquote>
+<p>The proof of this claim will follow later, but for now we can carry onward. The desired probability may therefore be expressed as</p>
+<p><span class="math display">\[
+p_{n,k} = \frac{1}{2^k k!}\sum_{j=0}^{\lfloor n/2-k\rfloor}\frac{(-1)^{j} }{2^j j!}.
+\]</span></p>
+<p>Now, when <span class="math inline">\(n=2m\)</span>, this simplifies to</p>
+<p><span class="math display">\[
+p_{2m,k} = \frac{1}{2^k k!}\sum_{j=0}^{m-k}\frac{(-1)^{j} }{2^j j!}.
+\]</span></p>
+<p>For a sanity check, we can verify for a fixed <span class="math inline">\(m\)</span> that the sum of all of these probabilities equals one. Indeed, if there are <span class="math inline">\(2m\)</span> people, the numbers of different pairs that can form are <span class="math inline">\(0,1,\dots m\)</span>, and</p>
+<p><span class="math display">\[
+\begin{align*}
+\sum_{k=0}^m p_{2m,k}
+&amp;= \sum_{k=0}^m\sum_{j=0}^{m-k}\frac{(-1)^j}{2^{k+j}k!j!}\\
+&amp;= \sum_{k=0}^m\sum_{j=0}^{m-k}\frac{(-1)^j}{2^{k+j}(k+j)!}\binom{k+j}{j}\\
+&amp; = \sum_{a=0}^m\sum_{j=0}^a \frac{(-1)^j}{2^aa!}\binom{a}{j}\\
+&amp; = \sum_{a=0}^m\frac{1}{2^aa!}\sum_{j=0}^a (1)^{a-j}(-1)^j\binom{a}{j}\\
+&amp; = 1 + \sum_{a=1}^m\frac{1}{2^aa!}(1-1)^a\\
+&amp; = 1.
+\end{align*}
+\]</span></p>
+<p>We proceed now with the statement of the main result.</p>
+<blockquote class="blockquote">
+<p><strong>Proposition.</strong> Let <span class="math inline">\(E_n\)</span> denote the expected number of rounds in a game that starts with <span class="math inline">\(n\)</span> players. It holds that</p>
+</blockquote>
+<p><span class="math display">\[
+E_{2m} = 2m
+\]</span></p>
+<blockquote class="blockquote">
+<p>for all <span class="math inline">\(m\in\mathbb{N}\)</span>.</p>
+</blockquote>
+<p><em>Proof.</em> We proceed by induction. As discussed above, the trivial game requires no rounds so <span class="math inline">\(E_0=0\)</span>. Let <span class="math inline">\(m\in\mathbb{N}\)</span> and suppose that <span class="math inline">\(E_{2k} = 2k\)</span> holds for all integers <span class="math inline">\(k\in\lbrace 0,1,\dots,m\rbrace\)</span>. Note that</p>
+<p><span class="math display">\[\tag{$\ast$}
+E_{2m} = \sum_{k=1}^m p_{2m,m-k}E_{2k}= 2m
+\]</span></p>
+<p>by assumption. Also note that for each <span class="math inline">\(k\in\mathbb{N}\)</span> we have that</p>
+<p><span class="math display">\[\tag{$\ast\ast$}
+\begin{align*}
+p_{2(m+1),k}
+&amp;= \frac{1}{2^kk!}\Bigg(\sum_{j=1}^{m-k}\frac{(-1)^j}{2^j j!} + \frac{(-1)^{m+1-k}}{2^{m+1-k}(m+1-k)!}\Bigg)\\
+&amp; = p_{2m,k} - \frac{(-1)^{m-k}}{2^{m+1}(m+1)!}\binom{m+1}{k}
+\end{align*}
+\]</span></p>
+<p>and in particular</p>
+<p><span class="math display">\[\tag{$\ast\ast\ast$}
+p_{2(m+1),0} = p_{2m,0} - \frac{(-1)^{m}}{2^{m+1}(m+1)!}.
+\]</span></p>
+<p>Note that</p>
+<p><span class="math display">\[
+\begin{align*}
+\sum_{k=1}^{m}p_{2m,m+1-k}E_{2k}
+&amp; = \sum_{k=0}^{m-1}p_{2m,m-k}E_{2k+2}\\
+&amp; = \sum_{k=0}^{m-1}p_{2m,m-k}(2k+2)\\
+&amp; = \sum_{k=0}^{m-1}p_{2m,m-k}(2k) +2\sum_{k=0}^{m-1}p_{2m,m-k}\\
+&amp; = \sum_{k=0}^{m-1}p_{2m,m-k}E_{2k} + 2\big(1-p_{2m,0}\big)\\
+&amp; = \big(E_{2m} - p_{2m,0}E_{2m}\big) + 2\big(1-p_{2m,0}\big)\\
+&amp; = (E_{2m}+2)\big(1-p_{2m,0}\big)\\
+&amp; = (2m+2)\big(1-p_{2m,0}\big),
+\end{align*}
+\]</span></p>
+<p>where we make use of (<span class="math inline">\(\ast\)</span>).</p>
+<p>Also,</p>
+<p><span class="math display">\[
+\begin{align*}
+\sum_{k=1}^{m}\frac{(1)^{k+1}}{2^{m+1}(m+1-k)!k!}E_{2k}
+&amp; =  \frac{1}{2^{m+1}} \sum_{k=1}^{m}\frac{(-1)^{k-1}}{(m+1-k)!k!}E_{2k}\\
+&amp;= \frac{1}{2^{m+1}} \sum_{k=1}^{m}\frac{(-1)^{k-1}}{(m+1-k)!k!}(2k)\\
+&amp;=\frac{1}{2^{m}} \sum_{k=1}^{m}\frac{(-1)^{k-1}}{(m+1-k)!(k-1)!}\\
+&amp;=\frac{1}{2^{m}} \sum_{k=0}^{m-1}\frac{(-1)^{k}}{(m-k)!k!}\\
+&amp;=\frac{1}{2^{m}m!} \sum_{k=0}^{m-1}(-1)^{k}\binom{m}{k}\\
+&amp;=\frac{1}{2^{m}m!} \Bigg(\sum_{k=0}^{m}(-1)^{k}\binom{m}{k}-(-1)^m\Bigg)\\
+&amp;=\frac{(-1)^m}{2^{m}m!}
+\end{align*}
+\]</span></p>
+<p>Putting this together using (<span class="math inline">\(\ast\ast\)</span>) and (<span class="math inline">\(\ast\ast\ast\)</span>), we have</p>
+<p><span class="math display">\[
+\begin{align*}
+\sum_{k=1}^m p_{2(m+1), m+1-k}E_{2k}
+&amp; =  \Bigg(\sum_{k=1}^{m}p_{2m,m+1-k}E_{2k} \Bigg) + \Bigg(\sum_{k=1}^{m}\frac{(-1)^{k+1}}{2^{m+1}(m+1-k)!k!}E_{2k}\Bigg)\\
+&amp; = (2m+2)\big(1-p_{2m,0}\big) + \frac{(-1)^m}{2^{m}m!}\\
+&amp; = 2(m+1)\big(1-p_{2m,0}\big) -2(m+1) \frac{(-1)^{m+1}}{2^{m+1}(m+1)!}\\
+&amp; = 2(m+1)\bigg(1-p_{2m,0} - \frac{(-1)^{m+1}}{2^{m+1}(m+1)!}\bigg)\\
+&amp; = 2(m+1)(1-p_{2(m+1),0}).
+\end{align*}
+\]</span></p>
+<p>Finally,</p>
+<p><span class="math display">\[
+\begin{align*}
+E_{2(m+1)}
+&amp;= \frac{1}{1-p_{2(m+1),0}}\sum_{k=1}^m p_{2(m+1), m+1-k}E_{2k}\\
+&amp;= 2(m+1),
+\end{align*}
+\]</span></p>
+<p>as desired. <span class="math inline">\(\square\)</span></p>
+</section>
+</section>
+<section id="proof-of-the-claim-counting-permutations-with-k-disjoint-2-cycles" class="level2">
+<h2 class="anchored" data-anchor-id="proof-of-the-claim-counting-permutations-with-k-disjoint-2-cycles">Proof of the claim: Counting permutations with <span class="math inline">\(k\)</span> disjoint 2-cycles</h2>
+<p>The rest of this post is devoted to proving the claim above. Let <span class="math inline">\(n\)</span> and <span class="math inline">\(k\)</span> be nonnegative integers. We want to find an expression for <span class="math inline">\(a_{n,k}\)</span>, which denotes the number of permutations in <span class="math inline">\(S_n\)</span> containing exactly <span class="math inline">\(k\)</span> disjoint 2-cycles. We may count these permutations by first choosing the <span class="math inline">\(2k\)</span> elements that will compose the <span class="math inline">\(k\)</span> pairs that are formed, then count the number of ways those <span class="math inline">\(2k\)</span> elements can be paired off, and finally count the number of ways that the remaining <span class="math inline">\(n-2k\)</span> elements can be permuted with no 2-cycles. Hence, one has that</p>
+<p><span class="math display">\[
+a_{n,k}=\binom{n}{2k}a_{2k,k}a_{n-2k,0}.
+\]</span></p>
+<p>Note that</p>
+<p><span class="math display">\[
+a_{2k,k}=\frac{(2k)!}{2^kk!}.
+\]</span></p>
+<p>To see this, note that we can count the number of ways to partition <span class="math inline">\(2k\)</span> elements into <span class="math inline">\(k\)</span> disjoint ordered pairs in two different ways. One way is to partition the <span class="math inline">\(2k\)</span> elements into <span class="math inline">\(k\)</span> unordered pairs, then decide on an ordering for each pair. Another way is to choose <span class="math inline">\(k\)</span> of the <span class="math inline">\(2k\)</span> elements to be the first elements of each pair, then arrange the remaining <span class="math inline">\(k\)</span> elements with the chosen <span class="math inline">\(k\)</span> elements. It follows that <span class="math display">\[a_{2k,k}2^k=\binom{2k}{k}k!\]</span>and the result follows. It remains to determine an expression for <span class="math inline">\(a_{m,0}\)</span> for an integer <span class="math inline">\(m\)</span>.</p>
+<section id="permutations-with-no-2-cycles" class="level3">
+<h3 class="anchored" data-anchor-id="permutations-with-no-2-cycles">Permutations with <em>no</em> 2-cycles</h3>
+<p>Note that <span class="math inline">\(a_{m,0}\)</span> is the number of permutations of <span class="math inline">\(m\)</span> elements containing no 2-cycles. To find an expression for this number, for each distinct subset $i,j,2,,m$ of exactly two elements, define <span class="math inline">\(A_{\lbrace i,j\rbrace}\)</span> as the set of all permutations of $,2,,m$ for which <span class="math inline">\((ij)\)</span> is a 2-cycle. That is,</p>
+<p><span class="math display">\[
+A_{\lbrace i,j\rbrace } = \lbrace \pi\in S_m\,:\, \pi(i)=j,\, \pi(j)=i\rbrace .
+\]</span></p>
+<p>The collection of all permutations in <span class="math inline">\(S_m\)</span> that have no 2-cycles can be expressed as</p>
+<p><span class="math display">\[
+S_n\setminus \Bigg(\bigcup_{\substack{i,j\in\lbrace 1,2,\dots,m\rbrace \\i\neq j}}A_{\lbrace i,j\rbrace }\Bigg).\tag{1}
+\]</span></p>
+<p>The cardinality of this set is equal to <span class="math inline">\(a_{m,0}\)</span>. We will prove that</p>
+<p><span class="math display">\[
+a_{m,0} = m!\sum_{k=0}^{\lfloor m/2\rfloor}\frac{(-1)^{k} }{2^k k!}.
+\]</span></p>
+<section id="inclusionexclusion-principle" class="level4">
+<h4 class="anchored" data-anchor-id="inclusionexclusion-principle">Inclusion–Exclusion Principle</h4>
+<p>If one wants to count the number of elements in the union <span class="math inline">\(A\cup B\)</span> of two finite sets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, one way to do this is to use the formula <span class="math display">\[\vert A\cup B\vert  = \vert A\vert  + \vert B\vert  - \vert A\cap B\vert .\]</span>This can be observed that $A+B$ is too large, because the elements in the intersection have been double counted. This technique can be generalizes to any finite number of finite sets.</p>
+<p>Let $A_a,:, a$ be a finite family of finite sets indexed by some finite index set <span class="math inline">\(\Omega\)</span>. First some notation. For a fixed integer <span class="math inline">\(k\)</span>, the collection of all subsets of <span class="math inline">\(\Omega\)</span> having exactly <span class="math inline">\(k\)</span> elements is expressed as</p>
+<p><span class="math display">\[
+\binom{\Omega}{k} = \lbrace B\subset \Omega\,:\, \vert B\vert =k\rbrace .
+\]</span></p>
+<p>To count the number of elements in the union of every set in $A_a,:,a$, we can count the number of elements the intersection of every possible subfamily and apply a useful formula. Namely,</p>
+<p><span class="math display">\[
+\bigg\vert \bigcup_{a\in\Omega}A_a\bigg\vert  = \sum_{k=1}^{\vert \Omega\vert }(-1)^{k+1} \sum_{B\in\binom{\Omega}{k}}\bigg\vert \bigcap_{b\in B}A_b\bigg\vert .
+\]</span></p>
+<p>In words, to count the number of elements in a finite union of finite sets, first sum the cardinalities of the individual sets, then subtract cardinalities of all possible intersections of two different sets, then add back the cardinalities of each possible intersection of three different sets, and so on.</p>
+</section>
+<section id="applying-the-inclusionexclusion-principle" class="level4">
+<h4 class="anchored" data-anchor-id="applying-the-inclusionexclusion-principle">Applying the inclusion–exclusion principle</h4>
+<p>Let us now use the inclusion–exclusion principle to find an expression for the cardinality of the set in (1). For brevity we use the notation</p>
+<p><span class="math display">\[
+\Omega_m=\lbrace 1,2,\dots,m\rbrace .
+\]</span></p>
+<p>For an integer <span class="math inline">\(k\)</span>, we define</p>
+<p><span class="math display">\[
+B_{m,k} = \displaystyle\binom{\textstyle{\binom{\Omega_m}{2}}}{\textstyle k}
+\]</span></p>
+<p>as the collection of all sets of <span class="math inline">\(k\)</span> distinct pairs of elements of <span class="math inline">\(\Omega_m\)</span>. For example,</p>
+<p><span class="math display">\[
+B_{3,2} = \Big\lbrace \big\lbrace \lbrace 1,2\rbrace ,\lbrace 1,3\rbrace \big\rbrace ,\, \big\lbrace \lbrace 1,2\rbrace ,\lbrace 2,3\rbrace \big\rbrace ,\, \big\lbrace \lbrace 1,3\rbrace ,\lbrace 2,3\rbrace \big\rbrace \Big\rbrace
+\]</span></p>
+<p>Note that</p>
+<p><span class="math display">\[
+\begin{align*}
+\Bigg\vert \bigcup_{\substack{\lbrace i,j\rbrace \in\binom{\Omega_m}{2}}} A_{\lbrace i,j\rbrace } \Bigg\vert = \sum_{k=1}^{\big\vert \binom{\Omega_m}{2}\big\vert }(-1)^{k+1}\sum_{B\in B_{m,k}} \bigg\vert\bigcap_{\lbrace i,j\rbrace \in B}A_{\lbrace i,j\rbrace }\bigg\vert.
+\end{align*}
+\]</span></p>
+<p>Now, if a collection <span class="math inline">\(B\in B_{m,k}\)</span> is not pairwise disjoint then one has that</p>
+<p><span class="math display">\[
+\bigcap_{\lbrace i,j\rbrace \in B}A_{\lbrace i,j\rbrace } = \emptyset.
+\]</span></p>
+<p>Indeed, an element of $_m=,2,,m$ cannot be in more than one 2-cycle of a given permutation of <span class="math inline">\(\Omega_m\)</span>. The only non-empty intersections are those where the family <span class="math inline">\(B\)</span> consists of pairwise disjoint subsets of size 2.</p>
+<p>A family <span class="math inline">\(B\in B_{m,k}\)</span> that is pairwise disjoint is of the form</p>
+<p><span class="math display">\[
+B = \big\lbrace \lbrace i_1,j_1\rbrace ,\dots,\lbrace i_k,j_k\rbrace \big\rbrace ,
+\]</span></p>
+<p>where the elements <span class="math inline">\(i_1,\dots,i_k,j_1,\dots,j_k\)</span> are all distinct.</p>
+<p>To find the cardinality of <span class="math inline">\(A_{\lbrace i_1,j_1\rbrace }\cap\cdots\cap A_{\lbrace i_k,j_k\rbrace }\)</span>, we count the number of permutations that contain the <span class="math inline">\(k\)</span> 2-cycles <span class="math inline">\((i_1,j_1), \cdots, (i_kj_k)\)</span>. To do so, we simply count the number of ways that the remaining <span class="math inline">\(m-2k\)</span> elements can be permuted, and thus</p>
+<p><span class="math display">\[
+\bigg\vert \bigcap_{\lbrace i,j\rbrace \in B}A_{\lbrace i,j\rbrace }\bigg\vert  = (m-2k)!.
+\]</span></p>
+<p>The number of families <span class="math inline">\(B\in B_{m,k}\)</span> that are pairwise disjoint is equal to</p>
+<p><span class="math display">\[
+\binom{m}{2k}a_{2k,k} = \binom{m}{2k}\frac{(2k)!}{2^k k!},
+\]</span></p>
+<p>as we may simply count the number of ways to select <span class="math inline">\(2k\)</span> elements from $,2,,m$ and subsequently decide how to pair up those <span class="math inline">\(2k\)</span> elements into <span class="math inline">\(k\)</span> pairs.</p>
+<p>It follows that</p>
+<p><span class="math display">\[
+\begin{align*}
+\bigcup_{\substack{\lbrace i,j\rbrace \in\binom{\Omega_m}{2}}} A_{\lbrace i,j\rbrace }
+&amp;= \sum_{k=1}^{\lfloor m/2\rfloor}(-1)^{k+1}\binom{m}{2k}\frac{(2k)!}{2^k k!}(m-2k)!\\
+&amp; = m!\sum_{k=1}^{\lfloor m/2\rfloor}\frac{(-1)^{k+1} }{2^k k!}
+\end{align*}
+\]</span></p>
+<p>Finally, the number of permutations of $,2,,m$ containing no 2-cycles is equal to</p>
+<p><span class="math display">\[
+\begin{align*}
+a_{m,0}
+&amp;= m! - m!\sum_{k=1}^{\lfloor m/2\rfloor}\frac{(-1)^{k+1} }{2^k k!} \\
+&amp;= m!\sum_{k=0}^{\lfloor m/2\rfloor}\frac{(-1)^{k} }{2^k k!},
+\end{align*}
+\]</span></p>
+<p>as desired.</p>
+</section>
+</section>
+<section id="back-to-permutations-with-k-disjoint-2-cycles" class="level3">
+<h3 class="anchored" data-anchor-id="back-to-permutations-with-k-disjoint-2-cycles">Back to permutations with <span class="math inline">\(k\)</span> disjoint 2-cycles</h3>
+<p>We finally return to counting the permutations of <span class="math inline">\(\lbrace 1,2,\dots,n\rbrace\)</span> that contain exactly <span class="math inline">\(k\)</span> disjoint 2-cycles. This is</p>
+<p><span class="math display">\[
+\begin{align*}
+a_{n,k}
+&amp; = \binom{n}{2k}a_{2k,k}a_{n-2k,0}\\
+&amp; = \binom{n}{2k}\frac{(2k)!}{2^kk!} (n-2k)!\sum_{j=0}^{\lfloor n/2-k\rfloor}\frac{(-1)^{j} }{2^j j!}\\
+&amp; = \frac{n!}{2^kk!}\sum_{j=0}^{\lfloor n/2-k\rfloor}\frac{(-1)^{j} }{2^j j!}
+\end{align*}
+\]</span></p>
+<p>which proves the claim.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

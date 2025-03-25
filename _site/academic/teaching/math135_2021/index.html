@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mark W. Girard - MATH 135: Algebra for Honours Mathematics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Mark W. Girard</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../academic/academic.html" rel="" target="">
+ <span class="menu-text">Academic</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../riddlers.html" rel="" target="">
+ <span class="menu-text">Puzzles</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link active" data-scroll-target="#practice-problems">Practice Problems</a></li>
+  <li><a href="#sample-proofs-from-lectures" id="toc-sample-proofs-from-lectures" class="nav-link" data-scroll-target="#sample-proofs-from-lectures">Sample Proofs from Lectures</a></li>
+  <li><a href="#visualizing-the-gcd" id="toc-visualizing-the-gcd" class="nav-link" data-scroll-target="#visualizing-the-gcd">Visualizing the GCD</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">MATH 135: Algebra for Honours Mathematics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="university-of-waterloo-fall-2021" class="level4">
+<h4 class="anchored" data-anchor-id="university-of-waterloo-fall-2021">University of Waterloo — Fall 2021</h4>
+<p><em>Section instructor: Mark W. Girard</em></p>
+<p><em>These materials were created to supplement the shared course resources.</em></p>
+<hr>
+</section>
+<section id="practice-problems" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problems">Practice Problems</h3>
+<p>Each problem set was written in LaTeX and compiled with and without solutions.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Chapter(s)</th>
+<th>Problems (PDF)</th>
+<th>With Solutions (PDF)</th>
+<th>LaTeX Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chapter 4: Induction</td>
+<td><a href="practice_proofs/PracticeProbsCh04-sums_and_induction.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh04-sums_and_induction-solutions.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh04-sums_and_induction.tex">TeX</a></td>
+</tr>
+<tr class="even">
+<td>Chapter 5: Sets</td>
+<td><a href="practice_proofs/PracticeProbsCh05-sets.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh05-sets-solutions.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh05-sets.tex">TeX</a></td>
+</tr>
+<tr class="odd">
+<td>Chapters 6–8: GCD &amp; Division</td>
+<td><a href="practice_proofs/PracticeProbsCh06-07-08.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh06-07-08_solutions.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh06-07-08.tex">TeX</a></td>
+</tr>
+<tr class="even">
+<td>Chapter 9: RSA Encryption</td>
+<td><a href="practice_proofs/PracticeProbsCh09-RSA.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh09-RSA_solutions.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh09-RSA.tex">TeX</a></td>
+</tr>
+<tr class="odd">
+<td>Chapters 9–10: Complex numbers and Polynomials</td>
+<td><a href="practice_proofs/PracticeProbsCh09-10.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh09-10_solutions.pdf">Download</a></td>
+<td><a href="practice_proofs/PracticeProbsCh09-10.tex">TeX</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="sample-proofs-from-lectures" class="level3">
+<h3 class="anchored" data-anchor-id="sample-proofs-from-lectures">Sample Proofs from Lectures</h3>
+<p>The following lecture slides illustrate various proof techniques taught in the course. Each includes both the compiled PDF shown in class and the original LaTeX source.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Lecture #</th>
+<th>Topic</th>
+<th>PDF</th>
+<th>LaTeX Source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5</td>
+<td>Proving equalities, inequalities, cases</td>
+<td><a href="sample_proofs/lecture_05.pdf">Lecture 5</a></td>
+<td><a href="sample_proofs/lecture_05.tex">TeX</a></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Existential proofs, negation, implications</td>
+<td><a href="sample_proofs/lecture_06.pdf">Lecture 6</a></td>
+<td><a href="sample_proofs/lecture_06.tex">TeX</a></td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>Contrapositive, elimination, iff</td>
+<td><a href="sample_proofs/lecture_08.pdf">Lecture 8</a></td>
+<td><a href="sample_proofs/lecture_08.tex">TeX</a></td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Contradiction, uniqueness</td>
+<td><a href="sample_proofs/lecture_09.pdf">Lecture 9</a></td>
+<td><a href="sample_proofs/lecture_09.tex">TeX</a></td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>Induction</td>
+<td><a href="sample_proofs/lecture_10.pdf">Lecture 10</a></td>
+<td><a href="sample_proofs/lecture_10.tex">TeX</a></td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>Strong induction, recursive sequences</td>
+<td><a href="sample_proofs/lecture_11.pdf">Lecture 11</a></td>
+<td><a href="sample_proofs/lecture_11.tex">TeX</a></td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>Game proofs — Chomp</td>
+<td><a href="sample_proofs/lecture_12.pdf">Lecture 12</a></td>
+<td><a href="sample_proofs/lecture_12.tex">TeX</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="visualizing-the-gcd" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-the-gcd">Visualizing the GCD</h3>
+<p>This PDF was shown in class to help visualize the Euclidean algorithm for computing the GCD.</p>
+<ul>
+<li><a href="EuclidViz.pdf">Euclid Visualization</a></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
