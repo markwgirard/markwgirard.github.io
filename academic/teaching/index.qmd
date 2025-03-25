@@ -1,0 +1,26 @@
+---
+title: "Teaching"
+format: html
+---
+
+This page serves as an archive of courses I taught during my academic career. It includes syllabi, lecture notes, and problem sets where available, organized by institution.
+
+---
+
+### University of Waterloo
+
+| Term         | Course Code(s)              | Title                                           | Materials |
+|--------------|-----------------------------|--------------------------------------------------|-----------|
+| Fall 2021    | MATH 135                    | Algebra for Honours Mathematics                 | [View page](/academic/teaching/math135_2021/) |
+| Fall 2020    | MATH 137                    | Calculus I Honours                              | [View page](/academic/teaching/math137_2020/) |
+| Fall 2019    | MATH 212 / ECE 206          | Advanced Calculus 2 for Electrical Engineers    | [View page](/academic/teaching/ece206_2019/) |
+| Spring 2019  | MATH 117                    | Calculus I for Engineers                        | _(Page not archived)_ |
+| Spring 2018  | MATH 212 / ECE 206          | Advanced Calculus 2 for Electrical Engineers    | _(Page not archived)_ |
+
+
+
+### University of Calgary
+
+| Term         | Course Code   | Title             | Materials |
+|--------------|---------------|-------------------|-----------|
+| Summer 2016  | MATH 271      | Discrete Mathematics | [View page](/academic/teaching/271/) |

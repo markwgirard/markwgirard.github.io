@@ -1,0 +1,8 @@
+---
+title: "Curriculum Vitae"
+format: html
+---
+
+[Download CV (PDF)](cv/MarkWGirard_CV.pdf)
+
+_You can also embed a short summary here or link to Google Scholar, ORCID, etc._

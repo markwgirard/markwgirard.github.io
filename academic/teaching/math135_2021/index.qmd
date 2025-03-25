@@ -1,0 +1,47 @@
+---
+title: "MATH 135: Algebra for Honours Mathematics"
+format: html
+---
+
+#### University of Waterloo — Fall 2021  
+_Section instructor: Mark W. Girard_  
+
+_These materials were created to supplement the shared course resources._
+
+---
+
+### Practice Problems
+
+Each problem set was written in LaTeX and compiled with and without solutions.
+
+| Chapter(s)                  | Problems (PDF) | With Solutions (PDF) | LaTeX Source |
+|----------------------------|----------------|-----------------------|--------------|
+| Chapter 4: Induction       | [Download](practice_proofs/PracticeProbsCh04-sums_and_induction.pdf) | [Download](practice_proofs/PracticeProbsCh04-sums_and_induction-solutions.pdf) | [TeX](practice_proofs/PracticeProbsCh04-sums_and_induction.tex) |
+| Chapter 5: Sets            | [Download](practice_proofs/PracticeProbsCh05-sets.pdf) | [Download](practice_proofs/PracticeProbsCh05-sets-solutions.pdf) | [TeX](practice_proofs/PracticeProbsCh05-sets.tex) |
+| Chapters 6–8: GCD & Division | [Download](practice_proofs/PracticeProbsCh06-07-08.pdf) | [Download](practice_proofs/PracticeProbsCh06-07-08_solutions.pdf) | [TeX](practice_proofs/PracticeProbsCh06-07-08.tex) |
+| Chapter 9: RSA Encryption  | [Download](practice_proofs/PracticeProbsCh09-RSA.pdf) | [Download](practice_proofs/PracticeProbsCh09-RSA_solutions.pdf) | [TeX](practice_proofs/PracticeProbsCh09-RSA.tex) |
+| Chapters 9–10: Complex numbers and Polynomials | [Download](practice_proofs/PracticeProbsCh09-10.pdf) | [Download](practice_proofs/PracticeProbsCh09-10_solutions.pdf) | [TeX](practice_proofs/PracticeProbsCh09-10.tex) |
+
+---
+
+
+### Sample Proofs from Lectures
+
+The following lecture slides illustrate various proof techniques taught in the course. Each includes both the compiled PDF shown in class and the original LaTeX source.
+
+| Lecture # | Topic                                      | PDF | LaTeX Source |
+|-----------|--------------------------------------------|------|---------------|
+| 5         | Proving equalities, inequalities, cases    | [Lecture 5](sample_proofs/lecture_05.pdf) | [TeX](sample_proofs/lecture_05.tex) |
+| 6         | Existential proofs, negation, implications | [Lecture 6](sample_proofs/lecture_06.pdf) | [TeX](sample_proofs/lecture_06.tex) |
+| 8         | Contrapositive, elimination, iff           | [Lecture 8](sample_proofs/lecture_08.pdf) | [TeX](sample_proofs/lecture_08.tex) |
+| 9         | Contradiction, uniqueness                  | [Lecture 9](sample_proofs/lecture_09.pdf) | [TeX](sample_proofs/lecture_09.tex) |
+| 10        | Induction                                  | [Lecture 10](sample_proofs/lecture_10.pdf) | [TeX](sample_proofs/lecture_10.tex) |
+| 11        | Strong induction, recursive sequences      | [Lecture 11](sample_proofs/lecture_11.pdf) | [TeX](sample_proofs/lecture_11.tex) |
+| 12        | Game proofs — Chomp                        | [Lecture 12](sample_proofs/lecture_12.pdf) | [TeX](sample_proofs/lecture_12.tex) |
+
+
+### Visualizing the GCD
+
+This PDF was shown in class to help visualize the Euclidean algorithm for computing the GCD.
+
+- [Euclid Visualization](EuclidViz.pdf)

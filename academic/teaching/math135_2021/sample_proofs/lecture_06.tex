@@ -1,0 +1,207 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+
+\usepackage{mathpazo}
+\usepackage{fullpage}
+
+\theoremstyle{plain}
+\newtheorem*{claim}{Claim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+
+\usepackage[most,breakable]{tcolorbox}
+\renewenvironment{boxed}%
+	{\begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]}%
+	{\end{tcolorbox}}
+
+\begin{document}
+
+
+\title{MATH 135 --- Fall 2021\\ Sample Proofs from Lecture 6}
+\author{Mark Girard}
+
+\maketitle
+
+\section*{Proving existentially quantified statements}
+
+To prove a existentially statement (``$\forall x\in S,\, P(x)$''):
+
+\begin{itemize}
+ \item Do the scratchwork investigation to determine a value of $x$ that works.
+ \item Start your proof with ``Let $x=\dots$'' and state clearly that $x$ is in fact an element of $S$ (or demonstrate that $x$ is an element of $S$ if it is not clear).
+ \item Then proceed to show that $P(x)$ is true for this particular value of $x$.
+ \item Do not include your scratchwork as part of your proof! However, your proof must be self-contained, so include any explanations necessary to justify your argument.
+
+\end{itemize}
+
+\begin{tcolorbox}
+\begin{claim}
+ $\exists m\in\integers,\, \frac{m-7}{2m+4}=5$.
+\end{claim}
+\end{tcolorbox}
+
+\begin{proof}
+ Let $m=-3$, which is an integer. Now
+ \begin{equation*}
+  \frac{m-7}{2m+4} = \frac{-3-7}{-6+4} = \frac{-10}{-2} = 5,
+ \end{equation*}
+ which proves the claim.
+
+\end{proof}
+
+\begin{tcolorbox}
+\begin{claim}
+ There exists a perfect square $k$ such that $k^2-\frac{31}{2}k = 8$.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ Let $k=16$, which is a perfect square as $16=4^2$. Then
+ \begin{align*}
+  k^2 - \frac{31}{2}k &= 16^2 - 31\cdot 8\\& = 256 - 248 \\&= 8, 
+ \end{align*}
+as desired.
+\end{proof}
+
+
+\section*{Disproving statements}
+
+To prove that a statement is false:
+\begin{itemize}
+ \item Negate the statement.
+ \item Prove that the negation is true.
+\end{itemize}
+
+
+
+\begin{tcolorbox}
+\begin{claim}
+ $\forall x\in\reals,\, (x^2-1)^2>0$.
+\end{claim}
+\end{tcolorbox}
+We prove this statement is false by stating its negation and proving that. The negation of this statement is:
+\[
+ \exists x\in\reals,\, (x^2-1)^2\leq0.
+\]
+
+\begin{proof}[Proof (of the negation)]
+ Let $x=1$, which is a real number. Then
+ \[
+  (x^2-1)^2 = (1-1)^2 = 0^2 = 0 \leq 0,
+  \]
+as desired.
+\end{proof}
+
+\begin{tcolorbox}
+\begin{claim}
+ There exists a real number $\theta$ for which it holds that $\sin(2\theta)+\cos(2\theta)=3$.
+\end{claim}
+\end{tcolorbox}
+We prove this statement is false by stating its negation and proving that. The negation of this statement is:
+\[
+ \forall\theta\in\reals,\, \sin(2\theta)+\cos(2\theta)\neq3.
+\]
+\begin{proof}[Proof (of the negation)]
+ Let $\theta$ be a real number. Note that
+ \begin{align*}
+ &-1\leq \sin(2\theta)\leq 1\\ \text{and }&-1\leq \cos(2\theta)\leq 1,
+ \end{align*}
+and thus 
+\[
+ -2 \leq \sin(2\theta)+\cos(2\theta) \leq 2 <3.
+\]
+Hence $\sin(2\theta)+\cos(2\theta) < 3$.
+\end{proof}
+
+\section*{Proving statements with nested quantifiers}
+
+
+\begin{tcolorbox}
+Prove or disprove the following statements:
+\begin{align*}
+ A\colon &\text{``}\forall x\in\reals, \exists y\in\reals, x^3-y^3 =1\text{''} \\
+ B\colon &\text{``}\exists y\in\reals, \forall x\in\reals, x^3-y^3 =1\text{''}
+\end{align*}
+
+\end{tcolorbox}
+
+Statement $A$ is true but statement $B$ is false. In statement $A$, one decides on a value for $y$ \emph{after} a value for $x$ is given. In statement $B$, a value of $y$ is picked first and this value must work for every possible choice of $x$.
+
+We first prove statement $A$.
+\begin{proof}
+ Let $x$ be a real number. Choose $y=(x^3-1)^{1/3}$, which is a real number. Then
+ \[
+  x^3-y^3 = x^3-\left((x^3-1)^{1/3}\right)^3 = x^3 - (x^3-1) = 1,
+ \]
+which completes the proof.
+\end{proof}
+
+Now state the negation of $B$:
+\[
+ \neg B \colon \text{``}\forall y\in\reals, \exists x\in\reals, x^3-y^3 \neq1\text{''}
+\]
+\begin{proof}[Proof (of negation of $B$)]
+ Let $y$ be a real number and choose $x = (y^3-2)^{1/3}$. Then
+ \[
+  x^3-y^3 = \left((y^3-2)^{1/3}\right)^3- y^3 = y^3 - 2 + y^3 = 2 ,
+ \]
+which is not equal to 1.
+\end{proof}
+
+
+\section*{Proving implications}
+An implication is a statement of the form ``$A\implies B$'' or ``$\forall x\in S,\, P(x)\implies Q(x)$.''
+\begin{enumerate}
+ \item Assume that the hypothesis (i.e., $A$ or $P(x)$) is true.
+ \item Prove the conclusion (i.e., $B$ or $Q(x)$) using only what you know to be true.
+ \item Do not worry about instances where the hypothesis is false!
+\end{enumerate}
+
+
+\begin{tcolorbox}
+\begin{claim}
+ For every integer $k$, if $k^5$ is a perfect square then $9k^{19}$ is a perfect square.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+Let $k$ be an integer. Assume that $k^5$ is a perfect square. There exists an integer $m$ such that $m^2=k$. Now,
+\begin{align*}
+ 9k^{19} &= 3^2\cdot k^{14} \cdot k^5 \\&= 3^2\cdot (k^7)^2\cdot m^2 \\&= (3mk^7)^2
+\end{align*}
+which is a perfect square as $3mk^7$ is an integer.
+\end{proof}
+
+\begin{tcolorbox}
+\begin{claim}
+ For every integer $n$, if $2^{2n}$ is odd then $2^{-2n}$ is odd.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ Let $n$ be an integer. There are three possible cases to consider: $n<0$, $n=0$, and $n>0$.
+ \begin{itemize}
+\setlength{\itemindent}{2em}
+ \item[Case 1:] Suppose $n<0$. Then $2^{2n}$ is not an integer and thus not odd.
+ \item[Case 2:] Suppose $n=0$. Then $2^{2n}=2^0 = 1$, which is odd. In this case, one has  $2^{-2n} = 2^0 =1$, which is again odd.
+\item[Case 2:] Suppose $n>0$. Then $n-1\geq0$ and thus 
+\[2^{2n} = 2^{2n-2+2} = 2^2\cdot 2^{2(n-1)}  = 2(2\cdot 4^{n-1})\]
+which is even as $2\cdot 4^{n-1}$ is an integer, and thus $2^{2n}$ is not odd.
+ \end{itemize}
+ This proves the claim, as the implication has been shown to be true in every case where the hypothesis holds.
+\end{proof}
+
+
+
+\end{document}

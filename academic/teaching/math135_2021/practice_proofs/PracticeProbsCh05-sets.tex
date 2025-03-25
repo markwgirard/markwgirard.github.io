@@ -1,0 +1,209 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathpazo}
+\usepackage{fullpage}
+\usepackage{enumerate}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+
+\usepackage[most,breakable]{tcolorbox}
+\usepackage{environ}
+
+\newif\ifshowsolution
+\showsolutionfalse
+\showsolutiontrue
+
+\NewEnviron{Solution}{%
+    \ifshowsolution%
+        \begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]%
+            \textbf{Solution.} \BODY
+        \end{tcolorbox}%
+    \fi%
+}%
+
+
+
+
+\begin{document}
+
+\title{MATH 135 --- Fall 2021\\ Practice Problems \ifshowsolution(Solutions)\fi -- Chapter 5}
+\author{Mark Girard}
+
+\maketitle
+
+
+\subsection*{Part I}
+Determine which of the following statements are true and which are false. Prove the true statements. For the false statements, write the negation and prove that. 
+
+\begin{enumerate}%\itemsep0em 
+
+\item $\forall A\subseteq\ZZ$, $\exists B\subseteq\ZZ$ so that $1\in B-A$.
+\begin{Solution}
+ This statement is false.\\
+      \textbf{Negation}: $\exists A\subseteq\ZZ$ so that $\forall B\subseteq\ZZ$, $1\not\in B-A$.\\\vspace{-20pt}
+      \begin{proof}[Proof \textup{(}of negation\textup{)}]
+       Let $A=\ZZ$. Let $B$ be an arbitrary subset of $\ZZ$. Then $B-A = B-\ZZ = \emptyset$ and $1\not\in\emptyset$. Therefore $1\not\in B-A$.
+      \end{proof}\vspace{-10pt}
+      Note: Any other set $A$ that contains $1$ will work as a counterexample.
+\end{Solution}
+
+      
+
+\item $\forall A\subset\ZZ$, $\exists B\subseteq\ZZ$ so that $1\not\in B-A$.
+\begin{Solution} This statement is true.
+      \begin{proof}
+       Let $A$ be an arbitrary subset of $\ZZ$ and let $B=\emptyset$. One has that $B-A=\emptyset-A=\emptyset$ and  $1\not\in\emptyset$. Therefore $1\not\in B-A$.
+      \end{proof}\vspace{-10pt}
+      Note: Any other set $B$ that does not contain $1$ will work.
+\end{Solution}
+
+\item For all sets $A$, $B$, and $C$, $(A\cup B)\cap C\subseteq A\cup(B\cap C)$.
+\begin{Solution} This statement is true.
+      \begin{proof}
+       Let $A$, $B$, and $C$ be arbitrary sets. Let $x\in(A\cup B)\cap C$. It follows that $x\in A\cup B$ and $x\in C$.
+        \begin{itemize}
+         \item[]Case 1: Suppose that $x\in A$. It follows that $x\in A\cup (B\cap C)$.
+         \item[]Case 2: Suppose that $x\notin A$. Because $x\in A\cup B$, it must be the case that $x\in B$. Hence $x\in B\cap C$ as $x$ is also in $C$. We conclude that $x\in A\cup (B\cap C)$.
+        \end{itemize}
+      In either case, $x\in A\cup (B\cap C)$. This completes the proof.
+      \end{proof}
+\end{Solution}
+ 
+\item For all sets $A$, $B$, and $C$, $A\cup (B\cap C)\subseteq (A\cup B)\cap C$.
+      \begin{Solution}This statement is false.\\
+      \textbf{Negation}: There exists sets $A$, $B$, and $C$ so that $A\cup (B\cap C)\not\subseteq (A\cup B)\cap C$.\\\vspace{-20pt}
+      \begin{proof}[Proof \textup{(}of negation\textup{)}]
+       Let $A=\{1,2\}$, $B=\{2\}$ and $C=\{2\}$. One has that 
+       \[
+       B\cap C = \{2\}\qquad\text{and}\qquad A\cup (B\cap C)=\{1,2\},
+       \]
+ so $1\in A\cup (B\cap C)$. However, $A\cup B = \{1,2\}$ and $(A\cup B)\cap C \{2\}$, so $1\not\in (A\cup B)\cap C$.
+      \end{proof}
+\end{Solution}
+
+\item For all sets $A$, $B$, and $C$, if $A\times B = A\times C$ then $B=C$.\\
+      \begin{Solution}This statement is false.\\
+      \textbf{Negation}: There exists sets $A$, $B$, and $C$ so that $A\times B=A\times C$ but $B\neq C$.
+      \begin{proof}[Proof \textup{(}of negation\textup{)}]
+       Let $A=\emptyset$, $B=\{1\}$ and $C=\{2\}$. Hence 
+       \[
+        A\times B = \emptyset\qquad\text{and}\qquad A\times C = \emptyset,
+       \]
+ but $\{1\}\neq \{2\}$ so $B\neq C$. 
+      \end{proof}
+\end{Solution}
+
+\item For all sets $A$, $B$, and $C$, if $A-B\subseteq C$ then $A-C\subseteq B$.
+\begin{Solution}This statement is true.
+      \begin{proof}
+       Let $A$, $B$, and $C$ be sets. Assume that $A-B\subseteq C$. (We want to show that $A-C\subseteq B$.) Let $x\in A-C$. This means that $x\in A$ and $x\notin C$. We will prove that $x\in B$ by contradiction. Suppose instead that $x\notin B$. Then $x\in A-B$ since $x\in A$ and $x\not\in B$. This means that $x\in C$, since $x\in A-B$ and $A-B\subseteq C$. Thus $x\notin C$ and $x\in C$, a contradiction. So the assumption that $x\notin B$ is wrong, and thus $x\in B$. Therefore  $A-C\subseteq B$.
+      \end{proof}
+\end{Solution}
+
+\item For all sets $A$, $B$, and $C$, if $A\cap B\subseteq C$ and $B\cap C\subseteq A$ then $C\cap A\subseteq B$.
+\begin{Solution}This statement is false.\\
+      \textbf{Negation}: There exists sets $A$, $B$, and $C$ so that $A\cap B\subseteq C$ and $B\cap C\subseteq A$ but $C\cap A\not\subseteq B$.
+      \begin{proof}[Proof \textup{(}of negation\textup{)}]
+       Let $A=\{1\}$, $B=\{2\}$, and $C=\{1\}$. Then $A\cap B=\emptyset$ and $B\cap C=\emptyset$ and $\emptyset\subseteq C$ and $\emptyset\subseteq A$. Thus $A\cap B\subseteq C$ and $B\cap C\subseteq A$. However, $C\cap A=\{1\}$ and $\{1\}\not\subseteq \{2\}$. Therefore $C\cap A\not\subseteq B$.
+      \end{proof}
+\end{Solution}
+
+\item For all sets $A$, $B$, and $C$, if $A-(B\cap C)=\emptyset$ then $A-C=\emptyset$.
+\begin{Solution}This statement is true.
+      \begin{proof}
+       Let $A$, $B$, and $C$ be sets. Suppose that $A-(B\cap C)=\emptyset$. (We want to show that $A-C=\emptyset$.) Assume for the sake of getting a contradiction that $A-C\neq\emptyset$. There exists an element $x\in A-C$. This means that $x\in A$ and $x\not\in C$. Then $x\not\in B\cap C$ since $x\not\in C$. Thus $x\in A$ and $x\not\in B\cap C$, which means that $x\in A-(B\cap C)$. But $A-(B\cap C)=\emptyset$, so $x\not\in A-(B\cap C)$. This is a contradiction, so the assumption that $A-C\neq\emptyset$ is wrong. Therefore $A-C=\emptyset$.
+      \end{proof}
+
+\end{Solution}
+
+\item For all sets $A$, $B$, and $C$, if $A-C=\emptyset$ then $A-(B\cap C)=\emptyset$.
+\begin{Solution}This statement is false.\\
+      \textbf{Negation}: There exists sets $A$, $B$, and $C$ so that $A-C=\emptyset$ but $A-(B\cap C)\neq\emptyset$.
+      \begin{proof}[Proof \textup{(}of negation\textup{)}]
+       Let $A=\{1\}$, $B=\{2\}$, and $C=\{1\}$. Then $A- C=\emptyset$ and $B\cap C=\emptyset$, but $A-(B\cap C)=\{1\}$ and $\{1\}\neq\emptyset$. Therefore $A-(B\cap C)\neq\emptyset$.
+      \end{proof}
+\end{Solution}
+\end{enumerate}
+
+\subsection*{Part II}
+\begin{enumerate}
+ \item Proof De Morgan's Laws for sets. That is, for all sets $A$ and $B$, it holds that:
+ \begin{enumerate}
+  \item $\overline{A\cup B} = \overline{A}\cap \overline{B}$, and 
+  \item $\overline{A\cap B} = \overline{A}\cup \overline{B}$. 
+ \end{enumerate}
+
+\begin{Solution}
+ \begin{proof}
+  Let $A$ and $B$ be sets in some universal set $\mathcal{U}$. 
+  \begin{enumerate}
+   \item Let $x\in \mathcal{U}$ and note that 
+   \begin{align*}
+    x\in \overline{A\cup B} 
+     & \iff x\notin A\cup B\\
+     & \iff \neg (x\in A\cup B)\\
+     & \iff \neg (x\in A \text{ OR } x\in B)\\
+     & \iff x\notin A \text{ AND } x\notin B&&\text{by De Morgan's laws}\\
+     & \iff x\in \overline{A} \text{ AND } x\in \overline{B}\\
+     & \iff x\in \overline{A}\cap\overline{B},
+   \end{align*}
+which proves that $\overline{A\cup B} = \overline{A}\cap \overline{B}$.
+\item Let $x\in \mathcal{U}$ and note that 
+   \begin{align*}
+    x\in \overline{A\cap B} 
+     & \iff x\notin A\cap B\\
+     & \iff \neg (x\in A\cap B)\\
+     & \iff \neg (x\in A \text{ AND } x\in B)\\
+     & \iff x\notin A \text{ OR } x\notin B&&\text{by De Morgan's laws}\\
+     & \iff x\in \overline{A} \text{ OR } x\in \overline{B}\\
+     & \iff x\in \overline{A}\cup\overline{B},
+   \end{align*}
+which proves that $\overline{A\cap B} = \overline{A}\cup \overline{B}$.
+  \end{enumerate}
+
+ \end{proof}
+
+
+\end{Solution}
+
+
+ \item Suppose $A$ and $B$ are arbitrary subsets of $\ZZ$ such that $(2,3)\in A\times B$ and $(3,4)\in A\times B$, but that $(1,3)\not\in A\times B$. 
+     \begin{enumerate}[(a)]
+             \item Find another element in $A\times B$ that is not $(2,3)$ or $(3,4)$. Explain.
+             \begin{Solution}$(2,4)\in A\times B$ and $(3,3)\in A\times B$.
+             \begin{proof}
+             Note that $(2,3)\in A\times B$ means that $2\in A$ and $3\in B$. Similarly, $(3,4)\in A\times B$ means that $3\in A$ and $4\in B$. Thus $(2,4)\in A\times B$ and $(3,3)\in A\times B$.
+              \end{proof}
+\end{Solution}
+             \item Find another element that is not in $A\times B$. Explain.
+             \begin{Solution}$(1,7)\not\in A\times B$.
+             \begin{proof}
+             Note that $(1,3)\not\in A\times B$ means that $1\notin A$ or $3\notin B$. However, we know from part (a) that $3\in B$, so it must be the case that $1\notin A$. Thus $(1,7)\notin A\times B$, since $1\notin A$. 
+              \end{proof}
+              \emph{Note}: Any number other than $7$ will also work.
+              \end{Solution}
+     \end{enumerate}
+     
+
+\item Suppose $A$ and $B$ are arbitrary subsets of $\ZZ$ such that $A\cap B=\{1\}$.
+      \begin{enumerate}[(a)]
+             \item Find an element of $A\times B$. Explain why it is an element of $A\times B$.\begin{Solution} $(1,1)\in A\times B$.
+             \begin{proof}
+             Note that $1\in A\cap B$ so $1\in A$ and $1\in B$. Thus $(1,1)\in A\times B$, by definition of the product of sets.
+              \end{proof}
+              \end{Solution}
+             \item Find an element of the complement $\overline{A\times B}$. (Here, assume that the universal set is $\ZZ\times\ZZ$.) Explain.\begin{Solution} $(2,2)\not\in A\times B$.
+             \begin{proof}
+                Suppose instead that $(2,2)\in A\times B$. Then $2\in A$ and $2\in B$ which means that $2\in A\cap B$. But $A\cap B = \{1\}$ and $2\not\in \{1\}$, and thus $2\not\in A\cap B$. This is a contradiction so the supposition that $(2,2)\in A\times B$ is wrong. Therefore $(2,2)\not\in A\times B$.
+              \end{proof}
+              \emph{Note}: Any number other than $2$ will also work.
+              \end{Solution}
+      \end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}

@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+
+\usepackage{mathpazo}
+\usepackage{fullpage}
+
+\theoremstyle{plain}
+\newtheorem*{claim}{Claim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+
+\usepackage[most,breakable]{tcolorbox}
+\renewenvironment{boxed}%
+	{\begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]}%
+	{\end{tcolorbox}}
+
+\begin{document}
+
+
+\title{MATH 135 --- Fall 2021\\ Sample Proofs from Lecture 9}
+\author{Mark Girard}
+
+\maketitle
+
+\section*{Proof by Contradiction}
+\begin{itemize}
+ \item Given a statement $A$, \emph{\textbf{exactly one}} of $A$ and $\neg A$ is true. 
+ \item A \emph{contradiction} is a statement of the form:
+\[
+A\wedge \neg A.
+\tag{$\ast$}\label{eq:contradiction}
+\]
+A statement of the form in \eqref{eq:contradiction} must be false!
+\item If you make an assumption in a proof, and using logical reasoning you are able to use that assumption to arrive at a contradiction of the form $A\wedge \neg A$, then your original assumption must have been wrong!
+\end{itemize}
+
+ \noindent To prove a statement $P$ by contradiction:
+ \begin{enumerate}
+ \item Suppose instead that $P$ is false (i.e., that $\neg P$ is true).
+ \item Use the assumption that $\neg P$ is true to arrive at a contradiction of the form $A\wedge \neg A$.
+ \item Conclude that the assumption that $P$ is false must have been wrong.
+ \item This proves that $P$ is true.
+\end{enumerate}
+
+
+
+\subsubsection*{Example}
+
+\begin{tcolorbox}
+\begin{claim}
+$ \forall a,b\in\integers,\, a\geq 2\implies (a\nmid b \text{ or }a\nmid (b+1))$.
+\end{claim}
+\end{tcolorbox}
+In words, this says that ``No integer greater than one can divide two successive integers.'' 
+\begin{proof}
+ Let $a$ and $b$ be integers and assume that $a\geq 2$. [We will prove that either $a\nmid b$ or $a\mid (b+1)$.] For the sake of deriving a contradiction, suppose instead that $a\mid b$ and $a\nmid (b+1)$. Then there exist integers $m$ and $n$ such that 
+ \[
+  b=am\quad\text{and}\quad b+1 = an.
+ \]
+Then $am=b = an-1$ and thus $a(n-m) = 1$, which implies that $a\mid 1$, as $n-m$ is an integer. Because the only integers that divide 1 are 1 and $-1$, this implies that either $a=1$ or $a=-1$ and thus $a<2$ in either case. We conclude that both
+\[
+ a\geq2\quad\text{and}\quad a<2,
+\]
+which is a contradiction. Thus the assumption that $a\mid b$ and $a\mid (b+1)$ is false. Hence it must be the case that either $a\nmid b$ or $a\nmid (b+1)$. This completes the proof.
+\end{proof}
+
+Note that the proof of the above claim is essentially equivalent to proving by contrapositive. Either method is fine here.
+
+\subsubsection*{Proof of irrationality of $\sqrt{2}$}
+Here is an example of a proof by contradiction that \emph{cannot} be redone as a proof by contrapositive.
+
+\begin{tcolorbox}
+\begin{claim}
+ $\sqrt 2$ is irrational
+\end{claim}
+\end{tcolorbox}
+ 
+ 
+ 
+\begin{proof}
+ Towards a contradiction, suppose instead that $\sqrt{2}$ were rational. Then there exist integers $a$ and $b$ having no common divisors (other than $1$ and $-1$) such that $b\neq0$ and 
+ \begin{equation}
+  \sqrt{2} = \frac{a}{b}. \label{eq:sqrt2ab}
+ \end{equation}
+ As we may suppose that $a$ and $b$ are reduced and have no common factors, we may conclude that they are not both even. (Otherwise, we would have that $2\mid a$ and $2\mid b$, which would mean that $a$ and $b$ share 2 as a common factor.) Squaring both sides of \eqref{eq:sqrt2ab} and rearranging, we find that 
+\[
+ 2b^2 = a^2
+\]
+and thus $a^2$ is even, which implies that $a$ is even. Hence there is an integer $k$ such that $a=2k$. Now
+\[
+ 2b^2 = (2k)^2 = 4k^2
+\]
+and thus $b^2=2k^2$, which implies that $b^2$ is also even and thus $b$ is even. We conclude that both $a$ and $b$ are even, which contradicts the statement that $a$ and $b$ are chosen such that they have no common factors. Hence, the assumption that $\sqrt{2}$ is rational is false. It follows that $\sqrt{2}$ must be irrational.
+\end{proof}
+
+\subsubsection*{Another example}
+
+
+\begin{tcolorbox}
+\begin{claim}
+ For all real numbers $x$, if $x>0$ then $x+\frac{1}{x}\geq2$.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ Let $x$ be a real number ans suppose that $x>0$. Suppose for the sake of obtaining a contradiction that 
+ \[
+  x+\frac{1}{x}<2.
+ \]
+Multiplying both sides by $x$ and rearranging yields
+\[
+ x^2 - 2x + 1 < 0
+\]
+or equivalently $(x-1)^2<0$. But the square of every real number is non-negative, so it is also the case that  $(x-1)^2\geq0$. Hence we conclude that both
+\[
+ (x-1)^2<0 \qquad\text{and}\qquad(x-1)^2\geq0
+\]
+are true, which is a contradiction. Therefore our assumption that $x+\frac{1}{x}<2$ is false, which proves that $x+\frac{1}{x}\geq2$, as desired.
+\end{proof}
+
+
+\subsection*{Proving uniqueness}
+
+To prove a statement of the form:
+\[
+ \text{``There exists a unique }x\in S\text{ such that }P(x)\text{ is true''}
+\]
+we must prove two things:
+\begin{enumerate}
+ \item[(i)]  Prove there exists at least one $x\in S$ such that $P(x)$ is true.
+ \item[(ii)] Prove that, if $y\in S$ is another element such that $P(y)$ is true, then it must be that $y=x$.
+\end{enumerate}
+Symbolically, these two statements are:
+\begin{enumerate}
+ \item[(i)]  $\exists x\in S,\, P(x)$.
+ \item[(ii)] $\forall y\in S,\, P(y)\implies (y=x)$.
+\end{enumerate}
+
+
+\subsubsection*{Example}
+\begin{tcolorbox}
+\begin{claim}
+ For every odd integer $a$, there exists a unique integer $k$ such that $a=2k+1$.
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ Let $a$ be an odd integer. By definition, there exists an integer $k$ such that $a=2k+1$. Suppose now that $m$ is another integer such that $a=2m+1$. Then
+ \[
+  2k+1 = 2m+1
+ \]
+which implies that $k=m$. Thus, $k$ is the unique integer satisfying this claim.
+\end{proof}
+
+
+\end{document}
