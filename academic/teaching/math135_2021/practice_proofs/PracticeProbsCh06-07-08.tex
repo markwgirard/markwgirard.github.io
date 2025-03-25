@@ -1,0 +1,606 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathpazo}
+\usepackage{fullpage}
+\usepackage{enumerate}
+
+\usepackage{xcolor}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+ \usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+
+\usepackage[most]{tcolorbox}
+\usepackage{environ}
+
+\newif\ifshowsolution
+\showsolutionfalse
+%\showsolutiontrue
+
+\NewEnviron{Solution}{%
+    \ifshowsolution%
+        \begin{tcolorbox}[colback=white,colframe=gray!10,enhanced,breakable]%
+            \textbf{Solution.} \BODY
+        \end{tcolorbox}%
+    \fi%
+}%
+
+
+\usepackage{textcomp}
+
+
+\begin{document}
+
+\title{MATH 135 --- Fall 2021\\ Practice Problems \ifshowsolution(Solutions)\fi -- Chapters 6, 7, and 8}
+\author{Mark Girard}
+
+\maketitle
+
+Topics: divisibility, gcd, linear Diophantine equation, Euclidean Algorithm, prime factorizations, and modular arithmetic. (Problems are in no particular order.)
+ 
+\begin{enumerate}%\itemsep0em 
+ \item Determine $d=\gcd(339,-2145)$ and find integers $s$ and $t$ such that $399s-2145t = d$.
+
+\begin{Solution}
+We can use the Extended Euclidean Algorithm to compute $\gcd(2145,339)$, which produces the following table:
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+ & $x$ & $y$ & $r$\\\hline
+ $R_1$             &   $1$ &   $0$ & 2145\\
+ $R_2$             &   $0$ &   $1$ &  339\\
+ $R_1 -6R_2 = R_3$ &   $1$ &  $-6$ &  111\\
+ $R_2 -3R_3 = R_4$ &  $-3$ &  $19$ &   6\\
+ $R_3-18R_4 = R_5$ &  $55$ &$-348$ &   3\\
+ $R_4 -2R_5 = R_6$ &$-113$ & $715$ &   0\\\hline
+\end{tabular}
+\end{center}
+From the table, we see that $2145\cdot(55) + 339\cdot(-358) = 3$. It follows that 
+\[
+ 339\cdot (-348) -2145\cdot(-55) =3,
+\]
+where $3=\gcd(2145,339) = \gcd(339,-2145)$.
+\end{Solution}
+
+
+\item Prove the following statement: 
+\begin{center}
+ For all $a,b,c\in\integers$, if $\gcd(a,b)=1$ and $a\mid c$ and $b\mid c$, then $ab\mid c$. 
+\end{center}
+
+\begin{Solution}
+ \begin{proof}
+  Let $a,b,c\in\integers$. Assume that $\gcd(a,b)=1$ and $a\mid c$ and $b\mid c$. By CCT, there exists integers $x,y\in\integers$ such that $ax+by = 1$. By the definition of divisibility, there exists $k,\ell\in\integers$ such that $ak=c$ and $b\ell  = c$. Note that $b\ell  = ak$ which implies that $b\mid ak$. Because $\gcd(a,b)=1$, it follows from CAD that $b\mid k$. Hence there exists an integer $m\in\integers$ such that $bm=k$. Now,
+  \[
+   c = ak = abm 
+  \]
+and thus $ab\mid c$ as desired.
+ \end{proof}
+
+\end{Solution}
+
+
+\item Prove or disprove the following statement
+\begin{center}
+ For all integers $x,y,z\in\integers$, if $x\mid yz$ then $x\mid y $ or $x\mid z$. 
+\end{center}
+
+\begin{Solution}
+ This statement is false. It's negation is the following statement:
+ \begin{center}
+  There exist integers $x,y,z\in\integers$ such that $x\mid yz$ but $x\nmid y$ and $x\nmid z$.
+ \end{center}
+\begin{proof}[Proof (of the negation)]
+ Let $x=6$, $y=2$ and $z=3$. Then $x\mid yz$ because $6\mid 6$, but $6\nmid 2$ and $6\nmid 3$.
+\end{proof}
+
+\end{Solution}
+
+
+
+\item Prove, for all positive integers $d$, $m$, and $n$, that if $d=\gcd(m,n)$ then for all positive integers~$k$ it holds that $\gcd(m,nk)=\gcd(m,dk)$.
+
+\begin{Solution}
+ \begin{proof}
+Let $d=\gcd(m,n)$. By Bezout's Lemma, there exist integers $s,t\in\integers$ such that 
+\[
+ ms+nt = d.
+\]
+Let $k\in\naturals$ be an arbitrary positive integer and define $e=\gcd(m,nk)$. By Bezout's Lemma, there exist integers $x,y\in\integers$ such that 
+\[
+ mx + nky = e.
+\]
+Moreover, because $e\mid m$ and $e\mid nk$, there exist integers $a,b\in\integers$ such that $m=ae$ and $nk=be$. Now
+\begin{align*}
+ dk  & = (ms+nt)k &&\text{[Because }d=ms+nt]\\
+     & = mks + nkt\\
+     & =aeks + bet&&\text{[Because }m=ae\text{ and }nk=be]\\
+     & =e(aks+bt)
+\end{align*}
+and thus $e\mid dk$. Hence $e$ is a common divisor of $m$ and $dk$. Moreover, because $d\mid n$, there is an integer $c$ such that $dc = n$. Now
+\begin{align*}
+ e &= mx + nky \\
+   &= mx + dcky&&\text{[Because }n=dc]\\
+   &=mx + (dk)(ny).
+\end{align*}
+Thus, by the GCD Charaterization Theorem, it follows that $e=\gcd(m,dk)$. This completes the proof.
+ \end{proof}
+
+\end{Solution}
+
+\item Let $a$ and $b$ be integers, let $d=\gcd(a,b)$, and consider the set $S=\{ax+by\,:\, x,y\in\integers\}$. Prove that 
+\[
+ S = \{kd\,:\,k\in\integers\}
+\]\label{prob:gcdset}
+\begin{Solution}\begin{proof}
+\begin{itemize}
+ \item We first prove that $S\subseteq \{kd\,:\, k\in\integers\}$. Let $n\in S$ be an arbitrary element of $S$. Then there are integers $x,y\in\integers$ such that $ax+by=n$. Because $d\mid a$ and $d\mid b$, it follows that $d\mid n$ by DIC. Thus, there exists an integer $k\in\integers$ such that $n=kd$, which means that $n\in\{kd\,:\,k\in\integers\}$. 
+ \item We next prove that $\{kd\,:\,k\in\integers\}\subseteq S$. Let $n\in \{kd\,:\,k\in\integers\}$ so that there is an integer $k\in\integers$ satisfying $n=kd$. By B`ezout's Lemma, there exists a choice of integers $s,t\in\integers$ such that $as+bt = d$. Choose $x=ks$ and $y=kt$, which are integers. Then 
+ \[
+  ax + by = kas + kbt = k(as+bt)=kd=n
+ \]
+and thus $n\in S$.
+\end{itemize}
+Thus we have proved that $S\subseteq \{kd\,:\, k\in\integers\}$ and $\{kd\,:\,k\in\integers\}\subseteq S$, so it follows that $S = \{kd\,:\,k\in\integers\}$.\end{proof}
+\end{Solution}
+
+
+\item Prove that, for all prime numbers $p$ and $q$, $\{px+qy\,:\, x,y\in\integers\}=\integers$ if and only if $p\neq q$.
+
+
+\begin{Solution}
+  \begin{proof}
+  Let $p$ and $q$ be prime numbers, let $d=\gcd(p,q)$, and define 
+  \[
+   S = \{px+qy\,:\, x,y\in\integers\}.
+  \]
+ From Problem \ref{prob:gcdset}, it holds that $S = \{kd\,:\, k\in\integers \}.$ 
+ \begin{itemize}
+  \item{} [To prove $p\neq q$ $\implies$ $S=\integers$.] Assume that $p\neq q$. The positive divisors of $p$ are $1$ and $p$, while the positive divisors of $q$ are $1$ and $q$. Because $p\neq q$, it follows that $d=\gcd(p,q)=1$.  Now, $S=\{k\,:\, k\in\integers \}=\integers$, as desired.
+  \item{} [To prove $p= q$ $\implies$ $S\neq\integers$.] Assume that $p= q$. Then $d=\gcd(p,q)=p $ and thus $S=\{kp\,:\, k\in\integers \}$. Note that $1\notin S$. Indeed, if it were the case that $1\in S$, then there would be an integer $k\in\integers$ such that $1=kp$, which is a contradiction, as $p$ does not divide 1. Thus $\integers\not\subseteq S$, which implies that $S\neq\integers$.
+ \end{itemize}
+This completes the proof.
+ \end{proof}
+\end{Solution}
+
+\item Let $a =3^25^37^413^1$, $b=5^17^213^223^9$, and $c=3\cdot 5\cdot 7\cdot 13\cdot 23$. \begin{enumerate}
+       \item Determine $\gcd(a,b)$.
+       
+       \begin{Solution}
+        The greatest common divisor of these numbers is given by
+        \begin{align*}
+         \gcd(a,b) & = 3^{\min\{2,0\}}\cdot 5^{\min\{3,1\}}\cdot 7^{\min\{4,2\}}\cdot 13^{\min\{1,2\}}\cdot 23^{\min\{0,9\}}\\
+         & = 3^0\cdot 5^1\cdot 7^2\cdot 13^1\cdot 23^0\\
+         & = 5\cdot 7^2\cdot 13
+        \end{align*}
+
+       \end{Solution}
+
+       \item What is the smallest integer $t$ such that $a\mid c^t$ and $b\mid c^t$?
+              \begin{Solution}
+        The answer is $9$. Indeed, when $t=9$, note that 
+        \[c^t = c^9 = 3^9\cdot 5^9\cdot 7^9\cdot 13^9\cdot 23^9,\] which is divisible by both $a$ and $b$. For every integer $t<9$, one has that $23^9\nmid c^t$ because $9\not\leq t$ and thus $b\nmid c^t$.
+       \end{Solution}
+
+      \end{enumerate}
+
+
+
+\item Suppose $a\in\integers$ and consider the statement $P$: ``if $24\mid a^2$ then $36\mid a^3$''. 
+\begin{enumerate}
+ \item Prove $P$.
+ \item Prove or disprove the converse of $P$.
+\end{enumerate}
+\begin{Solution}
+\begin{enumerate}
+\item 
+\begin{itemize}
+ \item{} [\emph{Solution 1}.] Suppose that $24\mid a^2$. Note that $12\mid 24$ and that $3\mid 24$, and thus $12\mid a^2$ and $3\mid a^2$ by Transitivity of Divisibility. Because $3$ is prime, it follows from Euclid's Lemma that $3\mid a$. Now $12\mid a^2$ and $3\mid a$, so it follows that $(12\cdot 3) \mid a^3$. Hence $36\mid a^3$ as desired.
+  \item{} [\emph{Solution 2}]. Note that the prime factorisation of 24 is $2^3\cdot 3^1$. Hence the prime factorization of $a$ must include at least $2$ and $3$ in its list of prime factors,
+  \[
+   a = 2^k\cdot 3^\ell \cdot p_3^{\alpha_3}\cdots p_n^{\alpha_n},
+  \]
+where $k,\ell\geq 1$. Now,
+\begin{align*}
+ a^3 &= 2^{3k}\cdot 3^{3\ell} \cdot p_3^{3\alpha_3}\cdots p_n^{3\alpha_n}\\
+  & = (2^3\cdot3^3)\cdot 2^{3(k-1)}\cdot 3^{3(\ell-1)} \cdot p_3^{3\alpha_3}\cdots p_n^{3\alpha_n}\\
+  & = 36\cdot 6 \cdot 2^{3(k-1)}\cdot 3^{3(\ell-1)} \cdot p_3^{3\alpha_3}\cdots p_n^{3\alpha_n}
+\end{align*}
+and thus $36\mid a^3$.
+\end{itemize}
+\item The converse of $P$ is``If $36\mid a^3$ then $24\mid a^2$.''
+The converse of $P$ is false. Indeed, consider $a=6$. Then $a^3 = 6^2\cdot 6 = 36\cdot 6$ so $36\mid a^3$. But $a^2 = 36$ and $24\nmid 36$ so $24\nmid a^2$.
+\end{enumerate}
+\end{Solution}
+
+\item Suppose $a$ and $b$ are positive integers and let $c$ be an integer such that $\gcd(a,b)\mid c$. Prove that there exists a unique integer solution $(x',y')$ to the linear Diophantine Equation 
+\[
+ ax+by=c
+\]
+such that $0\leq x'<\frac{b}{\gcd(a,b)}$.
+
+\begin{Solution}
+\begin{proof}
+ By the Linear Diophantine Equaion Theorem, there exists an integer solution $(x_0,y_0)$ because $\gcd(a,b)\mid c$. By the Division Algorithm, because $\frac{b}{\gcd(a,b)}>0$, there exists a unique choice of integers $q,r\in\integers$ such that
+\[
+ x_0 = q\frac{b}{\gcd(a,b)} + r \qquad\text{and}\qquad 0\leq r< \frac{b}{\gcd(a,b)}.
+\]
+Now define $x'= x_0-q\frac{b}{\gcd(a,b)}$ and $y'=y_0+q\frac{a}{\gcd(a,b)}$. By the Linear Diophantine Equation Theorem, it holds that $(x',y')$ is also a solution to this equation. Note that 
+\[
+ x' = r
+\]
+and thus $0\leq x' < \frac{b}{\gcd(a,b)}$. It remians to prove that this solution is unique. 
+
+$\qquad$ To prove that $(x',y')$ is unique, let $(x'',y'')$ be another solution to the Diophantine equation such that $0\leq x''<\frac{b}{\gcd(a,b)}$. By the Linear Diophantine Equation Theorem, there exists an integer $n\in\integers$ such that
+\[
+ x''=x_0 - n\frac{b}{\gcd(a,b)}\quad\text\quad y''=y_0 + n\frac{a}{\gcd(a,b)}.
+\]
+In particular, note that
+\[
+ x_0 = \frac{b}{\gcd(a,b)} + x''.
+\]
+By the Division Algorithm, it must be the case that $m=q$ and $x''=x'$. This completes the proof.
+\end{proof}
+
+\end{Solution}
+
+
+\item Suppose that Canada Post issued 49\textcent{} and 53\textcent{} stamps. How many different ways could you purchase exactly \$100 worth of these kinds of stamps?
+
+\begin{Solution}
+We need to find all solutions to the linear Diophantine equation
+\[
+ 49x + 53 y = 10000. \tag{$\ast$}\label{eq:eq1}
+\]
+We can use the Extended Euclidean Algorithm to compute $\gcd(49,53)$, which produces the following table:
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+ & $x$ & $y$ & $r$\\\hline
+ $R_1$             &   $1$ &   $0$ &   53\\
+ $R_2$             &   $0$ &   $1$ &   49\\
+ $R_1 -1R_2 = R_3$ &   $1$ &  $-1$ &   4\\
+ $R_2 -12R_3 = R_4$ &  $-12$ &  $13$ &   1\\\hline
+\end{tabular}
+\end{center}
+From the table above, we see that $\gcd(53,49)=1$ and moreover that 
+\[
+ 53(-12) + 49(13) = 1.
+\]
+Multiplying this by 10000, we see that one solution to the equation \eqref{eq:eq1} is 
+\[
+ x_0 = 130000 \qquad\text{and} \qquad y_0 = -120000
+\]
+and sll other solutions are of the form
+\[
+ x = x_0 - 53n \qquad\text{and} \qquad y = y_0 +49n
+\]
+for some $n\in\integers$. The set of valid solutions having $x\geq0$ and $y\geq0$ is described as
+\[
+ S = \left\{\big(x_0 - 53n,y_0 +49n\big)\, :\, n\in\integers, \, x_0 - 53n\geq 0 \text{ and }y_0 +49n\geq 0\right\}.
+\]
+(These are the solutions where the numbers of stamps of both types are both positive.) Note that 
+\[
+ 120000 =  49\cdot2449 -1
+\]
+and thus 
+\begin{align*}
+ y_0 + 49\cdot 2449 &= -120000 + 49\cdot2449 \\&= 1
+\end{align*}
+and also
+\begin{align*}
+ x_0 - 53\cdot 2449 &= 130000 -129797 \\&= 203.
+\end{align*}
+Hence, one solution $(x_1,y_1)$ having $x_1\geq0$ and $y_1\geq0$ is 
+\[
+ x_1 = 203\qquad\text{and}\qquad y_0 = 1.
+\]
+All valid solutions are of the form $(203-53n,1+49n)$ for some integer $n$ such that  $203-53n\geq 0$ and $1+49n\geq0$. The valid soltions are therefore
+\begin{align*}
+&(203,1)\\
+(203-53, 1 + 49) = &(150, 50)\\
+(203-2\cdot53, 1 + 2\cdot49) = &{}(97, 99)\\
+(203-3\cdot53, 1 + 3\cdot49) = &{}(44, 108).
+\end{align*}
+Hence there are only four ways to purchase exactly \$100 worth of 49\textcent{} and 53\textcent{} stamps. The solution set we are interested in is given by
+\begin{align*}
+ S &= \{(x,y)\in\integers^2\,:\,x\geq0\text{ and } y\geq0\text{ and } 49x + 53 y = 10000\}\\
+   &=\{(203-53n,1+49n)\,:\, n\in\integers\text{ and }203-53n\geq0\text{ and }1+49n\geq0\}\\
+   & = \{(203,1),(150,50),(97,99),(44,108)\},
+\end{align*}
+which contains only 4 elements.\end{Solution}
+
+
+
+\item Let $n$ be a positive integer. Prove the following statements.
+\begin{enumerate}
+ \item If $n$ is odd, then $n^2\equiv 1\pmod{8}$.
+ \begin{Solution}
+  Let $n$ be an odd integer. Then either $n\equiv 1\pmod{8}$, $n\equiv 3\pmod{8}$, $n\equiv 5\pmod{8}$, or $n\equiv 7\pmod{8}$. Let's consider each case separately.
+  \begin{itemize}
+   \item If $n\equiv 1\pmod{8}$, then $n^2\equiv 1^2\equiv 1\pmod{8}$.
+   \item If $n\equiv 3\pmod{8}$, then $n^2\equiv 3^2\equiv 9\equiv 1\pmod{8}$.
+   \item If $n\equiv 5\pmod{8}$, then $n^2\equiv 5^2\equiv 25\equiv 8\cdot 3 + 1\equiv1\pmod{8}$.
+   \item If $n\equiv 7\pmod{8}$, then $n^2\equiv 7^2\equiv 49\equiv 8\cdot 6 + 1\equiv1\pmod{8}$.
+  \end{itemize}
+In every case, it holds that $n^2\equiv 1\pmod{8}$.
+ \end{Solution}
+
+ \item If $n^2\not\equiv 1\pmod{3}$, then $n\equiv 0\pmod{3}$.
+  \begin{Solution}
+  We prove the converse, which states: ``If $n\not\equiv 0\pmod{3}$, then $n^2\equiv 1\pmod{3}$''.
+  \begin{proof}
+   Suppose that $n\not\equiv 0\pmod{3}$. Then either $n\equiv 1\pmod{3}$ or $n\equiv 2\pmod{3}$. We consider both cases separately.
+   \begin{itemize}
+   \item If $n\equiv 1\pmod{3}$, then $n^2\equiv 1^2\equiv 1\pmod{3}$.
+   \item If $n\equiv 2\pmod{3}$, then $n^2\equiv 4\equiv 3+1\equiv 1\pmod{3}$.
+  \end{itemize}
+  In either case, it holds that $n^2\equiv 1\pmod{3}$.
+  \end{proof}
+
+ \end{Solution}
+\end{enumerate}
+
+\item  Solve the equation $[9][x] = [5]$ in $\integers_{43}$. 
+\begin{Solution}
+ We can use the Extended Euclidean Algorithm to compute $\gcd(43,9)$, which produces the following table:
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+ & $x$ & $y$ & $r$\\\hline
+ $R_1$             &   $1$ &   $0$ & 43\\
+ $R_2$             &   $0$ &   $1$ &  9\\
+ $R_1 -4R_2 = R_3$ &   $1$ &  $-4$ &  7\\
+ $R_2  -R_3 = R_4$ &  $-1$ &  $ 5$ &  2\\
+ $R_3 -3R_4 = R_5$ &   $4$ & $-19$ &  1\\\hline
+\end{tabular}
+\end{center}
+From the table, we see that $43\cdot(4) - 9\cdot(19) = 1$, and thus $9\cdot 19 = 43\cdot 4 -1$, which implies that \[9\cdot 19\equiv -1\pmod{43}.\]
+Multiplyting this congruence by $-5$ yields
+\[
+ 9\cdot (19\cdot(-5)) \equiv 5\pmod{43}.
+\]
+Note that
+\[
+ 19\cdot(-5) \equiv -95 \equiv 3\cdot 43 - 95 \equiv 129 - 95 \equiv 34 \pmod{43}.
+\]
+Hence, we have that
+\[
+ [19][34] = [19][19\cdot(-5)] = [5] \qquad\text{in }\integers_{43}.
+\]
+Because $\gcd(9,43)=1$, there is only one solution, so the is the only solution is $[x]=[34]$.
+\end{Solution}
+
+
+\item
+\begin{enumerate}
+\item Find the units digit of $6012016^{20}$ (in base 10).
+\begin{Solution}
+ We need to find the remainder of $6012016^{20}$ when divided by 10. Note that $6012016\equiv 6\pmod{10}$ and thus
+ \[
+  6012016^{20}\equiv 6^{20} \pmod{10}.
+ \]
+Next, we prove by induction that, for all $n\in\naturals$, it holds that $6^n\equiv 6\pmod{10}$. Indeed, this is true for the Base Case, because $6^1\equiv 6 \pmod{10}$. To prove the Induction Step, let $k\in\naturals$ ans suppose that $6^k\equiv 6\pmod{10}$. Then 
+\[
+ 6^{k+1} \equiv 6^k\cdot 6 \equiv 6\cdot 6\equiv 36 \equiv 6\pmod{10}.
+\]
+By the Principle of Mathematical Induction, it holds that $6^n\equiv 6\pmod{10}$ for all $n\in\naturals$. We may conclude that $6^{20} \equiv 6\pmod{10}$ and thus the units digit of $6012016^{20}$ is $6$.
+\end{Solution}
+
+\item Find the last two digits of $7^{1942}$ in base 10.
+\begin{Solution}
+ To find the last two digits, we need to find the remainder of $7^{1942}$ when divided by 100. Now, $7^2=49$ and note that\footnote{Alternatively, one may mulitply out to find that $49^2 = 2401$.} 
+ \begin{align*}
+  49^2 = (50-1)^2 &= 50^2 - 2\cdot 50 + 1 \\
+  &= 100 \cdot 25 - 100 + 1\\
+  &=100\cdot 24 + 1
+ \end{align*}
+and thus $49^2\equiv 1\pmod{100}$. Hence,
+\[
+ 7^4\equiv (49)^2\equiv 1\equiv \pmod{100}.
+\]
+Next, note that 
+\begin{align*}
+ 1942 &= 194\cdot 10 + 2\\ & = (97\cdot 2)\cdot (2\cdot 5) + 2\\
+  & = 4k + 2
+\end{align*}
+where $k = 97\cdot 5$. Hence,
+\[
+ 7^{1942} \equiv 7^{4\cdot 97\cdot 5 + 2} \equiv (7^4)^{97\cdot 5} \cdot 7^2 \equiv 1\cdot 49\equiv 49\pmod{100}.
+\]
+Hence the last two digits of $7^{1942}$ are 49.
+\end{Solution}
+
+\end{enumerate}
+
+\item Prove the following facts about the binomial coefficient.\label{binomprob}
+\begin{enumerate}
+\item For all non-negative integers $n,k\in\integers$, it holds that $\displaystyle\binom{n}{k}\in\integers$.
+\begin{Solution}
+ We prove by induction. For each non-negative integer $n$, let $P(n)$ be the statement that ``For all non-negative integers $k$, it holds that $\displaystyle\binom{n}{k}\in\integers$.''
+ \begin{itemize}
+ \item \underline{Base case:} By definition, one has $\binom{0}{0}=1$ and $\binom{0}{k}=0$ whenever $k>0$. Thus $\binom{0}{k}$ is an integer for every non-negative integer $k$. Hence $P(0)$ is true.
+ \item \underline{\smash{Induction Step:}} Let $m$ be a non-negative integer and assume that $P(m)$ is true. That is, assume that $\binom{m}{\ell}$ is an integer for every non-negative integer~$\ell$. We prove that $\binom{m+1}{k}$ is an integer for every non-negative integer $k$. Let $k\in\integers$ be an arbitrary non-negative integer. There are two cases:
+ \begin{itemize}
+  \item If $k<m+1$, then by Pascal's Identity, it holds that
+  \[
+   \binom{m+1}{k} = \binom{m}{k} + \binom{m}{k+1},
+  \]
+  which is an integer, because $\binom{m}{k}$ and $\binom{m}{k+1}$ are integers by the Induction Hypothesis.
+
+  \item If $k=m+1$, then $\binom{m+1}{k} = \binom{m+1}{m+1}=1$, which is an integer.
+  \item If $k>m+1$, then $\binom{m+1}{k}=0$ by definition, which is an integer. 
+ \end{itemize}
+ In each case, we see that $\binom{m+1}{k}$ is an integer. Hence $P(m+1)$ is true.
+ \end{itemize}
+By the principle of induction, it holds that $\binom{n}{k}$ is an integer for all non-negative integers $n,k\in\integers$.
+\end{Solution}
+
+\item\label{binompart} Let $p$ be a prime number. It holds that 
+\[
+ \binom{p}{k}\equiv 0 \pmod{p}
+\]
+for all $k\in\{1,2,\dots,p-1\}$.
+\begin{Solution}
+ \begin{proof}
+  Let $k\in\{1,2,\dots,p-1\}$. By definition, we have that
+  \[
+   \binom{p}{k} = \frac{p!}{k!(p-k)!},
+  \]
+and thus
+\begin{align*}
+ p\cdot(p-1)! = p! &= k!(p-k)!\binom{p}{k}\\
+ &=(1\cdot 2\cdot\cdots \cdot k)(1\cdot 2\cdot\cdots\cdot (p-k))\binom{p}{k},
+\end{align*}
+and thus $p\mid\left(k!(p-k)!\binom{p}{k}\right)$.
+Note also that 
+\[
+ \gcd(p,1) = \gcd(p,2)=\cdots =\gcd(p,p-1)=1.
+\]
+Because $1\leq k\leq p-1$ and $1\leq p-k\leq p-1$, it follows that
+\[
+ \gcd\bigl(p,k!(p-k)!\bigr) = 1.
+\]
+Because $p\mid\left(k!(p-k)!\binom{p}{k}\right)$ and $\gcd\bigl(p,k!(p-k)!\bigr) = 1$, it follows from Euclid's Lemma that 
+\[
+ p\mid \binom{p}{k}.
+\]
+This implies that $\binom{p}{k}\equiv 0\pmod{p}$.
+ \end{proof}
+
+\end{Solution}
+
+\end{enumerate}
+
+\item Prove the following statements.
+\begin{enumerate}
+\item The sum of any three consecutive natural numbers is divisible by 3.
+\begin{Solution}
+ Symbolically, we can express this statement as:
+ \begin{center}
+  $\forall n\in\integers, \, 3\mid \big(n+(n+1)+(n+2)\big)$
+ \end{center}
+\begin{proof}
+ Let $n\in\integers$ be arbitrary. Now,
+ \begin{align*}
+  n+(n+1)+(n+2) 
+  & \equiv 3n + 3&&\pmod{3}\\
+  & \equiv 3(n+1)&&\pmod{3}\\
+  & \equiv 0&&\pmod{3},
+ \end{align*}
+and thus $3\mid \big(n+(n+1)+(n+2)\big)$. 
+\end{proof}
+
+\end{Solution}
+
+\item The sum of any four consecutive natural numbers is NOT divisible by 4.
+
+\begin{Solution}
+ Symbolically, we can express this statement as:
+ \begin{center}
+  $\forall n\in\integers, \, 4\nmid \big(n+(n+1)+(n+2)+(n+3)\big)$
+ \end{center}
+\begin{proof}
+ Let $n\in\integers$ be arbitrary. Now,
+ \begin{align*}
+  n+(n+1)+(n+2)+(n+3) 
+  & \equiv 4n + 1+2+3&&\pmod{4}\\
+  & \equiv 4n+7&&\pmod{4}\\
+  & \equiv 7&&\pmod{4},
+ \end{align*}
+but $4\nmid 7$ and thus $4\nmid \big(n+(n+1)+(n+2)+(n+3)\big)$. 
+\end{proof}
+
+\end{Solution}
+\end{enumerate}
+
+\item Let $x \in \integers$. Prove that $4 x^2 + x + 3$ is not divisible by 5.
+
+\begin{Solution}
+  We only need to consider $x\in\{0,1,2,3,4\}$. Construct the following table:
+  \begin{center}
+  \begin{tabular}{ |c|c|c|c|c|c| } 
+ \hline
+$x$ & 0 & 1 & 2 & 3 & 4\\ \hline
+ $x^2$ & 0 & 1 & 4 & 9 & 16\\ 
+ $x^2\pmod{5}$ & 0 & 1 & 4 & 4 & 1\\ 
+ $4x^2\pmod{5}$ & 0 & 4 & 1 & 1 & 4\\ 
+ $4x^2+x +3\pmod{5}$ & 3 & 3 & 1 & 2 & 1\\ 
+ \hline
+\end{tabular}
+  \end{center}
+
+Note that $4x^2+x +3\not\equiv 0\pmod{5}$ for each $x$, and thus $4x^2+x +3$ is never divisible by $5$.
+\end{Solution}
+
+
+\item Let $p$ be a prime number. Prove the following statement:
+\begin{center}
+ There exists an integer $n\in\integers$ such that $n^3=p+8\qquad\iff\qquad p=19$. 
+\end{center}
+\begin{Solution}
+ If $p=19$, then $p+8=19+8 = 27$ and we may choose $n=3$ such that $n^3=27$. Conversely, suppose that there exists an integer $n\in\integers$ such that $n^3=p+8$. It follows that $n^3-8=p$ and thus
+ \[
+  (n-2)(n^2+2n+4) = p.
+ \]
+We first prove that $n^2+2n+4>1$.
+\begin{itemize}
+ \item If $n\geq 0$, then $n^2+2n+4 \geq 4$. 
+ \item If $n=-1$, then $n^2+2n+4 =3$.
+ \item If $n< -1$, then $n\leq -2$ which implies $n^2\geq-2n$ and thus $n^2+2n\geq0$. Hence $n^2+2n+4\geq 4$.
+\end{itemize}
+ In each case, we have $n^2+2n+4>1$. Because $p$ is prime, its only poisitive divisors are $1$ and $p$, so it must therefore be the case that 
+\[
+ n-2=1 \qquad\text{and}\qquad n^2+2n+4 = p.
+\]
+That is, $n=3$ and $p = n^2+2n+4 = 9+6+4 = 19$.
+\end{Solution}
+
+\item Let $a,b\in\integers$ and let $p$ be a prime number. Prove that $(a+b)^p\equiv a^p+b^p\pmod{p}$. 
+
+\begin{Solution}
+ There are two ways to prove this.
+ \begin{itemize}
+  \item \emph{Proof 1}. Using the Binomial Theorem, we have
+  \begin{align*}
+   (a+b)^p &= \sum_{k=0}^p \binom{p}{k}a^{p-k}b^{k} \\
+    & = \binom{p}{0}a^pb^0 + \binom{p}{1}a^{p-1}b^1 +\cdots +\binom{p}{p-1}a^1b^{p-1} +\binom{p}{p}a^0b^p\\
+    & = a^p + \binom{p}{1}a^{p-1}b^1 +\cdots +\binom{p}{p-1}a^1b^{p-1} + b^p.
+  \end{align*}
+However, from problem \ref{binompart} we see that 
+\[
+ \binom{p}{k}\equiv 0\pmod{p}
+\]
+for every $k\in\{1,2,\dots,p-1\}$, and thus
+\begin{align*}
+ (a+b)^p&\equiv a^p + \binom{p}{1}a^{p-1}b^1 +\cdots +\binom{p}{p-1}a^1b^{p-1} + b^p &&\pmod{p}\\
+ &\equiv a^p + 0 +\cdots + 0 + b^p&&\pmod{p}\\
+ &\equiv a^p + b^p&&\pmod{p}.
+\end{align*}
+\item \emph{Proof 2}. From the Corollary to Fermat's Little Theorem, it holds that 
+\begin{center}$a^p\equiv a\pmod{p}$, \quad $b^p\equiv b\pmod{p}$, \quad and $(a+b)^p\equiv a+b\pmod{p}$.\end{center}
+Thus
+\[
+ (a+b)^p\equiv a+b \equiv a^p+b^p\pmod{p}.
+\]
+
+
+ \end{itemize}
+
+\end{Solution}
+
+
+\end{enumerate}
+\end{document}

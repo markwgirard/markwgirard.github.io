@@ -1,0 +1,438 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathpazo}
+\usepackage{fullpage}
+\usepackage{enumerate}
+
+\usepackage{xcolor}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+
+\usepackage[most,breakable]{tcolorbox}
+\usepackage{environ}
+
+\newif\ifshowsolution
+\showsolutionfalse
+%\showsolutiontrue
+
+\NewEnviron{Solution}{%
+    \ifshowsolution%
+        \begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]%
+            \textbf{Solution.} \BODY
+        \end{tcolorbox}%
+    \fi%
+}%
+
+
+\begin{document}
+
+\title{MATH 135 --- Fall 2021\\ Practice Problems \ifshowsolution(Solutions)\fi -- Chapter 4}
+\author{Mark Girard}
+
+\maketitle
+
+\noindent \textbf{Note.} The \emph{floor function} takes a real number $x$ as input and outputs the greatest integer $\lfloor x \rfloor$ that is less than or equal to $x$. For example,
+ \[
+  \lfloor 1.2\rfloor = 1,\qquad \lfloor \pi\rfloor = 3,\qquad\lfloor 7\rfloor = 7,\qquad \lfloor -1.3\rfloor = -2,\qquad \text{and} \qquad \left\lfloor \frac{1}{2}\right\rfloor = 0.
+ \]
+
+For most of the following problems, use induction unless otherwise stated.
+
+ 
+\begin{enumerate}%\itemsep0em 
+ \item Prove for all numbers $n\in\naturals$ that 
+\[
+ \sum_{j=0}^{\lfloor n/2\rfloor} \binom{n}{2j} = 2^{n-1}.
+\]
+(Note: Induction will not be helpful here. Try out a few small values of $n$ to see if you find a pattern and use Binomial Theorem instead.)
+
+\begin{Solution}
+First, let's try expanding out the sum in question for a few small values of $n$ to see what it looks like. For each $n\in\naturals$, define $s(n)$ to be the sum in question. 
+ \begin{itemize}
+  \item When $n=1$, we have $\lfloor 1/2\rfloor = 0$ and 
+ \[
+  s(1) = \sum_{j=0}^0 \binom{1}{2j} = \binom{1}{0} = 1 = 2^0 
+ \].
+ \item When $n=4$, we have $\lfloor 4/2\rfloor = 2$ and 
+ \[
+  s(4)= \sum_{j=0}^2 \binom{4}{2j} = \binom{4}{0} + \binom{4}{2} + \binom{4}{4} = 1 +6 + 1= 8=2^3 
+ \].
+  \item When $n=7$, we have $\lfloor 7/2\rfloor = 3$ and 
+ \[
+  s(7)= \sum_{j=0}^3 \binom{7}{2j} = \binom{7}{0} + \binom{7}{2} + \binom{7}{4} + \binom{7}{6}= 1 +21 + 35 + 7= 64=2^6 
+ \].
+\end{itemize}
+We see that $s(n)$ is the sum of all $\binom{n}{m}$ where $m$ is an even integer. Another way to write this sum is as
+\[
+ s(n) = \sum_{\substack{m=0\\m\text{ is even}}}^n \binom{n}{m} = \binom{n}{0} + \binom{n}{2} + \cdots + \binom{n}{2\lfloor n/2\rfloor}
+\]
+where we sum only over the even integers between $0$ and $n$. Now, let's explore what happens when we use the Binomial Theorem to expand the sums of $(1+1)^n$ and $(1-1)^n$. For example, note that 
+\[
+ 2^4 = (1+1)^4 = \sum_{m=0}^4\binom{n}{4} = \binom{4}{0} + \binom{4}{1} +\binom{4}{2} +\binom{4}{3} +\binom{4}{4}
+\]
+and 
+\[
+ 0 = (1-1)^4 = \sum_{m=0}^4\binom{n}{4}(-1)^m = \binom{4}{0} - \binom{4}{1} +\binom{4}{2} -\binom{4}{3} +\binom{4}{4}.
+\]
+If we add these two equalities together, we find
+\[
+ 2^4 + 0 = 2\binom{4}{0} + 2\binom{4}{2} + 2\binom{4}{4}
+\]
+(where the binomial coefficients with odd lower indices are cancelled out). Dividing by two yields the result
+\[
+  2^3 = \binom{4}{0} + \binom{4}{2} + \binom{4}{4}.
+\]
+To prove the claim, we can follow this pattern for arbitrary $n$.
+\begin{proof}
+ Let $n\in\naturals$ be arbitrary. By the Binomial Theorem, we have that
+ \[
+  2^n = (1+1)^n = \sum_{m=0}^n \binom{n}{m} 
+ \]
+where we can split the summands of the sum on the right into even and odd indices as
+\begin{align*}\tag{$\ast$}\label{eq:2sum}
+ 2^n &= \sum_{\substack{m=0\\m\text{ is even}}}^n\binom{n}{m} + \sum_{\substack{m=0\\m\text{ is odd}}}^n\binom{n}{m}\\
+  & = s(n) + t(n)
+\end{align*}
+where we define 
+\[
+ s(n) = \sum_{\substack{m=0\\m\text{ is even}}}^n \binom{n}{m} \qquad\text{and}\qquad t(n) = \sum_{\substack{m=0\\m\text{ is odd}}}^n \binom{n}{m}.
+\]
+Similarly, by the Binomial Theorem, we have 
+ \[
+  0 = 0^n = (1+(-1))^n = \sum_{m=0}^n \binom{n}{m} (-1)^m.
+ \]
+Because $(-1)^m=1$ when $m$ is even and $(-1)^m=-1$ when $m$ is odd, this becomes
+\begin{align*}
+ 0 &= \binom{m}{0} - \binom{m}{1} + \binom{m}{2} - \cdots +(-1)^m\binom{m}{m}\\
+  & =\sum_{\substack{m=0\\m\text{ is even}}}^n\binom{n}{m} - \sum_{\substack{m=0\\m\text{ is odd}}}^n\binom{n}{m}\tag{$\ast\ast$}\label{eq:0sum}\\
+  & = s(n) - t(n).
+\end{align*}
+Adding together the equalities in \eqref{eq:2sum} and \eqref{eq:0sum} yields
+\[
+ 2^n = 2s(n)
+\]
+and dividing by 2 yields the desired result.
+\end{proof}
+\end{Solution}
+
+
+
+\item Prove for all $n\in\naturals$ that
+\[
+ \sum_{j=1}^n \frac{1}{j(j+1)} = \frac{n}{n+1}.
+\]
+\begin{Solution}
+ \begin{proof}
+For each $n\in\naturals$, let $P(n)$ be the statement that $\sum_{j=1}^n \frac{1}{j(j+1)} = \frac{n}{n+1}$. We will prove that $P(n)$ holds for all $n\in\naturals$ by induction.
+\begin{itemize}
+ \item \underline{Base case:} When $n=1$, we have
+ \[
+  \sum_{j=1}^1 \frac{1}{j(j+1)} = \frac{1}{2} = \frac{1}{1+1}
+ \]
+and thus $P(1)$ is true.
+\item \underline{\smash{Induction step:}} Let $k\in\naturals$ be arbitrary and suppose that $P(k)$ is true. That is, suppose that
+\[
+ \sum_{j=1}^k \frac{1}{j(j+1)} = \frac{k}{k+1}.\tag{Induction Hypothesis}
+\]
+Now
+\begin{align*}
+ \sum_{j=1}^{k+1} \frac{1}{j(j+1)}
+ &= \sum_{j=1}^{k} \frac{1}{j(j+1)} + \frac{1}{(k+1)(k+2)}\\
+ & = \frac{k}{k+1} + \frac{1}{(k+1)(k+2)} && \text{by IH}\\
+ & = \frac{1}{k+1}\left(k + \frac{1}{k+2}\right) \\
+ & = \frac{k^2+2k+1}{(k+1)(k+2)} \\
+ & = \frac{k+1}{k+2}
+\end{align*}
+and thus $P(k+1)$ is true.
+\end{itemize}
+By the principle of mathematical induction, we conclude that $P(n)$ is true for all $n\in\naturals$. 
+ \end{proof}
+\end{Solution}
+
+
+
+\item Prove for all natural numbers $n\geq2$ that 
+\[
+ \sqrt{n} < \sum_{k=1}^n \frac{1}{\sqrt{k}}
+\]
+\begin{Solution}
+ \begin{proof}
+  For each $n\in\naturals$ let $P(n)$ be the statement that $\sqrt{n} < \sum_{k=1}^n \frac{1}{\sqrt{k}}$. We will prove that $P(n)$ is true for all $n\geq 2$ by induction.
+  \begin{itemize}
+   \item \underline{Base case:} Note that $\sqrt{2}<2$ and thus 
+   \[
+    \sqrt{2}  = \frac{\sqrt{2} + \sqrt{2}}{2} <\frac{2 + \sqrt{2}}{2}  = 1 + \frac{1}{\sqrt{2}} = \sum_{k=1}^2 \frac{1}{\sqrt{k}}, 
+   \]
+so $P(2)$ is true.
+\item \underline{\smash{Induction step:}} Let $m\in\naturals$ be arbitrary such that $m\geq2$ and suppose that $P(m)$ is true. That is, suppose that 
+\[
+ \sqrt{m} < \sum_{k=1}^m \frac{1}{\sqrt{k}} \tag{IH}
+\]
+Now, by the induction hypothesis,
+\[
+ \sum_{k=1}^{m+1} \frac{1}{\sqrt{k}} = \sum_{k=1}^{m} \frac{1}{\sqrt{k}} + \frac{1}{\sqrt{m+1}}  > \sqrt{m} + \frac{1}{\sqrt{m+1}}.
+\]
+It remains to prove that 
+\[
+ \sqrt{m} + \frac{1}{\sqrt{m+1}} > \sqrt{m+1}.
+\]
+Now, $\sqrt{m+1}>\sqrt{m}$ and thus
+\[
+ \sqrt{m+1}\sqrt{m} > m,
+\]
+as $m>0$. Adding 1 to both sides yields 
+\[
+ \sqrt{m+1}\sqrt{m} +1 > m + 1
+\]
+and dividing both sides by $\sqrt{m+1}$ yields
+\[
+ \sqrt{m} +\frac{1}{\sqrt{m+1}} > \sqrt{m + 1}.
+\]
+It follows that $P(m+1)$ holds.
+  \end{itemize}
+By the principle of mathematical induction, we conclude that $P(n)$ is true for all natural numbers  $n\geq 2$. 
+ \end{proof}
+
+\end{Solution}
+
+
+\item Consider a sequence defined by $a_1 = \sqrt{2}$ and 
+\[
+ a_{n+1} = \sqrt{2+a_n}
+\]
+for all $n\in\naturals$. Prove that $\sqrt{2}\leq a_n< 2$ for all $n\in\naturals$
+
+
+\begin{Solution}
+  \begin{proof}
+  Let $P(n)$ be the statement that $\sqrt{2}\leq a_n< 2$. We will prove that $P(n)$ is true for all $n\in\naturals$ by induction.
+  \begin{itemize}
+   \item \underline{Base case:} Note that $a_1=\sqrt{2}$ and $\sqrt{2} \leq \sqrt{2} < 2$, so $P(1)$ is true.
+\item \underline{\smash{Induction step:}} Let $k\in\naturals$ be arbitrary and suppose that $P(k)$ is true. That is, suppose that
+\[
+ \sqrt{2}\leq a_k< 2. \tag{IH}
+\]
+
+Now $a_{k+1} = \sqrt{2 + a_k}$. It follows from the induction hypothesis that  
+\[
+ \sqrt{2 +\sqrt{2}}\leq\sqrt{2 + a_k} <\sqrt{2 + 2}
+\]
+and thus 
+\[
+ \sqrt{2}<\sqrt{2 +\sqrt{2}}\leq a_{k+1} < \sqrt{4} = 2,
+\]
+which proves that $P(k+1)$ holds.
+  \end{itemize}
+It follows from the Principle of Mathematical Induction that $\sqrt{2}\leq a_n< 2$ holds for every $n\in\naturals$.
+ \end{proof}
+\end{Solution}
+
+\item Let $r\in\reals$ be a real number such that $r+\frac{1}{r}$ is an integer. Prove that $r^n + \frac{1}{r^n}$ is an integer for all $n\in\naturals$.
+
+\begin{Solution}
+  \begin{proof}
+  Let $r\in\reals$ and suppose that $r+\frac{1}{r}$ is an integer. 
+  For each $n\in\naturals$ let $P(r,n)$ be the statement ``$r^n + \frac{1}{r^n}$ is an integer''. We will prove that $P(r,n)$ is true for all $n\in\naturals$ by strong induction.
+  \begin{itemize}
+   \item \underline{Base case:} Note that $r^1+ \frac{1}{r^1} = r+\frac{1}{r}$, which is an integer by assumption. Thus $P(r,1)$ is true. 
+\item \underline{\smash{Induction step:}} Let $k\in\naturals$ be arbitrary and suppose that $P(r,1)$, $P(r,2)$, $\dots$, and $P(r,k)$ are all true. That is, suppose that 
+\[
+ r^m + \frac{1}{r^m} \text{ is an integer for each }m\in\{1,2,\dots,k\}. \tag{IH}
+\]
+Now, 
+\begin{align*}
+ \left(r^k + \frac{1}{r^k}\right) \left(r + \frac{1}{r}\right) &= r\cdot r^{k} + r\frac{1}{r^{k}} + \frac{1}{r}r^k + \frac{1}{r}\frac{1}{r^{k}} \\&= r^{k+1} + \frac{1}{r^{k+1}} + r^{k-1} + \frac{1}{r^{k-1}}.
+\end{align*}
+It follows that
+\[
+ r^{k+1} + \frac{1}{r^{k+1}} =  \left(r^k + \frac{1}{r^k}\right) \left(r + \frac{1}{r}\right) - \left(r^{k-1} + \frac{1}{r^{k-1}}\right),
+\]
+ where $r^k + \frac{1}{r^k}$, $r^{k-1} + \frac{1}{r^{k-1}}$, and $r + \frac{1}{r}$ are integers by the induction hypothesis. It follows that $r^{k+1} + \frac{1}{r^{k+1}}$ is an integer and thus $P(r,k+1)$ is true.
+  \end{itemize}
+By the Principle of Strong Induction, it follows that $P(r,n)$ is true for every $n\in\naturals$.
+ \end{proof}
+\end{Solution}
+
+
+\item Consider a sequence $y_1,y_2,\dots$ defined by $y_1=1$ and 
+\[
+ y_{n} = 2\cdot y_{\lfloor \frac{n}{2}\rfloor}
+\]
+for all $n\geq2$. Prove that $y_n\leq n$ for every $n\in\naturals$. 
+
+\begin{Solution}
+  \begin{proof}
+  Let $P(n)$ be the statement that $y_n\leq n$. We will prove that $P(n)$ is true for all $n\in\naturals$ by strong induction.
+  \begin{itemize}
+   \item \underline{Base case:} Note that $y_1=1$ and thus $y_1\leq 1$, so $P(1)$ is true.
+\item \underline{\smash{Induction step:}} Let $k\in\naturals$ be arbitrary. Suppose that, for every $m\in\{1,2,\dots k\}$,  $P(m)$ is true. That is, suppose that $y_m\leq m$ holds whenever $1\leq m\leq k$ (IH). Note that $k\geq1$ and thus $k+1\geq2$, so $\frac{k+1}{2}\geq 1$. Hence
+\[
+ 1\leq \left\lfloor \frac{k+1}{2}\right \rfloor \leq \frac{k+1}{2} < k+1
+\]
+and thus $\lfloor \frac{k+1}{2} \rfloor$ is an integer between $1$ and $k$. It follows from the induction hypothesis that 
+\[
+ y_{\lfloor \frac{k+1}{2}\rfloor} \leq \left\lfloor \frac{k+1}{2}\right\rfloor \leq \frac{k+1}{2}.
+\]
+Now 
+\[
+ y_{k+1} = 2y_{\lfloor \frac{k+1}{2}\rfloor} \leq 2\frac{k+1}{2} = k+1
+\]
+and thus $y_{k+1}\leq k+1$, which proves that $P(k+1)$ holds.
+  \end{itemize}
+It follows from the Principle of Strong Induction that $y_{n}\leq n$ for every $n\in\naturals$.
+ \end{proof}
+\end{Solution}
+
+\item The \emph{Fibonacci sequence} $f_1,f_2,\dots$ is defined by $f_1=1$, $f_2=1$, and 
+\[
+ f_{n} = f_{n-1} + f_{n-2}
+\]
+for all $n\geq 3$. Prove the following facts about the Fibonacci sequence.
+\begin{enumerate}
+ \item  For all $n\geq 2$, it holds that $f_n<\left(\frac{7}{4}\right)^{n-1}$.
+ 
+ \begin{Solution}
+  \begin{proof}
+   We will prove that $f_n<\left(\frac{7}{4}\right)^{n-1}$ holds for all $n\in\naturals$ by strong induction.
+  \begin{itemize}
+   \item \underline{Base case:} Note that $f_2 = 1 <\frac{7}{4} = \left(\frac{7}{4}\right)^1$. Also, 
+   \[
+    f_3 = 2 = \frac{32}{16} <\frac{49}{16} = \left(\frac{7}{4}\right)^2.
+   \]
+   Thus we have shown that $f_n\leq (\frac{7}{4})^{n-1}$ holds when $n=2$ and when $n=3$. 
+\item \underline{\smash{Induction step:}} Let $k$ be an integer such that $k\geq 3$ and suppose that $f_m\leq (\frac{7}{4})^m$ holds for every $m\in\{1,2,\dots k\}$ (IH). By the induction hypothesis, it holds that 
+\[
+ f_k < \left(\frac{7}{4}\right)^{k} \qquad\text{and}\qquad f_{k-1} < \left(\frac{7}{4}\right)^{k-1}.
+\]
+Now,
+\begin{align*}
+ f_{k+1} & = f_k + f_{k+1} \\
+         & <\left(\frac{7}{4}\right)^{k-1} + \left(\frac{7}{4}\right)^{k-2}\\
+         & = \left(\frac{7}{4}\right)^{k-2} \left(\frac{7}{4}+1\right)\\
+         & = \left(\frac{7}{4}\right)^{k-2} \frac{11}{4}\\
+         & =\left(\frac{7}{4}\right)^{k-2} \frac{44}{16}\\
+         & <\left(\frac{7}{4}\right)^{k-2} \frac{49}{16}\\
+         & = \left(\frac{7}{4}\right)^{k-2}\left(\frac{7}{4}\right)^{2}
+\end{align*}
+and thus $f_{k+1}<\left(\frac{7}{4}\right)^{k}$.
+  \end{itemize}
+It follows from the Principle of Strong Induction that $f_n<\left(\frac{7}{4}\right)^{n-1}$ for all $n\geq2$.
+ \end{proof}
+\end{Solution}
+
+ \item For all $n\in\naturals$, it holds that $\displaystyle\sum_{j=1}^n f_j = f_{n+2}-1$.
+ 
+  \begin{Solution}
+  \begin{proof}
+   We proceed by induction.
+  \begin{itemize}
+   \item \underline{Base case:} Note that $f_1=1$, $f_2=1$, $f_3=2$, and $f_4=3$. Hence
+   \[
+    \sum_{j=1}^1 f_j = f_1 = 1 = 2-1 = f_3-1
+   \]
+   and 
+   \[
+    \sum_{j=1}^2 f_j = f_1 +f_2 = 1 + 1 = 3-1 = f_4-1.
+    \]
+\item \underline{\smash{Induction step:}} Let $k$ be an integer such that $k\geq 2$ and suppose that 
+\[
+ \sum_{j=1}^k f_j = f_{k+2}-1. \tag{IH}
+\]
+ Now $f_{k+3} = f_{k+1} + f_{k+2}$ by the definition of the Fibonacci sequence, thus
+\begin{align*}
+ \sum_{j=1}^{k+1} f_j &= \sum_{j=1}^{k} f_j + f_{k+1}\\
+ & = (f_{k+2}-1) + f_{k+1} &&\text{by IH}\\
+ & = f_{k+1} + f_{k+2} - 1\\
+ & = f_{k+3} -1.
+\end{align*}
+Hence $\displaystyle\sum_{j=1}^{k+1} f_j = f_{(k+1)+2}-1$.
+  \end{itemize}
+It follows from the Principle of Mathematical Induction that $\displaystyle\sum_{j=1}^n f_j = f_{n+2}-1$ holds for all $n\in\naturals$.
+ \end{proof}
+\end{Solution}
+ 
+ 
+ \item For all $n\in\naturals$, it holds that $\displaystyle\sum_{j=1}^n f_j^2 = f_nf_{n+1}$.
+ 
+   \begin{Solution}
+  \begin{proof}
+   We proceed by induction.
+  \begin{itemize}
+   \item \underline{Base case:} Note that $f_1=1$, $f_2=1$, and $f_3=2$. Hence
+   \[
+    \sum_{j=1}^1 f_j^2 = f_1^2 = 1^2 = 1\cdot 1 = f_1f_2
+   \]
+   and 
+   \[
+    \sum_{j=1}^2 f_j^2 = f_1^2 +f_2^2 = 1^2 + 1^2 = 2 = 1\cdot 2 = f_2f_3.
+    \]
+\item \underline{\smash{Induction step:}} Let $k$ be an integer such that $k\geq 2$ and suppose that 
+\[
+ \sum_{j=1}^k f_j^2 = f_kf_{k+1}. \tag{IH}
+\]
+ Note that $f_{k+2} = f_k+f_{k+1}$ by the definition of the Fibonacci sequence and thus
+\begin{align*}
+ \sum_{j=1}^{k+1} f_j^2 &= \sum_{j=1}^{k} f_j^2 + f_{k+1}^2\\
+ & = f_kf_{k+1} + f_{k+1}^2 &&\text{by IH}\\
+ & = f_{k+1}(f_k + f_{k+1})\\
+ & = f_{k+1}f_{k+2}.
+\end{align*}
+Hence $\displaystyle\sum_{j=1}^{k+1} f_j = f_{k+1}f_{(k+1)+1}$.
+  \end{itemize}
+It follows from the Principle of Mathematical Induction that $\displaystyle\sum_{j=1}^n f_j^2 = f_nf_{n+1}$ holds for all $n\in\naturals$.
+ \end{proof}
+\end{Solution}
+ 
+ \item Let $a = \frac{1+\sqrt{5}}{2}$ and $b = \frac{1-\sqrt{5}}{2}$. It holds that $f_n = \frac{a^n - b^n}{\sqrt{5}}$ for all $n\in\naturals$
+\end{enumerate}
+
+   \begin{Solution}
+  \begin{proof}
+   We proceed by strong induction. First note that 
+   \[
+    a^2 = \left(\frac{1+\sqrt{5}}{2}\right)^2 = \frac{1+2\sqrt{5}+5}{4} = \frac{6+2\sqrt{5}}{4} = \frac{3+\sqrt{5}}{2} = 1 + \frac{1+\sqrt{5}}{2} = 1+a.
+   \]
+Similarly, 
+\[
+    b^2 = \left(\frac{1-\sqrt{5}}{2}\right)^2 = \frac{1-2\sqrt{5}+5}{4} = \frac{6-2\sqrt{5}}{4} = \frac{3-\sqrt{5}}{2} = 1 + \frac{1-\sqrt{5}}{2} = 1+b.
+   \]
+Hence $1+a=a^2$ and $1+b=b^2$. 
+  \begin{itemize}
+   \item \underline{Base case:} Note that 
+   \[
+    \frac{a-b}{\sqrt{5}} = \frac{\frac{1+\sqrt{5}}{2} - \frac{1-\sqrt{5}}{2}}{\sqrt{5}} = \frac{\frac{\sqrt{5}}{2} + \frac{\sqrt{5}}{2}}{\sqrt{5}} = 1 = f_1
+   \]
+   and using the facts that $1+a=a^2$ and $1+b=b^2$ note that 
+   \[
+    \frac{a^2-b^2}{\sqrt{5}} = \frac{1+a - (1+b)}{\sqrt{5}} = \frac{a-b}{\sqrt{5}} = 1 = f_2.
+   \]
+
+\item \underline{\smash{Induction step:}} Let $k\geq2$ and suppose that 
+\[
+ f_m = \frac{a^m-b^m}{\sqrt{5}} \tag{IH}
+\]
+holds for every $m\in\{1,2,\dots,k\}$. Now
+ \begin{align*}
+  f_{k+1} &= f_k + f_{k-1} \\ 
+  & = \frac{a^k-b^k}{\sqrt{5}} + \frac{a^{k-1}-b^{k-1}}{\sqrt{5}} && \text{by IH}\\
+  & = \frac{a^{k-1}(a+1) - b^{k-1}(b+1)}{\sqrt{5}} \\
+  & = \frac{a^{k-1}a^2 - b^{k-1}b^2}{\sqrt{5}} && \text{because }1+a=a^2\text{ and }1+b=b^2\\
+  & = \frac{a^{k+1} - b^{k+1}}{\sqrt{5}}.
+ \end{align*}
+\end{itemize}
+It follows from the Principle of Mathematical Induction that $f_n = \frac{a^n - b^n}{\sqrt{5}}$ holds for all $n\in\naturals$.
+ \end{proof}
+\end{Solution}
+\end{enumerate}
+
+
+
+
+
+\end{document}

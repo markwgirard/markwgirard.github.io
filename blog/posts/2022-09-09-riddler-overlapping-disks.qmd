@@ -1,0 +1,78 @@
+---
+title: "Riddler: Overlapping Disks"
+date: 2022-09-09
+description: "A geometry puzzle about overlapping three disks."
+author: "Mark Girard"
+categories: [riddler, puzzles]
+format: html
+aliases:
+  - /posts/2022/09/riddler-overlapping-disks/
+---
+
+
+
+Here's my solution to this week's [Riddler](https://fivethirtyeight.com/features/can-you-cover-the-baking-sheet-with-cookies/). (See more of [my Riddler solutions here](/riddlers).)
+
+## The Problem
+>Suppose you have a unit square (i.e., with side length 1). If you also have four identical circles that can overlap, they would need to have a radius of $\sqrt{2}/4$ to completely cover the square, as shown below:
+>
+>![A square that is completely covered by four overlapping circles of the same size. The four circles are centered over the four respective quadrants of the square, and all overlap in the squares center.](/blog/images/overlappingdisks.png)
+>
+>
+>Now suppose that, instead of four identical circles, you have five identical circles that can overlap. What is the minimum radius they would need to completely cover a unit square?
+>
+>_Extra credit:_ Suppose you have _six_ identical circles that can overlap. What is the minimum radius they would need to completely cover a unit square?
+
+## The Solution
+Interestingly this problem appears to have been previously solved (more on that in a minute). But first, my solution:
+### My solution
+I guessed that the best solution would have a bit of reflectional symmetry. With the help of some amazing geometric drawing software ([Geogebra](https://www.geogebra.org/)), I was able to come up with a solution with $r\approx 0.326$ with the diagram below:
+
+![A Geogebra drawing of 5 disks of minimal radius covering the unit square.](/blog/images/geogebra-5disks.png)
+
+Note that $0.326<.3535 \approx\frac{1}{2\sqrt{2}}$ so this solution is definitely an improvement over simply covering the square with 4 squares.
+
+I wanted to come up with a more exact value. By expressing the coordinates of the centres of the five circles in this geometric picture as
+
+$$
+\left(-\frac{1}{4}, a\right),\, \left(\frac{1}{4}, a\right), \, \left(-d, -b\right), \, \left(d, -b\right),\,\text{and}\, \left(0, -c\right),
+$$
+
+and doing a little bit of work, we can set up a system of equations that the values $a$, $b$, $c$, $d$, and $r$ must satisfy (where $e=\frac{1}{4}$):
+
+$$
+\begin{align}
+r^2&=\left(\frac{1}{2}-a\right)^2+\frac{1}{16.}\\
+r^2&=\left(\frac{1}{2}-b\right)^2+\left(\frac{1}{2}-d\right)^2\\
+r^2&=\left(\frac{1}{2}-c\right)^2+\left(2d-\frac{1}{2}\right)^2\\
+b&=\frac{1}{2}-a\\
+r&=2a+c-\frac{1}{2}
+\end{align}
+$$
+
+With the help of Mathematica, I was able to determine that the only solution to this (with $a$, $b$, $c$, $d$, and $r$ all positive) is given by
+
+$$
+\begin{align}
+a&=-\frac{23808 r^5}{1159}+\frac{2208 r^4}{1159}+\frac{1819 r^3}{1159}+\frac{259 r^2}{244}-\frac{13959 r}{18544}+\frac{31371}{74176}\\
+b&=\frac{1}{2}-a\\
+c&=2 b+r-\frac{1}{2}\\
+d&=\frac{10368 r^5}{1159}+\frac{3824 r^4}{1159}-\frac{9959 r^3}{2318}-\frac{1603 r^2}{488}+\frac{15747 r}{37088}+\frac{95157}{148352}
+\end{align}
+$$
+
+where $r\approx0.32616$ is the smallest real root of the polynomial equation
+
+$$
+425 - 672 x + 352 x^2 - 10240 x^3 + 256 x^4 + 8192 x^5 + 65536 x^6 = 0.
+$$
+
+[Edit (18-09-2022): Note that a previous version of the post had an incorrect solution here.]
+
+### Previous work
+
+After a bit of Googling, I was able to stumble upon a few papers that had investigated this and similar problems. By far the best one was [Covering a square with up to 30 equal circles.](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.30.3894&rep=rep1&type=pdf) by Nurmela and Östergård (2000). In that work, the authors developed a clever optimization algorithm to determine the smallest radius of circle such that $n$ circles of that size can be used to cover the unit square for $n$ up to 30. Here are the figures for $n=5$ and $n=6$.
+
+![Minimal radius coverings with 5 and 6 disks.](/blog/images/5-and-6-disk-covers.png)
+
+The authors determined the optimal radii for $5$ and $6$ circles to be $r_5=0.32616058400398728086$ and $r_6=0.29872706223691915876$ respectively.

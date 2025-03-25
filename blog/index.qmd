@@ -1,0 +1,11 @@
+---
+title: "Blog"
+format: html
+listing:
+  contents: posts/
+  sort: "date desc"
+  type: default
+  categories: true
+---
+
+A collection of math musings, Riddler puzzle solutions, and occasional thoughts.
