@@ -1,0 +1,79 @@
+---
+title: "Graduate Coursework Archive"
+format: html
+---
+
+This page archives some of my graduate coursework from the University of Calgary.
+
+Most of these course notes were “live-TeXed,” meaning I typed them up on my laptop during lectures. I make no guarantee of their accuracy — there are likely typos, gaps, or mathematical errors. I also make no guarantee on the correctness of my solutions to the assigned problems.
+
+That said, others have found them useful over the years, so I’m sharing them here publicly in the spirit of open learning.
+
+---
+
+### MATH 667 – Quantum Information Theory  
+_Taught by Gilad Gour, Winter Semester 2016_
+
+This course introduced the mathematical foundations of quantum computing and information theory. Topics included quantum states, density operators, quantum channels, entropy, and coding theorems.
+
+| Title            | Type        | Link |
+|------------------|-------------|------|
+| Lecture Notes    | Notes       | [Download PDF](coursework/QI/QI_main.pdf) |
+| Assignment 2     | Homework    | [Download PDF](coursework/QI/QI_HW2.pdf) |
+
+---
+
+### MATH 621 – Complex Analysis  
+_Taught by Alex Brudnyi, Fall Semester 2014_
+
+This course covered advanced topics in complex analysis, including contour integration, Cauchy's theorem, Laurent series, and the residue theorem.  
+
+_All assignment problems were taken from *Complex Analysis* by Theodore Gamelin._
+
+| Title               | Type       | Link |
+|---------------------|------------|------|
+| Assignment 1        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz1.pdf) |
+| Assignment 2        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz2.pdf) |
+| Assignment 3        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz3.pdf) |
+| Midterm             | Exam       | [Download PDF](coursework/CompAna/ComplexAnalysis_midterm.pdf) |
+| Assignment 4        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz4.pdf) |
+| Assignment 5        | Homework   | [Download PDF](coursework/CompAna/ComplexAnalysis_Quiz5.pdf) |
+| Final Problem Set   | Problem Set| [Download PDF](coursework/CompAna/ComplexAnalysis_ProblemSet.pdf) |
+
+---
+
+### PMAT 617 – Algebra IV  
+_Taught by Clifton Cunningham, Winter Semester 2014_
+
+This abstract algebra course focused on module theory, tensor products, exact sequences, and homological algebra.  
+
+_All assignment roblems were taken from *Algebra: Chapter 0* by Paolo Aluffi._
+
+| Title               | Type       | Link |
+|---------------------|------------|------|
+| Lecture Notes       | Notes      | [Download PDF](coursework/Alg/AlgIII-main.pdf) |
+| Assignment 1        | Homework   | [Download PDF](coursework/Alg/Algebra_HW1.pdf) |
+| Assignment 2        | Homework   | [Download PDF](coursework/Alg/Algebra_HW2.pdf) |
+| Assignment 3        | Homework   | [Download PDF](coursework/Alg/Algebra_HW3.pdf) |
+| Assignment 4        | Homework   | [Download PDF](coursework/Alg/Algebra_HW4.pdf) |
+| Assignment 5        | Homework   | [Download PDF](coursework/Alg/Algebra_HW5.pdf) |
+| Final Exam Review   | Review     | [Download PDF](coursework/Alg/examreview.pdf) |
+
+---
+
+### AMAT 617 – Functional Analysis  
+_Taught by Gilad Gour, Winter Semester 2014_
+
+This course covered the theory of normed vector spaces, inner product spaces, Hilbert spaces, and operators, with applications to analysis and PDEs.  
+
+_All assignment problems were taken from *Introductory Functional Analysis with Applications* by Erwin Kreyszig._
+
+| Title               | Type       | Link |
+|---------------------|------------|------|
+| Lecture Notes       | Notes      | [Download PDF](coursework/FuncAna/FuncAna-main.pdf) |
+| Assignment 1        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW1.pdf) |
+| Assignment 2        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW2.pdf) |
+| Assignment 3        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW3.pdf) |
+| Assignment 4        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW4.pdf) |
+| Assignment 5        | Homework   | [Download PDF](coursework/FuncAna/FunctionalAnalysis_HW5.pdf) |
+| Final Exam Review   | Review     | [Download PDF](coursework/FuncAna/FuncAna-review.pdf) |

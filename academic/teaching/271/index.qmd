@@ -1,0 +1,97 @@
+---
+title: "MATH 271 (Summer 2016)"
+format: html
+
+---
+
+Discrete Mathematics
+
+Department of Mathematics and Statistics, University of Calgary
+
+## Course information
+
+This is the webpage for MATH 271 taught during the 2016 Summer term. We will use the following textbook for the course: Discrete Mathematics with Applications, 4th edition, by Susanna Epp.
+
+[Course information](271outline.pdf)
+(Note: the office is incorrectly listed on this document. My office is located at MS 336.)
+
+**Instructor**: [Mark Girard](http://people.ucalgary.ca/~mwgirard/)
+
+**Schedule**: [tentative schedule](schedule.pdf)
+
+**Time and Location**:
+
+ - Lectures: MWF 10:00-11:50 in SA 106
+ - Office hours: MWF 9:00-9:50 in MS 336.
+-  Labs/tutorials. Times: MW 12:00-12:50 and TR 10:00-10:50.
+   * Lab section 1. Room: MS 217. TA: Zachary Moyer.
+   * Lab section 2. Room: MS 211. TA: Sumin Leem.
+
+
+
+
+## Practice Problems
+
+| Week     | Problems                            | Solutions                          |
+|----------|-------------------------------------|-------------------------------------|
+| Week 1   | [Problems](Problems-Week1.pdf)      | [Solutions](Solutions-Week1.pdf)    |
+| Week 2   | [Problems](Problems-Week2.pdf)      | [Solutions](Solutions-Week2.pdf)    |
+| Week 3   | [Problems](Problems-Week3.pdf)      | [Solutions](Solutions-Week3.pdf)    |
+| Week 4   | [Problems](Problems-Week4.pdf)      | [Solutions](Solutions-Week4.pdf)    |
+| Week 5   | [Problems](Problems-Week5.pdf)      | [Solutions](Solutions-Week5.pdf)    |
+| Week 6   | [Problems](Problems-Week6.pdf)      | [Solutions](Solutions-Week6.pdf)    |
+| Week 6 (extra: graph theory) | [Extra Problems](Extra-problems-week6.pdf) | [Solutions](Extra-problems-solutions-week6.pdf) |
+
+
+## Assignments
+
+Assignments are due at 10:00am on the due date. Hand your solutions in to your TA by the beginning of lab.
+
+
+| Assignment (pdf)| Due date | Solutions (pdf)|
+|------|----|----|
+| [Assignment 1](Assignment1.pdf) | July 19 | [solutions](Assignment1-solution.pdf) |
+| [Assignment 2](Assignment2.pdf) | July 26 | [solutions](Assignment2-solution.pdf) |
+| [Assignment 3](Assignment3.pdf) | August 9 | [solutions](Assignment3-solution.pdf) |
+| [Assignment 4](Assignment4.pdf) | August 16 | [solutions](Assignment4-solution.pdf) |
+
+
+
+## Quizzes
+
+|Quiz (pdf) | Date |Material | Solutions |
+|------|----|----|----|
+| [Quiz 1](Quiz1.pdf) | July 14 | Statements and negation (for all, exists, if-then, converse, contrapositive), even/odd integers, divisibility, direct proofs | [solutions](Quiz1-solutions.pdf) |
+| [Quiz 2](Quiz2.pdf) | July 21 | Proof by contradiction, rational and irrational numbers, gcd (Euclidean algorithm), induction | [solutions](Quiz2-solutions.pdf) |
+| [Quiz 3](Quiz3.pdf) | July 28 | Strong induction, sets (element method) |[solutions](Quiz3-solutions.pdf) |
+| [Quiz 4](Quiz4.pdf) | August 11| Counting (permutations, combinations, inclusion/exclusion principle) and functions (one-to-one, onto, function composition)  | [solutions](Quiz4-solutions.pdf) |
+
+
+
+## Midterm
+
+The midterm will be on Friday August 5, in class (during the lecture period) from 10:00-11:50am.
+
+The midterm will cover all of the course material up to section 9.3.
+
+Previous midterms (solutions will be posted a few days before the midterm date)
+
+* [2011-2014](oldmidterms.pdf) and [solutions](PreviousMidterm-Solutions.pdf)
+* [2015 (winter term)](2015Midterm.pdf) and [solutions](2015Midterm-Solutions.pdf)
+* [2016 (winter term)](2016Midterm.pdf) and [solutions](2016Midterm-Solutions.pdf)
+
+**Update** Here is the [midterm](midterm.pdf) and [solutions](midterm-solutions.pdf).
+
+
+## Final
+
+The the final exam will be on Friday, August 19 at 8:00am in room ES 162.
+
+The exam will cover all of the course material (up to section 10.2). Here is a [list of study topics](FinalStudyGuide.pdf) for the final exam for your studying.
+
+Previous final exams and solutions for you to practice can be found here:
+
+* [W2011 final](w11final.pdf) and [solutions](W11-Final-Solutions.pdf)
+* [W2012 final](w12final.pdf) and [solutions](W12-Final-Solutions.pdf)
+* [W2013 final](W13Final.pdf) and [solutions](W13-Final-Solutions.pdf)
+* [W2014 final](W14final.pdf) and [solutions](W14-Final-Solutions.pdf)

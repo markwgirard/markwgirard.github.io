@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+
+\usepackage{mathpazo}
+\usepackage{fullpage}
+
+\theoremstyle{plain}
+\newtheorem*{claim}{Claim}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\def\naturals{\mathbb{N}}
+\def\integers{\mathbb{Z}}
+\def\rationals{\mathbb{Q}}
+\def\reals{\mathbb{R}}
+\def\complex{\mathbb{C}}
+
+
+\usepackage[most,breakable]{tcolorbox}
+\renewenvironment{boxed}%
+	{\begin{tcolorbox}[colback=white,colframe=gray!10,breakable,enhanced]}%
+	{\end{tcolorbox}}
+
+\begin{document}
+
+
+\title{MATH 135 --- Fall 2021\\ Sample Proofs from Lecture 5}
+\author{Mark Girard}
+
+\maketitle
+
+\section*{Proving equalities}
+
+To prove a universally quantified equality (``$\forall x\in S,\, f(x)= g(x)$''):
+
+\begin{itemize}
+ \item Start by letting the variables be arbitrary elements of the domain.
+ \item Show that the LHS (left-hand side) is equal to the RHS (right-hand side) by writing out the expression of the LHS and manipulating it until you get the RHS.
+ \item Make sure to explain or justify each each step that is not just a straightforward manipulation!
+\end{itemize}
+
+\begin{tcolorbox}
+\begin{claim}
+ For every $\theta\in\reals$, it holds that
+ \[
+  \sin(3\theta) = 3\sin\theta - 4\sin^3\theta.
+ \]
+\end{claim}
+\end{tcolorbox}
+
+\begin{proof}
+ First recall the following trigonometric identities. For every choice of real numbers $\alpha,\beta\in\reals$, one has the following angle addition formula:
+ \begin{equation*}\tag{$\ast$}\label{eq:angle_addition}
+  \sin(\alpha+\beta) = \sin \alpha \cos \beta + \cos \alpha \sin \beta.
+ \end{equation*}
+For every real number $\alpha\in\reals$, one also has that
+ \begin{align*}
+\sin^2\alpha = \frac{1-\cos(2\alpha)}{2} \tag{$\ast\ast$}\label{eq:sin^2_identity}
+ \end{align*}
+ and that
+ \begin{equation*}\label{eq:pythagorean_identity}
+  \sin^2\alpha + \cos^2\alpha = 1. \tag{$\ast\ast\ast$}
+ \end{equation*}
+ Now let $\theta$ be an arbitrary real number. One has
+ \begin{align*}
+  \sin(3\theta) & = \sin(2\theta+\theta) \\
+    & = \sin(2\theta)\cos\theta + \cos(2\theta)\sin\theta &&\text{(by the angle addition formula in \eqref{eq:angle_addition})}\\
+    & = 2\sin\theta\cos^2\theta + \cos(2\theta)\sin\theta &&\text{(again by \eqref{eq:angle_addition})}\\
+    & = 2\sin\theta\cos^2\theta + (1-2\sin^2\theta)\sin\theta && \text{(by \eqref{eq:sin^2_identity})}\\
+    & = 2\sin\theta\cos^2\theta + \sin\theta-2\sin^3\theta &&\text{(by rearranging)}\\
+    & = 2\sin\theta(1-\sin^2\theta) + \sin\theta-2\sin^3\theta &&\text{(by \eqref{eq:pythagorean_identity})}\\
+    & = 3\sin\theta - 4\sin^3\theta,
+ \end{align*}
+as desired. 
+\end{proof}
+
+\section*{Proving inequalities}
+
+Proving a universally quantified inequality (``$\forall x\in S,\, f(x)\geq g(x)$'' or ``$\forall x\in S,\, f(x)>g(x)$''):
+\begin{itemize}
+ \item Same idea as for equalities, but at each step the expression needs to be either equal to or greater than the next expression.
+\end{itemize}
+
+\begin{tcolorbox}
+\begin{claim}
+ For every $x\in\reals$ it holds that 
+ \[
+  x^2+5x+7 >0.
+ \]
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+ Let $x$ be a real number. Now
+ \begin{align*}
+  x^2+5x+7 & = \left(x^2+5+\frac{25}{4}\right) - \frac{25}{4} + 7\\
+           & = \left(x+\frac{5}{2}\right)^2 + \frac{3}{4}\\
+           & \geq \frac{3}{4} && \text{(because all squares of real numbers are non-negative)}\\
+           & >0,
+ \end{align*}
+which completes the proof.
+\end{proof}
+
+\section*{Proof by cases}
+You can sometimes prove a statement by:
+\begin{enumerate}
+ \item Dividing the situation into cases which exhaust all the possibilities; and
+ \item Showing that the statement follows in all cases.
+\end{enumerate}
+
+
+\begin{tcolorbox}
+\begin{claim}
+ For every choice of real numbers $x,y\in\reals$, it holds that
+ \[
+  \max\{x,y\} = \frac{x+y+|x-y|}{2}.
+ \]
+\end{claim}
+\end{tcolorbox}
+\begin{proof}
+Let $x$ and $y$ be real numbers.  There are two cases to consider: either $x\geq y$ or $x<y$.
+\begin{itemize}
+\setlength{\itemindent}{2em}
+ \item[Case 1:] Suppose $x\geq y$ such that $x-y\geq0$ and thus $|x-y| = x-y$. One has that
+ \begin{align*}
+  \max\{x,y\} = x = \frac{2x}{2} = \frac{x+y + x - y}{2} = \frac{x+y + |x-y|}{2},
+ \end{align*}
+as desired.
+\item[Case 1:] Suppose $x< y$ such that $x-y<0$ and thus $|x-y| = -x+y$. One has that
+ \begin{align*}
+  \max\{x,y\} = y = \frac{2y}{2} = \frac{x+y - x + y}{2} = \frac{x+y + |x-y|}{2},
+ \end{align*}
+as desired.
+\end{itemize}
+This proves the claim, as the equality has been shown to hold in every possible case.
+\end{proof}
+
+
+
+\end{document}

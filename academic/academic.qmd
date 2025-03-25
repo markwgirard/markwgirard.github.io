@@ -1,0 +1,51 @@
+
+---
+title: "Academic Archive"
+format: html
+aliases:
+  - /riddlers/
+---
+
+Before transitioning to industry, I spent many years immersed in the academic world of mathematics and physics — studying, researching, and teaching in both Canada and abroad.  
+This page gathers some of the materials from that part of my life — a kind of archive for the mathematically curious.
+
+## Curriculum Vitae
+
+My academic journey included study and research across several institutions:
+
+- **B.Sc. in Mathematics, Physics, and German** — Trinity University (San Antonio, Texas), 2006–2010  
+- **Diplom in Physics** — University of Freiburg, Germany, 2010–2012  
+  *Thesis: Optimal Control of Many-Body Entanglement with Measures Optimized on the Fly*
+- **Ph.D. in Applied Mathematics** — University of Calgary, 2012–2017  
+  *Thesis: Convex Analysis for Quantum Information Theory*  
+  Adviser: Gilad Gour
+- **Postdoctoral Fellow** — Institute for Quantum Computing, University of Waterloo, 2017–2020  
+- **Sessional Instructor** — Faculty of Mathematics, University of Waterloo, 2018–2020  
+  *(Also taught one course at the University of Calgary in 2016)*
+
+You can download the full version of my academic CV here:  
+[Download CV (PDF)](/academic/MarkGirard_CV.pdf)
+
+---
+
+## Teaching
+
+From introductory calculus to upper-level analysis, I taught a range of undergraduate courses at both the University of Waterloo and the University of Calgary. This section includes syllabi, assignments, lecture notes, and more.
+
+👉 [Teaching Archive](/academic/teaching/)
+
+---
+
+## Graduate Coursework
+
+Typed lecture notes and homework solutions from my graduate studies at the University of Calgary. Topics include quantum information theory, functional analysis, complex analysis, and algebra.
+
+👉 [Coursework Archive](/academic/coursework/)
+
+---
+
+## Publications
+
+A list of my peer-reviewed research publications and preprints, mostly in quantum information theory.
+
+👉 [Publications](/academic/publications.qmd)
