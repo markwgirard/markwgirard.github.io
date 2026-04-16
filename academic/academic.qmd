@@ -6,12 +6,11 @@ aliases:
   - /riddlers/
 ---
 
-Before transitioning to industry, I spent many years immersed in the academic world of mathematics and physics — studying, researching, and teaching in both Canada and abroad.  
-This page gathers some of the materials from that part of my life — a kind of archive for the mathematically curious.
+Before moving to industry, I spent several years studying, researching, and teaching mathematics and physics in Canada and abroad. This page collects materials from that time.
 
 ## Curriculum Vitae
 
-My academic journey included study and research across several institutions:
+I studied and researched at:
 
 - **B.Sc. in Mathematics, Physics, and German** — Trinity University (San Antonio, Texas), 2006–2010  
 - **Diplom in Physics** — University of Freiburg, Germany, 2010–2012  
@@ -30,9 +29,9 @@ You can download the full version of my academic CV here:
 
 ## Teaching
 
-From introductory calculus to upper-level analysis, I taught a range of undergraduate courses at both the University of Waterloo and the University of Calgary. This section includes syllabi, assignments, lecture notes, and more.
+I taught undergraduate courses at the University of Waterloo and the University of Calgary, ranging from introductory calculus to upper-level analysis. This section has syllabi, assignments, and lecture notes where I still have them.
 
-👉 [Teaching Archive](/academic/teaching/)
+[Teaching Archive](/academic/teaching/)
 
 ---
 
@@ -40,7 +39,7 @@ From introductory calculus to upper-level analysis, I taught a range of undergra
 
 Typed lecture notes and homework solutions from my graduate studies at the University of Calgary. Topics include quantum information theory, functional analysis, complex analysis, and algebra.
 
-👉 [Coursework Archive](/academic/coursework/)
+[Coursework Archive](/academic/coursework/)
 
 ---
 
@@ -48,4 +47,4 @@ Typed lecture notes and homework solutions from my graduate studies at the Unive
 
 A list of my peer-reviewed research publications and preprints, mostly in quantum information theory.
 
-👉 [Publications](/academic/publications.qmd)
+[Publications](/academic/publications.qmd)

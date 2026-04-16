@@ -22,19 +22,20 @@ about:
 
 
 
-# 👋 Hello!
+# Hello
 
-I’m a Quantum Algorithm Developer at [Photonic Inc.](https://photonic.com) (a quantum computing  start-up), where I employ my mathematical expertise to optimize and benchmark implementations of quantum algorithms on Photonic's quantum stack. 
+<!-- TODO: replace with new bio wording from Claude chat -->
+I’m a Quantum Algorithm Developer at [Photonic Inc.](https://photonic.com), a quantum-computing startup, where I work on quantum algorithms for their photonic quantum stack.
 
-I live in beautiful Port Moody, BC, with my family.
+I live in Port Moody, in beautiful British Columbia, with my family.
 
-I enjoy mathematical puzzles and challenges! Sometimes I like to solve 538’s Riddlers and started compiling my solutions [here](/riddlers.qmd), or ponder mathematical musings on my [blog](/blog/).
+I like mathematical puzzles. I work through the 538 *Riddler* problems ([collected here](/riddlers.qmd)) and post occasional math writing on my [blog](/blog/).
 
 Outside of mathematics, I enjoy playing ultimate frisbee, homebrewing beer, tabletop games, and various outdoor activities (hiking, camping, climbing, skiing, snowshoeing).
 
 ## 🎓 Academic Background
 
-When I was still in academia, my research interests centred around solving mathematical problems motivated by questions in quantum information theory. I primarily made use of convex analysis, convex optimization, linear algebra, matrix analysis, and operator algebras to tackle questions related to the theory of quantum entanglement.
+During my academic career, my research focused on mathematical problems arising in quantum information theory. I mostly used tools from convex analysis, matrix analysis, and operator algebras to study quantum entanglement.
 
 ### Education
 

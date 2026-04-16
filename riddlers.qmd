@@ -5,7 +5,7 @@ aliases:
   - /riddlers/
 ---
 
-I really like puzzles! The *Riddler* (now *The Fiddler*) gives me a chance to explore something new each week — sometimes analytically, sometimes computationally, sometimes artistically.
+I like puzzles. The *Riddler* (now *The Fiddler*) gives me something new to chew on most weeks, sometimes with pencil and paper, sometimes in code.
 
 > _“Fiddler on the Proof” offers weekly mathematical puzzles as well as other discussion about the puzzling community. The Fiddler is a spiritual successor to The Riddler column at FiveThirtyEight, which ran for eight years under the stewardship of Zach Wissner-Gross and Ollie Roeder._  
 > — [The Fiddler on Substack](https://thefiddler.substack.com/)
