@@ -3,11 +3,9 @@ title: "Graduate Coursework Archive"
 format: html
 ---
 
-This page archives some of my graduate coursework from the University of Calgary.
+Some of my graduate coursework from the University of Calgary.
 
-Most of these course notes were “live-TeXed,” meaning I typed them up on my laptop during lectures. I make no guarantee of their accuracy — there are likely typos, gaps, or mathematical errors. I also make no guarantee on the correctness of my solutions to the assigned problems.
-
-That said, others have found them useful over the years, so I’m sharing them here publicly in the spirit of open learning.
+Most of these notes were live-TeXed during lectures, so expect typos and the occasional error. My homework solutions aren’t guaranteed correct either. That said, a few people have found them useful over the years, so I’m leaving them up.
 
 ---
 
