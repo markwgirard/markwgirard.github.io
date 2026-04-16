@@ -22,10 +22,7 @@ about:
 
 
 
-# Hello
-
-<!-- TODO: replace with new bio wording from Claude chat -->
-I’m a Quantum Algorithm Developer at [Photonic Inc.](https://photonic.com), a quantum-computing startup, where I work on quantum algorithms for their photonic quantum stack.
+I’m a Quantum Algorithm Developer at [Photonic Inc.](https://photonic.com), where I work on fault-tolerant quantum computing. I spend most of my time thinking about what it would take to run large quantum algorithms on real hardware. Namely, how to optimize compilation of specific algorithms, which error-correction and magic-state protocols are worth using, and what the real costs are in qubits, time, and other resources.
 
 I live in Port Moody, in beautiful British Columbia, with my family.
 
