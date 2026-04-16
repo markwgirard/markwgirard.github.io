@@ -8,4 +8,4 @@ listing:
   categories: true
 ---
 
-A collection of math musings, Riddler puzzle solutions, and occasional thoughts.
+Riddler solutions and occasional math writing.

@@ -3,7 +3,7 @@ title: "Teaching"
 format: html
 ---
 
-This page serves as an archive of courses I taught during my academic career. It includes syllabi, lecture notes, and problem sets where available, organized by institution.
+Courses I taught, grouped by institution. Each course page has syllabi, lecture notes, and problem sets where I still have them.
 
 ---
 
